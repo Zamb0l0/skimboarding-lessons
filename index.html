@@ -15,7 +15,7 @@
       align-items: center;
     }
     header {
-      background: url('https://your-image-url-here.jpg') center/cover no-repeat;
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover no-repeat;
       height: 50vh;
       width: 100%;
       display: flex;
@@ -26,10 +26,9 @@
       font-size: 2rem;
       font-weight: bold;
       text-align: center;
-      padding: 1rem;
     }
     section {
-      max-width: 600px;
+      max-width: 800px;
       margin: 2rem;
       text-align: center;
     }
@@ -37,6 +36,16 @@
       width: 100%;
       height: 600px;
       border: none;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .gallery img {
+      width: 300px;
+      border-radius: 8px;
     }
     footer {
       margin: 2rem;
@@ -48,7 +57,7 @@
 <body>
 
   <header>
-    learn to skim :)
+    Learn to Skimboard
   </header>
 
   <section>
@@ -57,14 +66,39 @@
     <p>Spots are limited, so book below 👇</p>
   </section>
 
-  <section style="padding: 1rem 0;">
+  <section>
     <h2>Book a Skimboarding Lesson</h2>
     <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-      loading="lazy" width="100%" height="600"
+      loading="lazy" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0"
+      title="Booking Form"></iframe>
+    <script>
+      var d = document, s = d.createElement("script");
+      s.src = "https://tally.so/widgets/embed.js";
+      s.onload = function () { Tally.loadEmbeds(); };
+      d.body.appendChild(s);
+    </script>
+  </section>
+
+  <section>
+    <h2>Skimboarding in Action</h2>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1549047475-8913d4a2ad5d" alt="Skimboarding 1" />
+      <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131" alt="Skimboarding 2" />
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Skimboarding 3" />
+    </div>
+  </section>
+
 <section>
   <h2>Skimboarding in Action</h2>
   <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
     <img src="https://imgur.com/a/bCl5AuC" />
-    </div>
+     </div>
 </section>
-<footer>
+
+  
+  <footer>
+    Hosted locally in New Zealand • Contact via IG: @yourhandle
+  </footer>
+
+</body>
+</html>

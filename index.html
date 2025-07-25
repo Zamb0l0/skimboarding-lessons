@@ -4,18 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Skimboarding Lessons | Learn to Skimboard</title>
+  <script async src="https://tally.so/widgets/embed.js"></script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
+      margin: 0;
       font-family: sans-serif;
-      background-color: #6F9E99;
-      color: #000;
-      width: 100%;
+      background-color: #6F9E99; /* MAIN BACKGROUND COLOR */
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     header {
@@ -26,153 +24,27 @@
       justify-content: center;
       align-items: center;
       color: white;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
       font-size: 5rem;
       font-weight: bold;
       text-align: center;
       padding: 0 1rem;
     }
 
-    .intro {
-      max-width: 800px;
-      margin: 2rem auto;
-      text-align: center;
-      background-color: rgba(255, 255, 255, 0.95);
+    section {
+      width: 100%;
       padding: 2rem;
-      border-radius: 10px;
+      text-align: center;
+    }
+
+    .intro {
+      max-width: 700px;
+      background-color: rgba(255, 255, 255, 0.9);
+      margin: 2rem auto;
+      padding: 1.5rem;
+      border-radius: 8px;
     }
 
     .row {
       width: 100%;
-      padding: 4rem 1.5rem;
-      text-align: center;
-    }
-
-    .row h2 {
-      font-size: 2.5rem;
-      font-weight: 900;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-    }
-
-    .row p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .white {
-      background-color: #ffffff;
-      color: #000000;
-    }
-
-    .brown {
-      background-color: #342923;
-      color: #ffffff;
-    }
-
-    .taupe {
-      background-color: #89746B;
-      color: #ffffff;
-    }
-
-    .green-grey {
-      background-color: #6F9E99;
-      color: #000000;
-    }
-
-    iframe {
-      width: 100%;
-      height: 500px;
-      border: none;
-      margin-top: 2rem;
-    }
-
-    .gallery {
-      max-width: 800px;
-      margin: 3rem auto;
-      text-align: center;
-    }
-
-    .gallery img {
-      width: 100%;
-      border-radius: 8px;
-      display: block;
-      margin-top: 1rem;
-    }
-
-    footer {
-      background-color: #342923;
-      color: #ffffff;
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 600px) {
-      header {
-        font-size: 3rem;
-      }
-      .row h2 {
-        font-size: 2rem;
-      }
-      .row p {
-        font-size: 1rem;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    Learn to Skimboard
-  </header>
-
-  <section class="intro">
-    <p>Skimboarding is tough—you fall hard, but you keep going.
-It takes persistence, but the reward is worth it.
-</p>
-    <p>These sessions are a way to share the stoke and help more people get into a sport that’s given a lot in return.
-Skimming has built a small, supportive community that’s still growing and always exploring new spots.</p>
-    <p>Whether you’re keen to learn, meet others, or just try something new—you’re welcome.
-All levels, pay what you can. Book below 👇</p>
-  </section>
-
-  <section class="row white">
-    <h2>Beginner Lessons</h2>
-    <p>Start from scratch – no board or experience needed.</p>
-  </section>
-
-  <section class="row brown">
-    <h2>Intermediate Progression</h2>
-    <p>For those already sliding, let's level up.</p>
-  </section>
-
-  <section class="row taupe">
-    <h2>Advanced Concepts</h2>
-    <p>Tailored coaching for advanced techniques and tricks.</p>
-  </section>
-
-  <section class="row green-grey">
-    <h2>Book Now</h2>
-    <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-      loading="lazy" frameborder="0"></iframe>
-    <script>
-      var d = document, s = d.createElement("script");
-      s.src = "https://tally.so/widgets/embed.js";
-      s.onload = function () { Tally.loadEmbeds(); };
-      d.body.appendChild(s);
-    </script>
-  </section>
-
-  <section class="gallery">
-    <h2>Skimboarding in Action</h2>
-    <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skimboarding action photo" />
-  </section>
-
-  <footer>
-    Hosted locally in New Zealand • Contact via IG: @devon_matten
-  </footer>
-
-</body>
-</html>
+      text-

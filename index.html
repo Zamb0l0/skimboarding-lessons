@@ -13,8 +13,9 @@
 
     body {
       font-family: sans-serif;
-      background-color: #fff;
+      background-color: #64DED0;
       color: #000;
+      width: 100%;
     }
 
     header {
@@ -32,34 +33,52 @@
       padding: 0 1rem;
     }
 
+    .intro {
+      max-width: 800px;
+      margin: 2rem auto;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 10px;
+    }
+
     .row {
       width: 100%;
-      padding: 4rem 2rem;
+      padding: 4rem 1.5rem;
       text-align: center;
     }
 
-    .row.white {
+    .row h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .row p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .white {
       background-color: #ffffff;
       color: #000000;
     }
 
-    .row.black {
-      background-color: #000000;
+    .brown {
+      background-color: #342923;
       color: #ffffff;
     }
 
-    .row h2 {
-      font-size: 3rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 1rem;
+    .taupe {
+      background-color: #89746B;
+      color: #ffffff;
     }
 
-    .row p {
-      font-size: 1.25rem;
-      max-width: 700px;
-      margin: 0 auto;
+    .green-grey {
+      background-color: #6F9E99;
+      color: #000000;
     }
 
     iframe {
@@ -69,18 +88,37 @@
       margin-top: 2rem;
     }
 
+    .gallery {
+      max-width: 800px;
+      margin: 3rem auto;
+      text-align: center;
+    }
+
     .gallery img {
       width: 100%;
+      border-radius: 8px;
       display: block;
-      margin: 0 auto;
+      margin-top: 1rem;
     }
 
     footer {
-      background-color: #000;
-      color: #fff;
+      background-color: #342923;
+      color: #ffffff;
       text-align: center;
       padding: 2rem;
       font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        font-size: 3rem;
+      }
+      .row h2 {
+        font-size: 2rem;
+      }
+      .row p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -90,22 +128,28 @@
     Learn to Skimboard
   </header>
 
+  <section class="intro">
+    <p>Learn to skimboard in a chill, fun, and beginner-friendly way.</p>
+    <p>Sessions are weekly, open to all skill levels. Pay what you can :)</p>
+    <p>Spots are limited, so book below 👇</p>
+  </section>
+
   <section class="row white">
     <h2>Beginner Lessons</h2>
     <p>Start from scratch – no board or experience needed.</p>
   </section>
 
-  <section class="row black">
+  <section class="row brown">
     <h2>Intermediate Progression</h2>
     <p>For those already catching slides, let's level up.</p>
   </section>
 
-  <section class="row white">
+  <section class="row taupe">
     <h2>Private 1-on-1</h2>
     <p>Tailored coaching for rapid progress and confidence.</p>
   </section>
 
-  <section class="row black">
+  <section class="row green-grey">
     <h2>Book Now</h2>
     <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
       loading="lazy" frameborder="0"></iframe>
@@ -117,11 +161,9 @@
     </script>
   </section>
 
-  <section class="row white">
+  <section class="gallery">
     <h2>Skimboarding in Action</h2>
-    <div class="gallery">
-      <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skimboarding action photo" />
-    </div>
+    <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skimboarding action photo" />
   </section>
 
   <footer>

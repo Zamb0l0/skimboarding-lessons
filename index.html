@@ -5,87 +5,83 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Skimboarding Lessons | Learn to Skimboard</title>
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: sans-serif;
-      background-color: #d0f0ff; /* LIGHT BLUE BACKGROUND */
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-   header {
-  background: url('https://i.imgur.com/ZLfFKnB.jpeg" alt="Skimboarding action photo') center/cover no-repeat;
-  height: 50vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-  font-size: 5rem; /* MUCH BIGGER */
-  font-weight: bold;
-  text-align: center;
-  padding: 0 1rem;
-}
+    body {
+      font-family: sans-serif;
+      background-color: #fff;
+      color: #000;
+    }
 
-    section {
-      max-width: 600px;
-      margin: 2rem;
+    header {
+      background: url('https://i.imgur.com/ZLfFKnB.jpeg') center/cover no-repeat;
+      height: 50vh;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+      font-size: 5rem;
+      font-weight: bold;
       text-align: center;
-      background-color: rgba(255, 255, 255, 0.9);
-      padding: 1rem;
-      border-radius: 8px;
+      padding: 0 1rem;
+    }
+
+    .row {
+      width: 100%;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .row.white {
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    .row.black {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    .row h2 {
+      font-size: 3rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .row p {
+      font-size: 1.25rem;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
     iframe {
       width: 100%;
       height: 500px;
       border: none;
+      margin-top: 2rem;
     }
 
     .gallery img {
       width: 100%;
-      border-radius: 8px;
-      margin-top: 1rem;
+      display: block;
+      margin: 0 auto;
     }
 
     footer {
-      margin: 2rem;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 2rem;
       font-size: 0.9rem;
-      color: #777;
     }
-    
-    .row {
-  width: 100%;
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-.row.white {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-.row.black {
-  background-color: #000000;
-  color: #ffffff;
-}
-
-.row h2 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-.row p {
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
   </style>
 </head>
 <body>
@@ -94,34 +90,34 @@
     Learn to Skimboard
   </header>
 
-  <section>
-    <p>Learn to skimboard in a chill, fun, and beginner-friendly way.</p>
-    <p>Sessions are weekly, open to all skill levels. Pay what you can :)</p>
-    <p>Spots are limited, so book below 👇</p>
+  <section class="row white">
+    <h2>Beginner Lessons</h2>
+    <p>Start from scratch – no board or experience needed.</p>
+  </section>
+
+  <section class="row black">
+    <h2>Intermediate Progression</h2>
+    <p>For those already catching slides, let's level up.</p>
   </section>
 
   <section class="row white">
-  <h2>Beginner Lessons</h2>
-  <p>Start from scratch – no board or experience needed.</p>
-</section>
+    <h2>Private 1-on-1</h2>
+    <p>Tailored coaching for rapid progress and confidence.</p>
+  </section>
 
-<section class="row black">
-  <h2>Intermediate Progression</h2>
-  <p>For those already catching slides, let's level up.</p>
-</section>
+  <section class="row black">
+    <h2>Book Now</h2>
+    <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+      loading="lazy" frameborder="0"></iframe>
+    <script>
+      var d = document, s = d.createElement("script");
+      s.src = "https://tally.so/widgets/embed.js";
+      s.onload = function () { Tally.loadEmbeds(); };
+      d.body.appendChild(s);
+    </script>
+  </section>
 
-<section class="row white">
-  <h2>Private 1-on-1</h2>
-  <p>Tailored coaching for rapid progress and confidence.</p>
-</section>
-
-<section class="row black">
-  <h2>Book Now</h2>
-  <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-    loading="lazy" width="100%" height="500" frameborder="0"></iframe>
-</section>
-
-  <section>
+  <section class="row white">
     <h2>Skimboarding in Action</h2>
     <div class="gallery">
       <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skimboarding action photo" />

@@ -8,11 +8,8 @@
     body {
       margin: 0;
       font-family: sans-serif;
-      background-color: #6F9E99; /* Main Background Color */
+      background-color: #6F9E99;
       color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
 
     header {
@@ -24,7 +21,7 @@
       align-items: center;
       color: white;
       text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-      font-size: 5rem;
+      font-size: 4.5rem;
       font-weight: bold;
       text-align: center;
       padding: 0 1rem;
@@ -41,7 +38,7 @@
     .taupe { background-color: #89746B; color: #ffffff; }
 
     .row h2 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin-bottom: 1rem;
       font-weight: 800;
       text-transform: uppercase;
@@ -50,38 +47,62 @@
     .row p {
       font-size: 1.2rem;
       max-width: 600px;
-      margin: 0 auto 2rem;
+      margin: 0 auto 1rem;
     }
 
-    .row a.button {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 0.75rem 1.5rem;
+    .book-btn {
+      margin-top: 1rem;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
       background-color: #64DED0;
       color: #000;
-      font-weight: bold;
-      border-radius: 5px;
-      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.3s;
     }
 
-    .intro {
+    .book-btn:hover {
+      background-color: #52bfb4;
+    }
+
+    .collapsible {
+      max-width: 700px;
+      margin: 1rem auto 0;
+      display: none;
+      background: rgba(255,255,255,0.95);
+      padding: 1.5rem;
+      border-radius: 8px;
+    }
+
+    .collapsible iframe {
       width: 100%;
+      height: 500px;
+      border: none;
+    }
+
+    .info-note {
+      font-size: 0.9rem;
+      color: #444;
+      margin-top: 1rem;
+    }
+
+    .blurb {
       background-color: #DE8A64;
-      color: #ffffff;
+      color: white;
       padding: 3rem 2rem;
       text-align: center;
     }
 
-    .intro p {
-      font-size: 1.3rem;
-      max-width: 700px;
-      margin: 0 auto;
+    .blurb h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
     }
 
-    iframe {
-      width: 100%;
-      height: 500px;
-      border: none;
+    .blurb p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
     .gallery img {
@@ -91,52 +112,67 @@
     }
 
     footer {
+      text-align: center;
       margin: 2rem;
       font-size: 0.9rem;
-      color: #eee;
+      color: #ddd;
     }
   </style>
 </head>
 <body>
+
   <header>
     Learn to Skimboard
   </header>
 
-  <section class="intro">
-    <p>Skimboarding is tough — you fall hard and keep going. But it's also extremely rewarding. This is about sharing the love for the sport, the joy of teaching, and the energy of a tight-knit, pioneering community. Whether you’re here to learn, connect, or just give it a go — welcome.</p>
+  <section class="blurb">
+    <h2>Why Skimboard?</h2>
+    <p>
+      Skimboarding is hard. You fall often, but you keep going. And when it clicks, it’s incredibly rewarding. This is a space to share what we know, what we've learned, and to open the door for others to enjoy the challenge and the ride. If you're curious or already hooked — this is for you.
+    </p>
   </section>
 
+  <!-- Beginner Row -->
   <section class="row white">
     <h2>Beginner Lessons</h2>
     <p>Start from scratch – no board or experience needed.</p>
-    <button class="button" onclick="Tally.openPopup('https://tally.so/r/nWaXjj')">Book Now</button>
+    <button class="book-btn" onclick="toggleCollapse('beginner')">Book Now</button>
+    <div id="beginner" class="collapsible">
+      <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
+      <div class="info-note">
+        Please bring swimwear or a wetsuit. Times are updated weekly and may change depending on weather and tide. Bookings may be rescheduled if needed.
+      </div>
+    </div>
   </section>
 
+  <!-- Intermediate Row -->
   <section class="row brown">
     <h2>Intermediate Progression</h2>
-    <p>For those already sliding, let's level up.</p>
-   <button class="button" onclick="Tally.openPopup('https://tally.so/r/nWaXjj')">Book Now</button>
+    <p>Already sliding? Let’s level up with technique and flow.</p>
+    <button class="book-btn" onclick="toggleCollapse('intermediate')">Book Now</button>
+    <div id="intermediate" class="collapsible">
+      <iframe data-tally-src="https://tally.so/embed/PLACEHOLDER123?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
+      <div class="info-note">
+        Bring your board and suitable gear. Weekly schedule subject to tides and weather. Times may vary — check back often.
+      </div>
+    </div>
   </section>
 
+  <!-- Advanced Row -->
   <section class="row taupe">
     <h2>Advanced Concepts</h2>
     <p>Tailored coaching for advanced techniques and tricks.</p>
-   <button class="button" onclick="Tally.openPopup('https://tally.so/r/nWaXjj')">Book Now</button>
+    <button class="book-btn" onclick="toggleCollapse('advanced')">Book Now</button>
+    <div id="advanced" class="collapsible">
+      <iframe data-tally-src="https://tally.so/embed/PLACEHOLDER456?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
+      <div class="info-note">
+        Gear required. Focus on precision, timing, and terrain. Sessions move locations based on tide and conditions.
+      </div>
+    </div>
   </section>
 
+  <!-- Gallery -->
   <section class="row white">
-    <h2>Booking Form</h2>
-    <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-      loading="lazy" width="100%" height="500" frameborder="0"></iframe>
-    <script>
-      var d = document, s = d.createElement("script");
-      s.src = "https://tally.so/widgets/embed.js";
-      s.onload = function () { Tally.loadEmbeds(); };
-      d.body.appendChild(s);
-    </script>
-  </section>
-
-  <section class="row brown">
     <h2>Skimboarding in Action</h2>
     <div class="gallery">
       <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skimboarding action photo" />
@@ -146,6 +182,14 @@
   <footer>
     Hosted locally in New Zealand • Contact via IG: @devon_matten
   </footer>
+
   <script async src="https://tally.so/widgets/embed.js"></script>
+  <script>
+    function toggleCollapse(id) {
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === "block" ? "none" : "block";
+    }
+  </script>
+
 </body>
 </html>

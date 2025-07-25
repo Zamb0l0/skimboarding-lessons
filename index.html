@@ -4,12 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Skimboarding Lessons | Learn to Skimboard</title>
-  <script async src="https://tally.so/widgets/embed.js"></script>
   <style>
     body {
       margin: 0;
       font-family: sans-serif;
-      background-color: #6F9E99; /* MAIN BACKGROUND COLOR */
+      background-color: #6F9E99; /* Main Background Color */
       color: #333;
       display: flex;
       flex-direction: column;
@@ -31,40 +30,15 @@
       padding: 0 1rem;
     }
 
-    section {
-      width: 100%;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    .intro {
-      max-width: 700px;
-      background-color: rgba(255, 255, 255, 0.9);
-      margin: 2rem auto;
-      padding: 1.5rem;
-      border-radius: 8px;
-    }
-
     .row {
       width: 100%;
-      text-align: center;
       padding: 4rem 2rem;
+      text-align: center;
     }
 
-    .row.white {
-      background-color: #ffffff;
-      color: #000000;
-    }
-
-    .row.brown {
-      background-color: #342923;
-      color: #ffffff;
-    }
-
-    .row.taupe {
-      background-color: #89746B;
-      color: #ffffff;
-    }
+    .white { background-color: #ffffff; color: #000000; }
+    .brown { background-color: #342923; color: #ffffff; }
+    .taupe { background-color: #89746B; color: #ffffff; }
 
     .row h2 {
       font-size: 3rem;
@@ -76,24 +50,32 @@
     .row p {
       font-size: 1.2rem;
       max-width: 600px;
-      margin: 0 auto;
+      margin: 0 auto 2rem;
     }
 
-    .book-btn {
+    .row a.button {
       display: inline-block;
-      margin-top: 1rem;
+      margin: 0.5rem;
       padding: 0.75rem 1.5rem;
       background-color: #64DED0;
-      color: #342923;
+      color: #000;
       font-weight: bold;
-      border-radius: 6px;
+      border-radius: 5px;
       text-decoration: none;
-      transition: background-color 0.3s ease;
     }
 
-    .book-btn:hover {
-      background-color: #342923;
-      color: #fff;
+    .intro {
+      width: 100%;
+      background-color: #DE8A64;
+      color: #ffffff;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .intro p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
     iframe {
@@ -106,7 +88,6 @@
       width: 100%;
       border-radius: 8px;
       margin-top: 1rem;
-      max-width: 800px;
     }
 
     footer {
@@ -117,47 +98,45 @@
   </style>
 </head>
 <body>
-
   <header>
     Learn to Skimboard
   </header>
 
-  <section class="row taupe">
-  <h2>Why Skimboarding?</h2>
-  <p>
-    Skimboarding is tough — you fall hard and keep going. But it's also deeply rewarding.
-    This is about sharing that journey, building something small, open, and welcoming.
-  </p>
-  <p>
-    These sessions are a space to meet others, ride together, and learn — no pressure, no experience needed.
-    Whether you’re just curious or looking to level up, everyone’s welcome.
-  </p>
-</section>
+  <section class="intro">
+    <p>Skimboarding is tough — you fall hard and keep going. But it's also extremely rewarding. This is about sharing the love for the sport, the joy of teaching, and the energy of a tight-knit, pioneering community. Whether you’re here to learn, connect, or just give it a go — welcome.</p>
+  </section>
 
   <section class="row white">
     <h2>Beginner Lessons</h2>
     <p>Start from scratch – no board or experience needed.</p>
-    <a href="https://tally.so/r/nWaXjj?lesson=beginner" target="_blank" class="book-btn">Book Beginner</a>
+    <a class="button" href="https://tally.so/r/nWaXjj" target="_blank">Book Beginner Lesson</a>
   </section>
 
   <section class="row brown">
     <h2>Intermediate Progression</h2>
     <p>For those already sliding, let's level up.</p>
-    <a href="https://tally.so/r/nWaXjj?lesson=intermediate" target="_blank" class="book-btn">Book Intermediate</a>
+    <a class="button" href="https://tally.so/r/nWaXjj" target="_blank">Book Intermediate</a>
   </section>
 
   <section class="row taupe">
     <h2>Advanced Concepts</h2>
     <p>Tailored coaching for advanced techniques and tricks.</p>
-    <a href="https://tally.so/r/nWaXjj?lesson=advanced" target="_blank" class="book-btn">Book Advanced</a>
+    <a class="button" href="https://tally.so/r/nWaXjj" target="_blank">Book Advanced</a>
   </section>
 
   <section class="row white">
-    <h2>Full Booking Form</h2>
-    <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy"></iframe>
+    <h2>Booking Form</h2>
+    <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+      loading="lazy" width="100%" height="500" frameborder="0"></iframe>
+    <script>
+      var d = document, s = d.createElement("script");
+      s.src = "https://tally.so/widgets/embed.js";
+      s.onload = function () { Tally.loadEmbeds(); };
+      d.body.appendChild(s);
+    </script>
   </section>
 
-  <section class="intro">
+  <section class="row brown">
     <h2>Skimboarding in Action</h2>
     <div class="gallery">
       <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skimboarding action photo" />
@@ -165,8 +144,7 @@
   </section>
 
   <footer>
-    Hosted in New Zealand • Contact via IG: @devon_matten
+    Hosted locally in New Zealand • Contact via IG: @devon_matten
   </footer>
-
 </body>
 </html>

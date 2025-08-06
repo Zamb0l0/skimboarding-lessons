@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Skimboarding Lessons | Learn to Skimboard</title>
   <style>
     body {
@@ -10,13 +10,13 @@
       font-family: sans-serif;
       background: url('https://i.imgur.com/ZLfFKnB.jpeg') center top / cover no-repeat, #6F9E99;
       color: #333;
-      scroll-behavior: smooth; /* for smooth scrolling */
+      scroll-behavior: smooth;
     }
 
     .navbar {
       position: sticky;
       top: 0;
-      background-color: #342923; /* dark brown consistent with your theme */
+      background-color: #342923;
       padding: 1rem 2rem;
       z-index: 1000;
       display: flex;
@@ -33,7 +33,7 @@
     }
 
     .navbar ul li a {
-      color: #DE8A64; /* your highlight color */
+      color: #DE8A64;
       text-decoration: none;
       font-weight: 700;
       font-size: 1.1rem;
@@ -43,7 +43,7 @@
 
     .navbar ul li a:hover,
     .navbar ul li a:focus {
-      color: #64DED0; /* your main color */
+      color: #64DED0;
       outline: none;
     }
 
@@ -62,7 +62,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1rem; /* space between logo and text */
+      gap: 1rem;
     }
 
     header a.logo-link {
@@ -70,7 +70,7 @@
     }
 
     header img.logo {
-      max-width: 600px; /* increased from 150px to 600px */
+      max-width: 600px; /* big logo */
       height: auto;
     }
 
@@ -113,51 +113,42 @@
       background-color: #52bfb4;
     }
 
-   .collapsible {
-  max-width: 700px;
-  margin: 1rem auto 0;
-  display: none;
-  padding: 1rem 1.5rem 1.5rem;
-  border-radius: 8px;
+    /* Animated collapsible container */
+    .collapsible {
+      max-width: 700px;
+      margin: 1rem auto 0;
+      overflow: hidden;
+      max-height: 0;
+      padding: 0 1.5rem;
+      border-radius: 8px;
+      background-color: inherit;
+      transition: max-height 0.5s ease, padding 0.5s ease;
+    }
 
-  /* Flex layout for tight vertical stacking */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  box-sizing: border-box;
-}
+    /* Background colors for each category */
+    .row.brown .collapsible {
+      background: #342923;
+    }
 
-.row.brown .collapsible {
-  background: #342923;
-}
+    .row.taupe .collapsible {
+      background: #89746B;
+    }
 
-.row.taupe .collapsible {
-  background: #89746B;
-}
+    .row.white .collapsible {
+      background: #ffffff;
+    }
 
-.row.white .collapsible {
-  background: #ffffff;
-}
+    /* When expanded */
+    .collapsible.active {
+      padding: 1.5rem;
+      max-height: 1000px; /* enough to reveal content */
+    }
 
-.collapsible iframe {
-  width: 100%;
-  min-height: 500px;
-  border: none;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.info-note {
-  font-size: 0.9rem;
-  color: #444;
-  margin-top: 0;
-  text-align: center;
-  max-width: 700px;
-  width: 100%;
-  padding: 0;
-}
+    .collapsible iframe {
+      width: 100%;
+      min-height: 500px;
+      border: none;
+    }
 
     .info-note {
       font-size: 0.9rem;
@@ -216,68 +207,65 @@
     <h1>Learn to Skimboard</h1>
   </header>
 
-  <main>
-    <section id="about" class="blurb">
-      <h2>Learn Skimboarding</h2>
-      <p>A mix of surfing, skating, and just about every board sport rolled into one.</p>
-      <p>A lifelong skill you can enjoy anywhere, anytime.</p>
-      <p>Fun in all kinds of conditions — whether it’s a powerful shorebreak or just a few inches of water.</p>
-    </section>
+  <section class="blurb" id="about">
+    <h2>Learn Skimboarding</h2>
+    <p>A mix of surfing, skating, and just about every board sport rolled into one.</p>
+    <p>A lifelong skill you can enjoy anywhere, anytime.</p>
+    <p>Fun in all kinds of conditions — whether it’s a powerful shorebreak or just a few inches of water.</p>
+  </section>
 
-    <section id="lessons">
-      <!-- Beginner Row -->
-      <section class="row white">
-        <h2>Beginner Lessons</h2>
-        <p>Start from scratch – no board or experience needed.</p>
-        <button class="book-btn" onclick="toggleCollapse('beginner')">Book Now</button>
-        <div id="beginner" class="collapsible">
-          <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
-          <div class="info-note">
-            Please bring swimwear or a wetsuit. Times are updated weekly and may change depending on weather and tide. Bookings may be rescheduled if needed.
-          </div>
-        </div>
-      </section>
-
-      <!-- Intermediate Row -->
-      <section class="row brown">
-        <h2>Intermediate Progression</h2>
-        <p>Already sliding? Let’s level up with technique and flow.</p>
-        <button class="book-btn" onclick="toggleCollapse('intermediate')">Book Now</button>
-        <div id="intermediate" class="collapsible">
-          <iframe
-            data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-            loading="lazy"
-          ></iframe>
-          <div class="info-note">
-            Bring your board and suitable gear. Weekly schedule subject to tides and weather. Times may vary — check back often.
-          </div>
-        </div>
-      </section>
-
-      <!-- Advanced Row -->
-      <section class="row taupe">
-        <h2>Advanced Concepts</h2>
-        <p>Tailored coaching for advanced techniques and tricks.</p>
-        <button class="book-btn" onclick="toggleCollapse('advanced')">Book Now</button>
-        <div id="advanced" class="collapsible">
-          <iframe
-            data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-            loading="lazy"
-          ></iframe>
-          <div class="info-note">
-            Gear required. Focus on precision, timing, and terrain. Sessions move locations based on tide and conditions.
-          </div>
-        </div>
-      </section>
-    </section>
-
-    <section id="gallery" class="row white">
-      <h2>Skimboarding in Action</h2>
-      <div class="gallery">
-        <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skimboarding action photo" />
+  <!-- Beginner Row -->
+  <section class="row white" id="lessons">
+    <h2>Beginner Lessons</h2>
+    <p>Start from scratch – no board or experience needed.</p>
+    <button class="book-btn" onclick="toggleCollapse('beginner')">Book Now</button>
+    <div id="beginner" class="collapsible">
+      <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
+      <div class="info-note">
+        Please bring swimwear or a wetsuit. Times are updated weekly and may change depending on weather and tide. Bookings may be rescheduled if needed.
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <!-- Intermediate Row -->
+  <section class="row brown">
+    <h2>Intermediate Progression</h2>
+    <p>Already sliding? Let’s level up with technique and flow.</p>
+    <button class="book-btn" onclick="toggleCollapse('intermediate')">Book Now</button>
+    <div id="intermediate" class="collapsible">
+      <iframe
+        data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+        loading="lazy"
+      ></iframe>
+      <div class="info-note">
+        Bring your board and suitable gear. Weekly schedule subject to tides and weather. Times may vary — check back often.
+      </div>
+    </div>
+  </section>
+
+  <!-- Advanced Row -->
+  <section class="row taupe">
+    <h2>Advanced Concepts</h2>
+    <p>Tailored coaching for advanced techniques and tricks.</p>
+    <button class="book-btn" onclick="toggleCollapse('advanced')">Book Now</button>
+    <div id="advanced" class="collapsible">
+      <iframe
+        data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+        loading="lazy"
+      ></iframe>
+      <div class="info-note">
+        Gear required. Focus on precision, timing, and terrain. Sessions move locations based on tide and conditions.
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="row white" id="gallery">
+    <h2>Skimboarding in Action</h2>
+    <div class="gallery">
+      <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skimboarding action photo" />
+    </div>
+  </section>
 
   <footer id="contact">
     Hosted locally in New Zealand • Contact via IG: @devon_matten
@@ -287,7 +275,7 @@
   <script>
     function toggleCollapse(id) {
       const el = document.getElementById(id);
-      el.style.display = el.style.display === "block" ? "none" : "block";
+      el.classList.toggle('active');
     }
   </script>
 

@@ -11,12 +11,6 @@
       background: url('https://i.imgur.com/ZLfFKnB.jpeg') center top / cover no-repeat, #6F9E99;
       color: #333;
       scroll-behavior: smooth;
-      opacity: 0; /* start hidden for fade-in */
-      transition: opacity 1s ease; 
-    }
-
-    body.show {
-      opacity: 1; /* fade in */
     }
 
     /* Splash screen */
@@ -25,37 +19,35 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: 100vh;
       background-color: #FFF5D7; /* light buttery color */
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       z-index: 2000;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
-    }
-    #splash.hide {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
+      transition: opacity 1s ease;
     }
     #splash img {
-      max-width: 300px;
-      cursor: pointer;
+      max-width: 80vw;
+      max-height: 80vh;
+      height: auto;
+      transition: opacity 1s ease;
     }
 
     /* Bouncing arrow */
     .scroll-arrow {
       margin-top: 30px;
-      font-size: 2.5rem;
+      font-size: 3rem;
       color: #DE8A64; /* orange highlight */
       animation: bounce 1.5s infinite;
       cursor: pointer;
+      user-select: none;
     }
     @keyframes bounce {
       0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(10px); }
-      60% { transform: translateY(5px); }
+      40% { transform: translateY(15px); }
+      60% { transform: translateY(7px); }
     }
 
     .navbar {
@@ -203,8 +195,8 @@
 <body>
 
 <div id="splash">
-  <img src="Logo.png" alt="Skim Lessons Logo" onclick="enterSite()" />
-  <div class="scroll-arrow" onclick="enterSite()">&#8595;</div>
+  <img src="Logo.png" alt="Skim Lessons Logo" />
+  <div class="scroll-arrow" id="scrollArrow">&#8595;</div>
 </div>
 
 <nav class="navbar">
@@ -284,16 +276,24 @@
   }
 
   const splash = document.getElementById('splash');
-  const body = document.body;
+  const logo = splash.querySelector('img');
+  const scrollArrow = document.getElementById('scrollArrow');
 
-  function enterSite() {
-    splash.classList.add('hide');
-    body.classList.add('show');
-  }
+  window.addEventListener('scroll', () => {
+    let scrollY = window.scrollY;
+    let fadeOut = Math.min(scrollY / 200, 1); // fade out within 200px of scroll
+    splash.style.opacity = 1 - fadeOut;
+    logo.style.opacity = 1 - fadeOut;
 
-  // auto-hide splash after 3s
-  setTimeout(enterSite, 3000);
-  window.addEventListener('scroll', enterSite);
+    if (fadeOut >= 1) {
+      splash.style.display = "none"; // hide splash
+    }
+  });
+
+  scrollArrow.addEventListener('click', () => {
+    // Smooth scroll down 100vh to hide splash fully
+    window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+  });
 </script>
 
 </body>

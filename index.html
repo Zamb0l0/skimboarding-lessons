@@ -11,8 +11,48 @@
       background: url('https://i.imgur.com/ZLfFKnB.jpeg') center top / cover no-repeat, #6F9E99;
       color: #333;
     }
+body {
+  scroll-behavior: smooth; /* for smooth scrolling */
+}
 
+.navbar {
+  position: sticky;
+  top: 0;
+  background-color: #342923; /* dark brown consistent with your theme */
+  padding: 1rem 2rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 2rem;
+}
+
+.navbar ul li {
   
+}
+
+.navbar ul li a {
+  color: #DE8A64; /* your highlight color */
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a:focus {
+  color: #64DED0; /* your main color */
+  outline: none;
+}
+
     header {
       width: 100%;
       background-color: transparent;
@@ -146,6 +186,16 @@
   </style>
 </head>
 <body>
+
+  <nav class="navbar">
+  <ul>
+    <li><a href="#header" class="nav-link">Home</a></li>
+    <li><a href="#lessons" class="nav-link">Lessons</a></li>
+    <li><a href="#about" class="nav-link">Why Skimboard</a></li>
+    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+    <li><a href="#contact" class="nav-link">Book Now</a></li>
+  </ul>
+</nav>
 
 <header>
   <a href="/" class="logo-link">

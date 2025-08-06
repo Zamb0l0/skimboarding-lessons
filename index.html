@@ -11,6 +11,12 @@
       background: url('https://i.imgur.com/ZLfFKnB.jpeg') center top / cover no-repeat, #6F9E99;
       color: #333;
       scroll-behavior: smooth;
+      opacity: 0; /* start hidden for fade-in */
+      transition: opacity 1s ease; 
+    }
+
+    body.show {
+      opacity: 1; /* fade in */
     }
 
     /* Splash screen */
@@ -37,12 +43,19 @@
       max-width: 300px;
       cursor: pointer;
     }
-    .scroll-down {
-      margin-top: 20px;
-      font-size: 1rem;
-      color: #342923;
+
+    /* Bouncing arrow */
+    .scroll-arrow {
+      margin-top: 30px;
+      font-size: 2.5rem;
+      color: #DE8A64; /* orange highlight */
+      animation: bounce 1.5s infinite;
       cursor: pointer;
-      text-transform: uppercase;
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(10px); }
+      60% { transform: translateY(5px); }
     }
 
     .navbar {
@@ -190,8 +203,8 @@
 <body>
 
 <div id="splash">
-  <img src="Logo.png" alt="Skim Lessons Logo" onclick="hideSplash()" />
-  <div class="scroll-down">Enter Site</div>
+  <img src="Logo.png" alt="Skim Lessons Logo" onclick="enterSite()" />
+  <div class="scroll-arrow" onclick="enterSite()">&#8595;</div>
 </div>
 
 <nav class="navbar">
@@ -267,25 +280,20 @@
 <script>
   function toggleCollapse(id) {
     const el = document.getElementById(id);
-    if (el.style.display === "block") {
-      el.style.display = "none";
-    } else {
-      el.style.display = "block";
-    }
+    el.style.display = (el.style.display === "block") ? "none" : "block";
   }
 
   const splash = document.getElementById('splash');
-  const scrollArrow = document.querySelector('.scroll-down');
+  const body = document.body;
 
-  function hideSplash() {
+  function enterSite() {
     splash.classList.add('hide');
+    body.classList.add('show');
   }
 
-  // auto-hide after 3 seconds
-  setTimeout(hideSplash, 3000);
-
-  window.addEventListener('scroll', hideSplash);
-  scrollArrow.addEventListener('click', hideSplash);
+  // auto-hide splash after 3s
+  setTimeout(enterSite, 3000);
+  window.addEventListener('scroll', enterSite);
 </script>
 
 </body>

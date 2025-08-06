@@ -10,48 +10,42 @@
       font-family: sans-serif;
       background: url('https://i.imgur.com/ZLfFKnB.jpeg') center top / cover no-repeat, #6F9E99;
       color: #333;
+      scroll-behavior: smooth; /* for smooth scrolling */
     }
-body {
-  scroll-behavior: smooth; /* for smooth scrolling */
-}
 
-.navbar {
-  position: sticky;
-  top: 0;
-  background-color: #342923; /* dark brown consistent with your theme */
-  padding: 1rem 2rem;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
+    .navbar {
+      position: sticky;
+      top: 0;
+      background-color: #342923; /* dark brown consistent with your theme */
+      padding: 1rem 2rem;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
 
-.navbar ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 2rem;
-}
+    .navbar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 2rem;
+    }
 
-.navbar ul li {
-  
-}
+    .navbar ul li a {
+      color: #DE8A64; /* your highlight color */
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
 
-.navbar ul li a {
-  color: #DE8A64; /* your highlight color */
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  transition: color 0.3s ease;
-}
-
-.navbar ul li a:hover,
-.navbar ul li a:focus {
-  color: #64DED0; /* your main color */
-  outline: none;
-}
+    .navbar ul li a:hover,
+    .navbar ul li a:focus {
+      color: #64DED0; /* your main color */
+      outline: none;
+    }
 
     header {
       width: 100%;
@@ -75,10 +69,10 @@ body {
       text-decoration: none;
     }
 
-   header img.logo {
-  max-width: 600px; /* increased from 150px to 600px */
-  height: auto;
-}
+    header img.logo {
+      max-width: 600px; /* increased from 150px to 600px */
+      height: auto;
+    }
 
     .row {
       width: 100%;
@@ -186,93 +180,96 @@ body {
 <body>
 
   <nav class="navbar">
-  <ul>
-    <li><a href="#header" class="nav-link">Home</a></li>
-    <li><a href="#lessons" class="nav-link">Lessons</a></li>
-    <li><a href="#about" class="nav-link">Why Skimboard</a></li>
-    <li><a href="#gallery" class="nav-link">Gallery</a></li>
-    <li><a href="#contact" class="nav-link">Book Now</a></li>
-  </ul>
-</nav>
+    <ul>
+      <li><a href="#header" class="nav-link">Home</a></li>
+      <li><a href="#lessons" class="nav-link">Lessons</a></li>
+      <li><a href="#about" class="nav-link">Why Skimboard</a></li>
+      <li><a href="#gallery" class="nav-link">Gallery</a></li>
+      <li><a href="#contact" class="nav-link">Book Now</a></li>
+    </ul>
+  </nav>
 
-<header>
-  <a href="/" class="logo-link">
-    <img src="Logo.png" alt="Skim Lessons Logo" class="logo" />
-  </a>
-  <h1>Learn to Skimboard</h1>
-</header>
+  <header id="header">
+    <a href="/" class="logo-link">
+      <img src="Logo.png" alt="Skim Lessons Logo" class="logo" />
+    </a>
+    <h1>Learn to Skimboard</h1>
+  </header>
 
-<section class="blurb">
-  <h2>Learn Skimboarding</h2>
-  <p>A mix of surfing, skating, and just about every board sport rolled into one.</p>
-  <p>A lifelong skill you can enjoy anywhere, anytime.</p>
-  <p>Fun in all kinds of conditions — whether it’s a powerful shorebreak or just a few inches of water.</p>
-</section>
+  <main>
+    <section id="about" class="blurb">
+      <h2>Learn Skimboarding</h2>
+      <p>A mix of surfing, skating, and just about every board sport rolled into one.</p>
+      <p>A lifelong skill you can enjoy anywhere, anytime.</p>
+      <p>Fun in all kinds of conditions — whether it’s a powerful shorebreak or just a few inches of water.</p>
+    </section>
 
-<!-- Beginner Row -->
-<section class="row white">
-  <h2>Beginner Lessons</h2>
-  <p>Start from scratch – no board or experience needed.</p>
-  <button class="book-btn" onclick="toggleCollapse('beginner')">Book Now</button>
-  <div id="beginner" class="collapsible">
-    <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
-    <div class="info-note">
-      Please bring swimwear or a wetsuit. Times are updated weekly and may change depending on weather and tide. Bookings may be rescheduled if needed.
-    </div>
-  </div>
-</section>
+    <section id="lessons">
+      <!-- Beginner Row -->
+      <section class="row white">
+        <h2>Beginner Lessons</h2>
+        <p>Start from scratch – no board or experience needed.</p>
+        <button class="book-btn" onclick="toggleCollapse('beginner')">Book Now</button>
+        <div id="beginner" class="collapsible">
+          <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
+          <div class="info-note">
+            Please bring swimwear or a wetsuit. Times are updated weekly and may change depending on weather and tide. Bookings may be rescheduled if needed.
+          </div>
+        </div>
+      </section>
 
-<!-- Intermediate Row -->
-<section class="row brown">
-  <h2>Intermediate Progression</h2>
-  <p>Already sliding? Let’s level up with technique and flow.</p>
-  <button class="book-btn" onclick="toggleCollapse('intermediate')">Book Now</button>
-  <div id="intermediate" class="collapsible">
-    <iframe
-      data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-      loading="lazy"
-    ></iframe>
-    <div class="info-note">
-      Bring your board and suitable gear. Weekly schedule subject to tides and weather. Times may vary — check back often.
-    </div>
-  </div>
-</section>
+      <!-- Intermediate Row -->
+      <section class="row brown">
+        <h2>Intermediate Progression</h2>
+        <p>Already sliding? Let’s level up with technique and flow.</p>
+        <button class="book-btn" onclick="toggleCollapse('intermediate')">Book Now</button>
+        <div id="intermediate" class="collapsible">
+          <iframe
+            data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            loading="lazy"
+          ></iframe>
+          <div class="info-note">
+            Bring your board and suitable gear. Weekly schedule subject to tides and weather. Times may vary — check back often.
+          </div>
+        </div>
+      </section>
 
-<!-- Advanced Row -->
-<section class="row taupe">
-  <h2>Advanced Concepts</h2>
-  <p>Tailored coaching for advanced techniques and tricks.</p>
-  <button class="book-btn" onclick="toggleCollapse('advanced')">Book Now</button>
-  <div id="advanced" class="collapsible">
-    <iframe
-      data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-      loading="lazy"
-    ></iframe>
-    <div class="info-note">
-      Gear required. Focus on precision, timing, and terrain. Sessions move locations based on tide and conditions.
-    </div>
-  </div>
-</section>
+      <!-- Advanced Row -->
+      <section class="row taupe">
+        <h2>Advanced Concepts</h2>
+        <p>Tailored coaching for advanced techniques and tricks.</p>
+        <button class="book-btn" onclick="toggleCollapse('advanced')">Book Now</button>
+        <div id="advanced" class="collapsible">
+          <iframe
+            data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            loading="lazy"
+          ></iframe>
+          <div class="info-note">
+            Gear required. Focus on precision, timing, and terrain. Sessions move locations based on tide and conditions.
+          </div>
+        </div>
+      </section>
+    </section>
 
-<!-- Gallery -->
-<section class="row white">
-  <h2>Skimboarding in Action</h2>
-  <div class="gallery">
-    <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skimboarding action photo" />
-  </div>
-</section>
+    <section id="gallery" class="row white">
+      <h2>Skimboarding in Action</h2>
+      <div class="gallery">
+        <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skimboarding action photo" />
+      </div>
+    </section>
+  </main>
 
-<footer>
-  Hosted locally in New Zealand • Contact via IG: @devon_matten
-</footer>
+  <footer id="contact">
+    Hosted locally in New Zealand • Contact via IG: @devon_matten
+  </footer>
 
-<script async src="https://tally.so/widgets/embed.js"></script>
-<script>
-  function toggleCollapse(id) {
-    const el = document.getElementById(id);
-    el.style.display = el.style.display === "block" ? "none" : "block";
-  }
-</script>
+  <script async src="https://tally.so/widgets/embed.js"></script>
+  <script>
+    function toggleCollapse(id) {
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === "block" ? "none" : "block";
+    }
+  </script>
 
 </body>
 </html>

@@ -13,65 +13,49 @@
       scroll-behavior: smooth;
     }
 
-    /* Splash Styling */
+    /* Splash screen */
     #splash {
-      height: 100vh;
-      background-color: #FFF3D6; /* light buttery color */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
+      height: 100%;
+      background-color: #FFF5D7; /* light buttery color */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
       z-index: 2000;
-      transition: opacity 1s ease, visibility 1s ease;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
     }
-
     #splash.hide {
       opacity: 0;
       visibility: hidden;
+      pointer-events: none;
     }
-
-    .splash-logo {
-      max-width: 500px;
-      width: 80%;
-    }
-
-    .scroll-down {
-      position: absolute;
-      bottom: 30px;
-      font-size: 2rem;
-      color: #DE8A64;
-      animation: bounce 1.5s infinite;
+    #splash img {
+      max-width: 300px;
       cursor: pointer;
     }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(10px); }
+    .scroll-down {
+      margin-top: 20px;
+      font-size: 1rem;
+      color: #342923;
+      cursor: pointer;
+      text-transform: uppercase;
     }
 
-    /* Navbar */
     .navbar {
       position: sticky;
       top: 0;
       background-color: #342923;
-      padding: 0.5rem 2rem;
+      padding: 1rem 2rem;
       z-index: 1000;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
-
-    .navbar .nav-logo img {
-      height: 50px;
-      width: auto;
-    }
-
     .navbar ul {
       list-style: none;
       margin: 0;
@@ -79,7 +63,6 @@
       display: flex;
       gap: 2rem;
     }
-
     .navbar ul li a {
       color: #DE8A64;
       text-decoration: none;
@@ -88,30 +71,13 @@
       text-transform: uppercase;
       transition: color 0.3s ease;
     }
-
-    .navbar ul li a:hover,
-    .navbar ul li a:focus {
+    .navbar ul li a:hover {
       color: #64DED0;
-      outline: none;
+    }
+    .navbar img.nav-logo {
+      max-height: 50px;
     }
 
-    /* Floating bottom-right logo */
-    .floating-logo {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 80px;
-      height: auto;
-      cursor: pointer;
-      z-index: 1500;
-      transition: transform 0.3s ease;
-    }
-
-    .floating-logo:hover {
-      transform: scale(1.1);
-    }
-
-    /* Header */
     header {
       width: 100%;
       background-color: transparent;
@@ -121,9 +87,17 @@
       font-weight: 900;
       font-family: 'Arial Narrow', sans-serif;
       text-align: center;
-      padding: 2rem 1rem 0 1rem;
+      padding: 1.5rem 1rem 0 1rem;
       margin: 0;
       letter-spacing: 1px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    header img.logo {
+      max-width: 600px;
+      height: auto;
     }
 
     .row {
@@ -131,7 +105,6 @@
       padding: 4rem 2rem;
       text-align: center;
     }
-
     .white { background-color: #ffffff; color: #000000; }
     .brown { background-color: #342923; color: #ffffff; }
     .taupe { background-color: #89746B; color: #ffffff; }
@@ -142,7 +115,6 @@
       font-weight: 800;
       text-transform: uppercase;
     }
-
     .row p {
       font-size: 1.2rem;
       max-width: 600px;
@@ -160,7 +132,6 @@
       cursor: pointer;
       transition: background 0.3s;
     }
-
     .book-btn:hover {
       background-color: #52bfb4;
     }
@@ -173,7 +144,6 @@
       border-radius: 8px;
       text-align: center;
     }
-
     .row.brown .collapsible { background: #342923; }
     .row.taupe .collapsible { background: #89746B; }
     .row.white .collapsible { background: #ffffff; }
@@ -196,12 +166,7 @@
       padding: 3rem 2rem;
       text-align: center;
     }
-
-    .blurb h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
+    .blurb h2 { font-size: 2rem; margin-bottom: 1rem; }
     .blurb p {
       font-size: 1.2rem;
       max-width: 700px;
@@ -224,14 +189,104 @@
 </head>
 <body>
 
-<!-- Splash -->
-<section id="splash">
-  <img src="Logo.png" alt="Skim Lessons Logo" class="splash-logo">
-  <div class="scroll-down">▼</div>
+<div id="splash">
+  <img src="Logo.png" alt="Skim Lessons Logo" onclick="hideSplash()" />
+  <div class="scroll-down">Enter Site</div>
+</div>
+
+<nav class="navbar">
+  <a href="#header"><img src="Logo.png" alt="Nav Logo" class="nav-logo"></a>
+  <ul>
+    <li><a href="#header" class="nav-link">Home</a></li>
+    <li><a href="#lessons" class="nav-link">Lessons</a></li>
+    <li><a href="#about" class="nav-link">Why Skimboard</a></li>
+    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+    <li><a href="#contact" class="nav-link">Book Now</a></li>
+  </ul>
+</nav>
+
+<header id="header">
+  <h1>Learn to Skimboard</h1>
+</header>
+
+<section class="blurb" id="about">
+  <h2>Learn Skimboarding</h2>
+  <p>A mix of surfing, skating, and just about every board sport rolled into one.</p>
+  <p>A lifelong skill you can enjoy anywhere, anytime.</p>
+  <p>Fun in all kinds of conditions — whether it’s a powerful shorebreak or just a few inches of water.</p>
 </section>
 
-<!-- Navbar -->
-<nav class="navbar">
-  <a href="#header" class="nav-logo">
-    <img src="Logo.png" alt="Skim Lessons Logo">
-  </a>
+<section class="row white" id="lessons">
+  <h2>Beginner Lessons</h2>
+  <p>Start from scratch – no board or experience needed.</p>
+  <button class="book-btn" onclick="toggleCollapse('beginner')">Book Now</button>
+  <div id="beginner" class="collapsible">
+    <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
+    <div class="info-note">
+      Please bring swimwear or a wetsuit. Times are updated weekly and may change depending on weather and tide.
+    </div>
+  </div>
+</section>
+
+<section class="row brown">
+  <h2>Intermediate Progression</h2>
+  <p>Already sliding? Let’s level up with technique and flow.</p>
+  <button class="book-btn" onclick="toggleCollapse('intermediate')">Book Now</button>
+  <div id="intermediate" class="collapsible">
+    <iframe data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
+    <div class="info-note">
+      Bring your board and suitable gear. Weekly schedule subject to tides and weather.
+    </div>
+  </div>
+</section>
+
+<section class="row taupe">
+  <h2>Advanced Concepts</h2>
+  <p>Tailored coaching for advanced techniques and tricks.</p>
+  <button class="book-btn" onclick="toggleCollapse('advanced')">Book Now</button>
+  <div id="advanced" class="collapsible">
+    <iframe data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
+    <div class="info-note">
+      Gear required. Sessions move locations based on tide and conditions.
+    </div>
+  </div>
+</section>
+
+<section class="row white" id="gallery">
+  <h2>Skimboarding in Action</h2>
+  <div class="gallery">
+    <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skimboarding action photo" />
+  </div>
+</section>
+
+<footer id="contact">
+  Hosted locally in New Zealand • Contact via IG: @devon_matten
+</footer>
+
+<script async src="https://tally.so/widgets/embed.js"></script>
+<script>
+  function toggleCollapse(id) {
+    const el = document.getElementById(id);
+    if (el.style.display === "block") {
+      el.style.display = "none";
+    } else {
+      el.style.display = "block";
+    }
+  }
+
+  const splash = document.getElementById('splash');
+  const scrollArrow = document.querySelector('.scroll-down');
+
+  function hideSplash() {
+    splash.classList.add('hide');
+  }
+
+  // auto-hide after 3 seconds
+  setTimeout(hideSplash, 3000);
+
+  window.addEventListener('scroll', hideSplash);
+  scrollArrow.addEventListener('click', hideSplash);
+</script>
+
+</body>
+</html>

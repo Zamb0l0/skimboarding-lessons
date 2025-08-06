@@ -13,51 +13,87 @@
       scroll-behavior: smooth;
     }
 
-   .navbar {
-  position: sticky;
-  top: 0;
-  background-color: #342923;
-  padding: 0.5rem 2rem; /* less vertical padding to save space */
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
+    /* Splash Screen */
+    #splash {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #fff8dc; /* light buttery color */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 1s ease;
+    }
 
-.navbar a.nav-logo {
-  height: 80px; /* moderate big size */
-  width: auto;
-  margin-right: 1rem;
-  flex-shrink: 0; /* prevent shrinking */
-}
+    .splash-logo {
+      max-width: 60vw;
+      max-height: 60vh;
+      opacity: 1;
+      animation: fadeOutLogo 3s ease forwards;
+    }
 
-.navbar ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  flex-wrap: wrap;
-  flex-grow: 1; /* take remaining space */
-}
+    @keyframes fadeOutLogo {
+      0% { opacity: 1; }
+      100% { opacity: 0.1; }
+    }
 
-.navbar ul li a {
-  color: #DE8A64;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  transition: color 0.3s ease;
-  white-space: nowrap; /* prevent wrapping */
-}
+    .arrow {
+      font-size: 4rem;
+      color: #DE8A64;
+      margin-top: 2rem;
+      animation: bounce 2s infinite;
+    }
 
-.navbar ul li a:hover,
-.navbar ul li a:focus {
-  color: #64DED0;
-  outline: none;
-}
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(20px); }
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background-color: #342923;
+      padding: 1rem 2rem;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .navbar a.nav-logo {
+      display: inline-block;
+      height: 60px; /* adjusted smaller */
+      width: auto;
+      margin-right: 1rem;
+      cursor: pointer;
+    }
+
+    .navbar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .navbar ul li a {
+      color: #DE8A64;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    .navbar ul li a:hover,
+    .navbar ul li a:focus {
+      color: #64DED0;
+      outline: none;
+    }
 
     /* Header */
     header {
@@ -83,7 +119,7 @@
     }
 
     header img.logo {
-      max-width: 600px; /* big logo on page */
+      max-width: 600px;
       height: auto;
     }
 
@@ -193,6 +229,12 @@
 </head>
 <body>
 
+  <!-- Splash screen -->
+  <div id="splash">
+    <img src="Logo.png" alt="Skim Lessons Logo" class="splash-logo" />
+    <div class="arrow">&#x25BC;</div>
+  </div>
+
   <nav class="navbar">
     <a href="#header"><img src="Logo.png" alt="Nav Logo" class="nav-logo"></a>
     <ul>
@@ -281,6 +323,18 @@
       const el = document.getElementById(id);
       el.style.display = el.style.display === "block" ? "none" : "block";
     }
+
+    window.addEventListener('scroll', () => {
+      const splash = document.getElementById('splash');
+      if (!splash) return;
+      if (window.scrollY > 50) {
+        splash.style.opacity = '0';
+        setTimeout(() => splash.style.display = 'none', 1000);
+      } else {
+        splash.style.display = 'flex';
+        splash.style.opacity = '1';
+      }
+    });
   </script>
 
 </body>

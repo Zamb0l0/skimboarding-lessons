@@ -26,6 +26,30 @@
       letter-spacing: 1px;
     }
 
+    header {
+  width: 100%;
+  background-color: transparent;
+  color: #DE8A64;
+  text-transform: uppercase;
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 900;
+  font-family: 'Arial Narrow', sans-serif;
+  text-align: center;
+  padding: 1.5rem 1rem 0 1rem;
+  margin: 0;
+  letter-spacing: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* space between logo and text */
+}
+
+header img.logo {
+  max-width: 150px; /* adjust logo size */
+  height: auto;
+}
+
+
     .row {
       width: 100%;
       padding: 4rem 2rem;
@@ -132,8 +156,9 @@
 <body>
 
   <header>
-    Learn to Skimboard
-  </header>
+  <img src="https://i.imgur.com/yourlogo.png" alt="Skim Lessons Logo" class="logo">
+  <h1>Learn to Skimboard</h1>
+</header>
 
   <section class="blurb">
     <h2>Why Skimboard?</h2>

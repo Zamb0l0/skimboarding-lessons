@@ -210,13 +210,42 @@
       font-size: 1.3rem;
     }
 
-    /* Skimboards section */
-    #skimboards a {
-      color: #DE8A64;
-      font-weight: 700;
-      text-decoration: underline;
-      font-size: 1.3rem;
-    }
+    .skimboard-icons {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.skimboard-icons a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #DE8A64;
+  font-weight: 700;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+  max-width: 150px;
+}
+
+.skimboard-icons a:hover,
+.skimboard-icons a:focus {
+  color: #64DED0;
+  outline: none;
+}
+
+.skimboard-icons img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
 
     /* Footer */
     footer {
@@ -305,11 +334,22 @@
     </div>
   </section>
 
-  <!-- Skimboards -->
-  <section class="row white" id="skimboards">
-    <h2>Skimboards</h2>
-    <p>Check out <a href="https://oxsskimboards.co.nz/" target="_blank" rel="noopener noreferrer">OXS Skimboards</a>, New Zealand's finest handmade skimboard manufacturer.</p>
-  </section>
+ <section class="row white" id="skimboards">
+  <h2>Skimboards</h2>
+  <p>Check out <a href="https://oxsskimboards.co.nz/" target="_blank" rel="noopener noreferrer">OXS Skimboards</a>, New Zealand's finest handmade skimboard manufacturer.</p>
+  
+  <div class="skimboard-icons">
+    <a href="https://oxsskimboards.co.nz/shop/Waves-c98771002" target="_blank" rel="noopener noreferrer" aria-label="Wave Skimboards">
+      <img src="wave-icon.png" alt="Wave Skimboard icon" />
+      <p>Wave Skimboards</p>
+    </a>
+
+    <a href="https://oxsskimboards.co.nz/shop/Flat-c103977036" target="_blank" rel="noopener noreferrer" aria-label="Flatland Skimboards">
+      <img src="flatland-icon.png" alt="Flatland Skimboard icon" />
+      <p>Flatland Skimboards</p>
+    </a>
+  </div>
+</section>
 
   <!-- Community -->
   <section class="row brown" id="community">

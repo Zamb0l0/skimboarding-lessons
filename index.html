@@ -2,24 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Skimboarding Lessons | Learn to Skimboard</title>
   <style>
-    /* Global box-sizing */
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
       font-family: sans-serif;
       background: url('https://i.imgur.com/ZLfFKnB.jpeg') center top / cover no-repeat, #6F9E99;
       color: #333;
       scroll-behavior: smooth;
-      overflow-x: hidden;
+      overflow-x: hidden; /* Prevent horizontal scroll */
     }
 
     /* Splash Screen */
@@ -32,9 +24,9 @@
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      opacity: 1;
       transition: opacity 1s ease;
-      pointer-events: all;
+      width: 100vw;
+      height: 100vh;
     }
 
     .splash-logo {
@@ -54,7 +46,6 @@
       color: #DE8A64;
       margin-top: 2rem;
       animation: bounce 2s infinite;
-      user-select: none;
     }
 
     @keyframes bounce {
@@ -66,9 +57,6 @@
     .navbar {
       position: sticky;
       top: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
       background-color: #342923;
       padding: 0.5rem 1.5rem;
       z-index: 1000;
@@ -76,14 +64,13 @@
       align-items: center;
       justify-content: space-between;
       box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-      flex-wrap: wrap;
+      width: 100%;
     }
 
     .navbar img.nav-logo {
-      height: 60px;
+      height: 60px; /* Normal size logo */
       width: auto;
       cursor: pointer;
-      flex-shrink: 0;
     }
 
     .navbar ul {
@@ -122,10 +109,6 @@
     header img.logo {
       max-width: 600px;
       height: auto;
-      width: 80vw;
-      max-width: 600px;
-      margin: 0 auto;
-      display: block;
     }
 
     header h1 {
@@ -140,8 +123,6 @@
       width: 100%;
       padding: 4rem 2rem;
       text-align: center;
-      max-width: 960px;
-      margin: 0 auto;
     }
 
     .white { background-color: #ffffff; color: #000000; }
@@ -183,8 +164,6 @@
       display: none;
       padding: 1.5rem;
       border-radius: 8px;
-      transition: max-height 0.4s ease;
-      overflow: hidden;
     }
 
     .row.brown .collapsible { background: #342923; }
@@ -208,18 +187,20 @@
       color: white;
       padding: 3rem 2rem;
       text-align: center;
-      max-width: 960px;
-      margin: 0 auto;
     }
 
     .gallery img {
       width: 100%;
       border-radius: 8px;
       margin-top: 1rem;
-      max-width: 960px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+    }
+
+    /* Community Section */
+    #community iframe {
+      width: 100%;
+      min-height: 500px;
+      border: none;
+      border-radius: 8px;
     }
 
     footer {
@@ -230,16 +211,21 @@
     }
 
     /* Responsive tweaks */
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       .navbar ul {
         gap: 1rem;
       }
       .row {
         padding: 2rem 1rem;
       }
+      .blurb {
+        padding: 2rem 1rem;
+      }
       .book-btn {
         width: 100%;
-        font-size: 1.1rem;
+        max-width: 300px;
+        margin: 1rem auto 0;
+        display: block;
       }
     }
   </style>
@@ -253,11 +239,13 @@
   </div>
 
   <nav class="navbar">
-    <a href="#header"><img src="Logo.png" alt="Nav Logo" class="nav-logo" /></a>
+    <a href="#header"><img src="Logo.png" alt="Nav Logo" class="nav-logo"></a>
     <ul>
       <li><a href="#header" class="nav-link">Home</a></li>
       <li><a href="#lessons" class="nav-link">Lessons</a></li>
       <li><a href="#about" class="nav-link">Why Skimboard</a></li>
+      <li><a href="#community" class="nav-link">Community</a></li>
+      <li><a href="#skimboards" class="nav-link">Skimboards</a></li>
       <li><a href="#gallery" class="nav-link">Gallery</a></li>
       <li><a href="#contact" class="nav-link">Book Now</a></li>
     </ul>
@@ -281,10 +269,7 @@
     <p>Start from scratch – no board or experience needed.</p>
     <button class="book-btn" onclick="toggleCollapse('beginner')">Book Now</button>
     <div id="beginner" class="collapsible">
-      <iframe
-        data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-        loading="lazy"
-      ></iframe>
+      <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
       <div class="info-note">
         Please bring swimwear or a wetsuit. Times are updated weekly and may change depending on weather and tide.
       </div>
@@ -296,10 +281,7 @@
     <p>Already sliding? Let’s level up with technique and flow.</p>
     <button class="book-btn" onclick="toggleCollapse('intermediate')">Book Now</button>
     <div id="intermediate" class="collapsible">
-      <iframe
-        data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-        loading="lazy"
-      ></iframe>
+      <iframe data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
     </div>
   </section>
 
@@ -308,18 +290,22 @@
     <p>Tailored coaching for advanced techniques and tricks.</p>
     <button class="book-btn" onclick="toggleCollapse('advanced')">Book Now</button>
     <div id="advanced" class="collapsible">
-      <iframe
-        data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-        loading="lazy"
-      ></iframe>
+      <iframe data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
     </div>
   </section>
 
-  <section class="row brown" id="skimboards" style="text-align:center;">
-  <h2>Skimboards</h2>
-  <p>Check out the finest NZ handmade skimboards from <a href="https://oxsskimboards.co.nz/" target="_blank" rel="noopener noreferrer" style="color:#64DED0; text-decoration: underline;">OXS Skimboards</a>.</p>
-  <a href="https://oxsskimboards.co.nz/" target="_blank" rel="noopener noreferrer" class="book-btn" style="background-color:#DE8A64; color:#fff; padding: 0.7rem 1.5rem; border-radius: 5px; text-decoration:none; display:inline-block; margin-top:1rem;">Visit OXS Skimboards</a>
-</section>
+  <!-- Community Section -->
+  <section class="row white" id="community">
+    <h2>New Zealand Skimboarding Association</h2>
+    <p>Join our Facebook group to connect with the NZ Skimboarding community!</p>
+    <iframe src="https://www.facebook.com/plugins/group.php?href=https%3A%2F%2Fwww.facebook.com%2Fgroups%2F1EwsST622W&width=700&height=500&show_metadata=false" scrolling="no" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+  </section>
+
+  <!-- Skimboards Section -->
+  <section class="row brown" id="skimboards">
+    <h2>NZ Handmade Skimboards</h2>
+    <p>Check out the awesome handcrafted skimboards from <a href="https://oxsskimboards.co.nz/" target="_blank" rel="noopener noreferrer" style="color:#64DED0; text-decoration: underline;">OXS Skimboards</a>.</p>
+  </section>
 
   <!-- Gallery -->
   <section class="row white" id="gallery">
@@ -337,14 +323,7 @@
   <script>
     function toggleCollapse(id) {
       const el = document.getElementById(id);
-      if (el.style.display === "block") {
-        el.style.display = "none";
-      } else {
-        // Hide all collapsibles first for one-at-a-time open:
-        document.querySelectorAll(".collapsible").forEach(c => c.style.display = "none");
-        el.style.display = "block";
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+      el.style.display = el.style.display === "block" ? "none" : "block";
     }
 
     // Splash fade on scroll
@@ -353,14 +332,13 @@
       if (!splash) return;
       if (window.scrollY > 50) {
         splash.style.opacity = '0';
-        splash.style.pointerEvents = 'none';
         setTimeout(() => splash.style.display = 'none', 1000);
       } else {
         splash.style.display = 'flex';
         splash.style.opacity = '1';
-        splash.style.pointerEvents = 'all';
       }
     });
   </script>
+
 </body>
 </html>

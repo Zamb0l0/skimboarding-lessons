@@ -56,32 +56,51 @@
       50% { transform: translateY(20px); }
     }
 
-  .navbar {
-  position: sticky;
-  top: 0;
-  background-color: #342923;
-  padding: 0 1.5rem;
-  height: 60px;               /* Fixed height for a stable bar */
-  display: flex;
-  align-items: center;        /* Vertically center content */
-  justify-content: space-between;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-  width: 100%;
-}
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background-color: #342923;
+      padding: 0 1.5rem;
+      height: 60px;               /* Fixed height */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      width: 100%;
+      z-index: 1000;
+    }
 
-.navbar img.nav-logo {
-  height: 40px;               /* Smaller logo that fits the bar */
-  width: auto;
-}
+    .navbar img.nav-logo {
+      height: 40px;               /* Smaller logo fits the bar */
+      width: auto;
+      cursor: pointer;
+    }
 
-.navbar ul {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-}
+    .navbar ul {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
 
+    .navbar ul li a {
+      color: #DE8A64;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .navbar ul li a:hover,
+    .navbar ul li a:focus {
+      color: #64DED0;
+      outline: none;
+    }
 
     /* Header */
     header {
@@ -211,25 +230,26 @@
     @media (max-width: 600px) {
       .navbar ul {
         gap: 1rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
       }
       header img.logo {
         width: 90vw;
       }
     }
-
   </style>
 </head>
 <body>
 
   <!-- Splash screen -->
-  <div id="splash">
+  <div id="splash" role="dialog" aria-modal="true" aria-label="Welcome splash screen">
     <img src="Logo.png" alt="Skim Lessons Logo" class="splash-logo" />
-    <div class="arrow">&#x25BC;</div>
+    <div class="arrow" aria-hidden="true">&#x25BC;</div>
   </div>
 
   <!-- Navbar -->
-  <nav class="navbar" role="navigation" aria-label="Primary">
-    <a href="#header"><img src="Logo.png" alt="Nav Logo" class="nav-logo" /></a>
+  <nav class="navbar" role="navigation" aria-label="Primary navigation">
+    <a href="#header" aria-label="Go to top"><img src="Logo.png" alt="Nav Logo" class="nav-logo" /></a>
     <ul>
       <li><a href="#header" class="nav-link">Home</a></li>
       <li><a href="#lessons" class="nav-link">Lessons</a></li>
@@ -260,7 +280,7 @@
     <p>Start from scratch – no board or experience needed.</p>
     <button class="book-btn" onclick="toggleCollapse('beginner')">Book Now</button>
     <div id="beginner" class="collapsible">
-      <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
+      <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy"></iframe>
       <div class="info-note">
         Please bring swimwear or a wetsuit. Times are updated weekly and may change depending on weather and tide.
       </div>
@@ -272,7 +292,7 @@
     <p>Already sliding? Let’s level up with technique and flow.</p>
     <button class="book-btn" onclick="toggleCollapse('intermediate')">Book Now</button>
     <div id="intermediate" class="collapsible">
-      <iframe data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
+      <iframe data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy"></iframe>
     </div>
   </section>
 
@@ -281,7 +301,7 @@
     <p>Tailored coaching for advanced techniques and tricks.</p>
     <button class="book-btn" onclick="toggleCollapse('advanced')">Book Now</button>
     <div id="advanced" class="collapsible">
-      <iframe data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
+      <iframe data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy"></iframe>
     </div>
   </section>
 

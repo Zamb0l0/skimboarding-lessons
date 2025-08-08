@@ -49,6 +49,63 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(20px); }
     }
+    /* Prevent horizontal scroll */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar fixes */
+.navbar {
+  width: 100%; /* full width */
+  padding: 0.5rem 1rem; /* reduce horizontal padding */
+  box-sizing: border-box; /* include padding in width */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #342923;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Navbar ul - ensure no extra margin/padding */
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  list-style: none;
+  flex-wrap: wrap; /* allow wrapping on very narrow screens */
+}
+
+/* Navbar links adjust font size for mobile */
+.navbar ul li a {
+  font-size: 1rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .navbar ul {
+    gap: 0.75rem;
+  }
+
+  header img.logo {
+    max-width: 90vw;
+  }
+
+  .collapsible, #fb-root, .fb-page, #fb-fallback {
+    max-width: 90vw;
+  }
+}
 
     /* Navbar */
     .navbar {

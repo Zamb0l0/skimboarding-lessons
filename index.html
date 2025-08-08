@@ -2,209 +2,133 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Skimboarding Lessons | Learn to Skimboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skim Lessons NZ</title>
   <style>
     body {
       margin: 0;
-      font-family: sans-serif;
-      background: url('https://i.imgur.com/ZLfFKnB.jpeg') center top / cover no-repeat, #6F9E99;
-      color: #333;
+      font-family: Arial, sans-serif;
       scroll-behavior: smooth;
     }
 
     /* Splash Screen */
     #splash {
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: #fff8dc; /* light buttery color */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fff8e7; /* light buttery colour */
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      z-index: 9999;
-      transition: opacity 1s ease;
+      justify-content: center;
+      z-index: 1000;
+      text-align: center;
     }
 
-    .splash-logo {
-      max-width: 70vw;
-      max-height: 70vh;
-      height: auto;
-      animation: fadeLogo 3s ease-in-out forwards;
+    #splash-logo {
+      width: 60%;
+      max-width: 500px;
+      opacity: 0;
+      animation: fadeInLogo 2s forwards;
     }
 
-    @keyframes fadeLogo {
-      0% { opacity: 1; }
-      100% { opacity: 0.3; }
+    @keyframes fadeInLogo {
+      to {
+        opacity: 1;
+      }
     }
 
     .arrow {
-      font-size: 4rem;
-      color: #DE8A64;
-      margin-top: 2rem;
-      animation: bounce 2s infinite;
+      margin-top: 20px;
+      font-size: 3rem;
+      color: orange;
+      animation: bounce 1.5s infinite;
     }
 
     @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(20px); }
+      0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+      40% {transform: translateY(-10px);}
+      60% {transform: translateY(-5px);}
     }
 
     /* Navbar */
     .navbar {
-      position: sticky;
+      position: fixed;
       top: 0;
-      background-color: #342923;
-      padding: 0.5rem 1.5rem;
-      z-index: 1000;
+      width: 100%;
+      background: white;
+      padding: 10px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 999;
     }
 
-    .navbar img.nav-logo {
-      height: 60px; /* NORMAL size logo */
+    .nav-logo {
+      height: 50px; /* reasonable size */
       width: auto;
-      cursor: pointer;
     }
 
     .navbar ul {
       list-style: none;
+      display: flex;
       margin: 0;
       padding: 0;
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
     }
 
-    .navbar ul li a {
-      color: #DE8A64;
+    .navbar li {
+      margin-left: 20px;
+    }
+
+    .navbar a {
       text-decoration: none;
-      font-weight: 700;
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      transition: color 0.3s ease;
+      color: black;
+      font-weight: bold;
     }
 
-    .navbar ul li a:hover,
-    .navbar ul li a:focus {
-      color: #64DED0;
-      outline: none;
+    /* Sections */
+    section {
+      padding: 80px 20px;
+      min-height: 100vh;
     }
 
-    /* Header */
-    header {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: #DE8A64;
+    #header {
+      background: #f0f8ff;
     }
 
-    header img.logo {
-      max-width: 600px;
-      height: auto;
+    #lessons {
+      background: #e0ffe0;
     }
 
-    header h1 {
-      font-size: clamp(2.5rem, 8vw, 6rem);
-      font-weight: 900;
-      margin-top: 1rem;
-      text-transform: uppercase;
+    #about {
+      background: #ffe0e0;
     }
 
-    /* Rows */
-    .row {
-      width: 100%;
-      padding: 4rem 2rem;
-      text-align: center;
+    #gallery {
+      background: #e0e0ff;
     }
 
-    .white { background-color: #ffffff; color: #000000; }
-    .brown { background-color: #342923; color: #ffffff; }
-    .taupe { background-color: #89746B; color: #ffffff; }
-
-    .row h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      font-weight: 800;
-      text-transform: uppercase;
+    #contact {
+      background: #fff0e0;
     }
 
-    .row p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto 1rem;
-    }
-
-    .book-btn {
-      margin-top: 1rem;
-      padding: 0.7rem 1.5rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 5px;
-      background-color: #64DED0;
-      color: #000;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .book-btn:hover {
-      background-color: #52bfb4;
-    }
-
-    .collapsible {
-      max-width: 700px;
-      margin: 1rem auto 0;
-      display: none;
-      padding: 1.5rem;
-      border-radius: 8px;
-    }
-
-    .row.brown .collapsible { background: #342923; }
-    .row.taupe .collapsible { background: #89746B; }
-    .row.white .collapsible { background: #ffffff; }
-
-    .collapsible iframe {
-      width: 100%;
-      min-height: 500px;
-      border: none;
-    }
-
-    .info-note {
-      font-size: 0.9rem;
-      color: #444;
-      margin-top: 1rem;
-    }
-
-    .blurb {
-      background-color: #DE8A64;
-      color: white;
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-
-    .gallery img {
-      width: 100%;
-      border-radius: 8px;
-      margin-top: 1rem;
-    }
-
-    footer {
-      text-align: center;
-      margin: 2rem;
-      font-size: 0.9rem;
-      color: #ddd;
+    #community {
+      background: #f9f9f9;
     }
   </style>
 </head>
 <body>
 
-  <!-- Splash screen -->
+  <!-- Splash Screen -->
   <div id="splash">
-    <img src="Logo.png" alt="Skim Lessons Logo" class="splash-logo" />
+    <img id="splash-logo" src="Logo.png" alt="Splash Logo">
     <div class="arrow">&#x25BC;</div>
   </div>
 
+  <!-- Navbar -->
   <nav class="navbar">
     <a href="#header"><img src="Logo.png" alt="Nav Logo" class="nav-logo"></a>
     <ul>
@@ -212,81 +136,52 @@
       <li><a href="#lessons" class="nav-link">Lessons</a></li>
       <li><a href="#about" class="nav-link">Why Skimboard</a></li>
       <li><a href="#gallery" class="nav-link">Gallery</a></li>
+      <li><a href="#community" class="nav-link">Community</a></li>
       <li><a href="#contact" class="nav-link">Book Now</a></li>
     </ul>
   </nav>
 
-  <header id="header">
-    <img src="Logo.png" alt="Skim Lessons Logo" class="logo" />
-    <h1>Learn to Skimboard</h1>
-  </header>
-
-  <section class="blurb" id="about">
-    <h2>Learn Skimboarding</h2>
-    <p>A mix of surfing, skating, and just about every board sport rolled into one.</p>
-    <p>A lifelong skill you can enjoy anywhere, anytime.</p>
-    <p>Fun in all kinds of conditions — whether it’s a powerful shorebreak or just a few inches of water.</p>
+  <!-- Sections -->
+  <section id="header">
+    <h1>Welcome to Skim Lessons NZ</h1>
+    <p>Intro content goes here...</p>
   </section>
 
-  <!-- Lessons -->
-  <section class="row white" id="lessons">
-    <h2>Beginner Lessons</h2>
-    <p>Start from scratch – no board or experience needed.</p>
-    <button class="book-btn" onclick="toggleCollapse('beginner')">Book Now</button>
-    <div id="beginner" class="collapsible">
-      <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
-      <div class="info-note">
-        Please bring swimwear or a wetsuit. Times are updated weekly and may change depending on weather and tide.
-      </div>
-    </div>
+  <section id="lessons">
+    <h2>Lessons</h2>
+    <p>Lesson information here...</p>
   </section>
 
-  <section class="row brown">
-    <h2>Intermediate Progression</h2>
-    <p>Already sliding? Let’s level up with technique and flow.</p>
-    <button class="book-btn" onclick="toggleCollapse('intermediate')">Book Now</button>
-    <div id="intermediate" class="collapsible">
-      <iframe data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
-    </div>
+  <section id="about">
+    <h2>Why Skimboard</h2>
+    <p>Reasons and benefits here...</p>
   </section>
 
-  <section class="row taupe">
-    <h2>Advanced Concepts</h2>
-    <p>Tailored coaching for advanced techniques and tricks.</p>
-    <button class="book-btn" onclick="toggleCollapse('advanced')">Book Now</button>
-    <div id="advanced" class="collapsible">
-      <iframe data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
-    </div>
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <p>Images here...</p>
   </section>
 
-  <!-- Gallery -->
-  <section class="row white" id="gallery">
-    <h2>Skimboarding in Action</h2>
-    <div class="gallery">
-      <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skimboarding action photo" />
-    </div>
+  <section id="community">
+    <h2>Community</h2>
+    <iframe src="https://www.facebook.com/plugins/group.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fg%2F1EwsST622W%2F&width=500&show_social_context=true&show_meta_data=false&appId"
+      width="500" height="600" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true"
+      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
   </section>
 
-  <footer id="contact">
-    Hosted locally in New Zealand • Contact via IG: @devon_matten
-  </footer>
+  <section id="contact">
+    <h2>Book Now</h2>
+    <p>Booking form here...</p>
+  </section>
 
-  <script async src="https://tally.so/widgets/embed.js"></script>
   <script>
-    function toggleCollapse(id) {
-      const el = document.getElementById(id);
-      el.style.display = el.style.display === "block" ? "none" : "block";
-    }
-
-    // Splash fade on scroll
+    // Keep splash until scroll
     window.addEventListener('scroll', () => {
       const splash = document.getElementById('splash');
       if (window.scrollY > 50) {
-        splash.style.opacity = '0';
-        setTimeout(() => splash.style.display = 'none', 1000);
+        splash.style.display = 'none';
       }
     });
   </script>
-
 </body>
 </html>

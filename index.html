@@ -27,20 +27,14 @@
     }
 
     .splash-logo {
-      max-width: 60vw;
-      max-height: 60vh;
-      opacity: 1;
-      animation: fadeOutLogo 3s ease forwards;
       max-width: 70vw;
       max-height: 70vh;
       height: auto;
       animation: fadeLogo 3s ease-in-out forwards;
     }
 
-    @keyframes fadeOutLogo {
     @keyframes fadeLogo {
       0% { opacity: 1; }
-      100% { opacity: 0.1; }
       100% { opacity: 0.3; }
     }
 
@@ -61,23 +55,17 @@
       position: sticky;
       top: 0;
       background-color: #342923;
-      padding: 1rem 2rem;
       padding: 0.5rem 1.5rem;
       z-index: 1000;
       display: flex;
       align-items: center;
-      gap: 2rem;
       justify-content: space-between;
       box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
 
-    .navbar a.nav-logo {
-      display: inline-block;
-      height: 60px; /* adjusted smaller */
     .navbar img.nav-logo {
       height: 60px; /* NORMAL size logo */
       width: auto;
-      margin-right: 1rem;
       cursor: pointer;
     }
 
@@ -86,7 +74,6 @@
       margin: 0;
       padding: 0;
       display: flex;
-      gap: 2rem;
       gap: 1.5rem;
       align-items: center;
     }
@@ -108,25 +95,7 @@
 
     /* Header */
     header {
-      width: 100%;
-      background-color: transparent;
-      color: #DE8A64;
-      text-transform: uppercase;
-      font-size: clamp(2.5rem, 8vw, 6rem);
-      font-weight: 900;
-      font-family: 'Arial Narrow', sans-serif;
       text-align: center;
-      padding: 1.5rem 1rem 0 1rem;
-      margin: 0;
-      letter-spacing: 1px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    header a.logo-link {
-      text-decoration: none;
       padding: 2rem 1rem;
       color: #DE8A64;
     }
@@ -136,7 +105,6 @@
       height: auto;
     }
 
-    /* Rows and content */
     header h1 {
       font-size: clamp(2.5rem, 8vw, 6rem);
       font-weight: 900;
@@ -192,17 +160,6 @@
       border-radius: 8px;
     }
 
-    .row.brown .collapsible {
-      background: #342923;
-    }
-
-    .row.taupe .collapsible {
-      background: #89746B;
-    }
-
-    .row.white .collapsible {
-      background: #ffffff;
-    }
     .row.brown .collapsible { background: #342923; }
     .row.taupe .collapsible { background: #89746B; }
     .row.white .collapsible { background: #ffffff; }
@@ -224,17 +181,6 @@
       color: white;
       padding: 3rem 2rem;
       text-align: center;
-    }
-
-    .blurb h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .blurb p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto;
     }
 
     .gallery img {
@@ -271,9 +217,6 @@
   </nav>
 
   <header id="header">
-    <a href="/" class="logo-link">
-      <img src="Logo.png" alt="Skim Lessons Logo" class="logo" />
-    </a>
     <img src="Logo.png" alt="Skim Lessons Logo" class="logo" />
     <h1>Learn to Skimboard</h1>
   </header>
@@ -285,7 +228,6 @@
     <p>Fun in all kinds of conditions — whether it’s a powerful shorebreak or just a few inches of water.</p>
   </section>
 
-  <!-- Beginner Row -->
   <!-- Lessons -->
   <section class="row white" id="lessons">
     <h2>Beginner Lessons</h2>
@@ -294,42 +236,25 @@
     <div id="beginner" class="collapsible">
       <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
       <div class="info-note">
-        Please bring swimwear or a wetsuit. Times are updated weekly and may change depending on weather and tide. Bookings may be rescheduled if needed.
         Please bring swimwear or a wetsuit. Times are updated weekly and may change depending on weather and tide.
       </div>
     </div>
   </section>
 
-  <!-- Intermediate Row -->
   <section class="row brown">
     <h2>Intermediate Progression</h2>
     <p>Already sliding? Let’s level up with technique and flow.</p>
     <button class="book-btn" onclick="toggleCollapse('intermediate')">Book Now</button>
     <div id="intermediate" class="collapsible">
-      <iframe
-        data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-        loading="lazy"
-      ></iframe>
-      <div class="info-note">
-        Bring your board and suitable gear. Weekly schedule subject to tides and weather. Times may vary — check back often.
-      </div>
       <iframe data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
     </div>
   </section>
 
-  <!-- Advanced Row -->
   <section class="row taupe">
     <h2>Advanced Concepts</h2>
     <p>Tailored coaching for advanced techniques and tricks.</p>
     <button class="book-btn" onclick="toggleCollapse('advanced')">Book Now</button>
     <div id="advanced" class="collapsible">
-      <iframe
-        data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-        loading="lazy"
-      ></iframe>
-      <div class="info-note">
-        Gear required. Focus on precision, timing, and terrain. Sessions move locations based on tide and conditions.
-      </div>
       <iframe data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
     </div>
   </section>
@@ -356,13 +281,9 @@
     // Splash fade on scroll
     window.addEventListener('scroll', () => {
       const splash = document.getElementById('splash');
-      if (!splash) return;
       if (window.scrollY > 50) {
         splash.style.opacity = '0';
         setTimeout(() => splash.style.display = 'none', 1000);
-      } else {
-        splash.style.display = 'flex';
-        splash.style.opacity = '1';
       }
     });
   </script>

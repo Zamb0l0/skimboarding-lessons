@@ -135,39 +135,53 @@
     <p>Fun in all kinds of conditions — powerful shorebreak or shallow flats.</p>
   </section>
 
-  <!-- Lessons -->
-  <section class="row" id="lessons">
-    <h2>Lessons</h2>
-    <div class="card-container">
-      <div class="card white">
-        <h3>Beginner</h3>
-        <p>Start from scratch – no board or experience needed.</p>
-        <button class="book-btn" onclick="toggleCollapse('beginner')">Book Now</button>
-        <div id="beginner" class="collapsible">
-          <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
-          <div class="info-note">Bring swimwear or wetsuit. Times updated weekly depending on weather & tide.</div>
-        </div>
-      </div>
-
-      <div class="card brown">
-        <h3>Intermediate</h3>
-        <p>Already sliding? Level up with technique and flow.</p>
-        <button class="book-btn" onclick="toggleCollapse('intermediate')">Book Now</button>
-        <div id="intermediate" class="collapsible">
-          <iframe data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
-        </div>
-      </div>
-
-      <div class="card taupe">
-        <h3>Advanced</h3>
-        <p>Tailored coaching for advanced techniques & tricks.</p>
-        <button class="book-btn" onclick="toggleCollapse('advanced')">Book Now</button>
-        <div id="advanced" class="collapsible">
-          <iframe data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
-        </div>
-      </div>
+<!-- Lessons / Booking Section -->
+<section class="row" id="lessons">
+  <h2>Book Your Lesson</h2>
+  <div class="card-container">
+    <div class="card white" style="border: 2px solid black; min-height:700px; max-width:1200px; width:90%; margin:2rem auto;">
+      <h3>Book Now</h3>
+      <p>Schedule your skimboarding session with our SimplyBook system.</p>
+      <!-- SimplyBook Widget -->
+      <div id="simplybook-widget" style="height:600px;"></div>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- SimplyBook Script -->
+<script src="//widget.simplybook.net/v2/widget/widget.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var widget = new SimplybookWidget({
+    "widget_type":"iframe",
+    "url":"https://wwwskimlessonsnz.simplybook.net",
+    "theme":"minimal",
+    "theme_settings":{
+      "timeline_show_end_time":"1",
+      "timeline_modern_display":"as_slots",
+      "hide_company_label":"0",
+      "timeline_hide_unavailable":"1",
+      "hide_past_days":"0",
+      "sb_base_color":"#cb8d75",
+      "btn_color_1":"#f8ad31,#fc591e,#d68162",
+      "link_color":"#cb8d75",
+      "display_item_mode":"block",
+      "body_bg_color":"#ffffff",
+      "sb_review_image":"8",
+      "sb_review_image_preview":"/uploads/wwwskimlessonsnz/image_files/preview/9147d75b4def06a96fe7484e9b707312.png",
+      "dark_font_color":"#403733",
+      "light_font_color":"#ffffff",
+      "sb_company_label_color":"#ffffff",
+      "hide_img_mode":"1",
+      "sb_busy":"#c7b3b3",
+      "sb_available":"#2b212b"
+    },
+    "timeline":"modern",
+    "datepicker":"top_calendar",
+    "is_rtl":false,
+    "app_config":{"clear_session":0,"allow_switch_to_ada":0,"predefined":[]}
+  });
+</script>
+
 
   <!-- Skimboards -->
   <section class="row" id="skimboards">

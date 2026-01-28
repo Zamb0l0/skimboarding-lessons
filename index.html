@@ -1,380 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>Skimboarding Lessons | Learn to Skimboard</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Skimboarding Lessons | Learn to Skimboard</title>
+<style>
+  /* Reset & base */
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+         background: #6F9E99 url('https://i.imgur.com/ZLfFKnB.jpeg') center top / cover no-repeat;
+         color:#333; scroll-behavior: smooth; overflow-x:hidden; cursor:none;}
+  a { text-decoration:none; }
 
-  <style>
-    /* Reset */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  /* Custom Cursor */
+  #cursor {
+    position: fixed;
+    top:0; left:0;
+    width:20px; height:20px;
+    border:2px solid #DE8A64;
+    border-radius:50%;
+    pointer-events:none;
+    transform:translate(-50%, -50%);
+    transition: transform 0.1s ease, background 0.2s ease, border 0.2s ease;
+    z-index:9999;
+  }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      background: url('https://i.imgur.com/ZLfFKnB.jpeg') center top / cover no-repeat, #6F9E99;
-      color: #333;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
+  /* Splash */
+  #splash { position:fixed; top:0; left:0; right:0; bottom:0;
+            background:#fff8dc; display:flex; flex-direction:column;
+            justify-content:center; align-items:center; z-index:9998;
+            transition: opacity 1s ease; }
+  .splash-logo { max-width:70vw; max-height:70vh; height:auto; animation:fadeLogo 3s ease-in-out forwards;}
+  @keyframes fadeLogo {0%{opacity:1}100%{opacity:0.3}}
+  .arrow { font-size:4rem; color:#DE8A64; margin-top:2rem; animation:bounce 2s infinite;}
+  @keyframes bounce {0%,100%{transform:translateY(0);}50%{transform:translateY(20px);}}
 
-    /* ---------------- Splash ---------------- */
-    #splash {
-      position: fixed;
-      inset: 0;
-      background: #fff8dc;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 1s ease;
-    }
+  /* Navbar */
+  .navbar { position:sticky; top:0; background-color:#342923;
+            padding:0 1.5rem; height:60px; display:flex; align-items:center;
+            justify-content:space-between; box-shadow:0 2px 5px rgba(0,0,0,0.3); z-index:1000;}
+  .navbar img.nav-logo { height:40px; width:auto; cursor:pointer;}
+  .navbar ul { display:flex; align-items:center; gap:1rem; margin:0; padding:0; list-style:none;}
+  .navbar ul li a { color:#DE8A64; font-weight:800; text-transform:uppercase;
+                    font-size:1.1rem; transition: color 0.3s ease;}
+  .navbar ul li a:hover, .navbar ul li a:focus { color:#64DED0; outline:none;}
 
-    .splash-logo {
-      max-width: 70vw;
-      max-height: 70vh;
-      animation: fadeLogo 3s ease-in-out forwards;
-    }
+  /* Header */
+  header { text-align:center; padding:2rem 1rem 3rem; color:#DE8A64; }
+  header img.logo { display:block; margin:0 auto; width:80vw; max-width:600px; height:auto;}
+  header h1 { font-size:clamp(2.5rem,8vw,6rem); font-weight:900; margin-top:1rem;
+              text-transform:uppercase; -webkit-text-stroke:1px white; }
 
-    @keyframes fadeLogo {
-      from { opacity: 1; }
-      to { opacity: 0.3; }
-    }
+  /* Sections as cards */
+  .section-card { background:white; padding:2rem; margin:2rem auto; max-width:900px;
+                  border-radius:12px; box-shadow:0 6px 15px rgba(0,0,0,0.15);
+                  transition: transform 0.3s ease, box-shadow 0.3s ease;}
+  .section-card:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.25); }
 
-    .arrow {
-      font-size: 4rem;
-      color: #DE8A64;
-      margin-top: 2rem;
-      animation: bounce 2s infinite;
-    }
+  .section-card h2 { font-size:2rem; margin-bottom:1rem; color:#342923; font-weight:800; text-transform:uppercase;}
+  .section-card p { font-size:1.1rem; line-height:1.5; margin-bottom:1rem; }
 
-    @keyframes bounce {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(20px); }
-    }
+  .book-btn { padding:0.7rem 1.5rem; font-size:1rem; border:none; border-radius:5px;
+              background-color:#64DED0; color:#000; cursor:pointer; transition: background 0.3s;}
+  .book-btn:hover { background-color:#52bfb4; }
 
-    /* ---------------- Navbar ---------------- */
-    .navbar {
-      position: sticky;
-      top: 0;
-      height: 60px;
-      width: 100%;
-      background: #342923;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 1.5rem;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    }
+  /* Skimboards icons */
+  .skimboard-icons { display:flex; justify-content:center; flex-wrap:wrap; gap:2rem; margin-top:1rem;}
+  .skimboard-icons a { display:flex; flex-direction:column; align-items:center; color:#DE8A64; font-weight:700; font-size:1.2rem; transition: color 0.3s;}
+  .skimboard-icons a:hover { color:#64DED0;}
+  .skimboard-icons img { width:150px; height:auto; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.2);
+                         margin-bottom:0.5rem; transition: transform 0.3s;}
+  .skimboard-icons img:hover { transform:scale(1.1); }
 
-    .navbar img.nav-logo {
-      height: 40px;
-      width: auto;
-      cursor: pointer;
-    }
+  /* Gallery */
+  .gallery img { width:100%; border-radius:12px; }
 
-    .navbar ul {
-      list-style: none;
-      display: flex;
-      gap: 1rem;
-    }
+  /* Footer */
+  footer { text-align:center; padding:2rem; background:#342923; color:white; display:flex;
+           flex-direction:column; align-items:center; gap:1rem; }
+  .social-links { display:flex; gap:1rem;}
+  .social-links a { color:white; font-size:1.2rem; transition:color 0.3s;}
+  .social-links a:hover { color:#DE8A64; }
 
-    .navbar a {
-      color: #DE8A64;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 1.05rem;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .navbar a:hover {
-      color: #64DED0;
-    }
-
-    /* ---------------- Header ---------------- */
-    header {
-      text-align: center;
-      padding: 3rem 1rem;
-      color: #DE8A64;
-    }
-
-    header img.logo {
-      width: 80vw;
-      max-width: 600px;
-      margin: 0 auto;
-      display: block;
-    }
-
-    header h1 {
-      margin-top: 1rem;
-      font-size: clamp(2.5rem, 8vw, 6rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      color: #DE8A64;
-      -webkit-text-stroke: 2px white;
-      text-stroke: 2px white;
-    }
-
-    /* ---------------- Rows / Bars ---------------- */
-    .row {
-      width: 100%;
-      padding: 4rem 2rem;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .white { background: #ffffff; color: #000; }
-    .brown { background: #342923; color: #ffffff; }
-    .taupe { background: #89746B; color: #ffffff; }
-
-    .row h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    .row p {
-      max-width: 600px;
-      margin: 0 auto 1rem;
-      font-size: 1.2rem;
-      line-height: 1.5;
-    }
-
-    /* subtle separation */
-    .white, .brown, .taupe {
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1),
-                  inset 0 -1px 0 rgba(0,0,0,0.1);
-    }
-
-    /* ---------------- Buttons ---------------- */
-    .book-btn {
-      padding: 0.7rem 1.5rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 5px;
-      background: #64DED0;
-      color: #000;
-      cursor: pointer;
-    }
-
-    .book-btn:hover {
-      background: #52bfb4;
-    }
-
-    /* ---------------- Collapsible ---------------- */
-    .collapsible {
-      max-width: 700px;
-      margin: 1.5rem auto 0;
-      display: none;
-      padding: 1.5rem;
-      border-radius: 8px;
-    }
-
-    .row.white .collapsible { background: #fff; }
-    .row.brown .collapsible { background: #342923; }
-    .row.taupe .collapsible { background: #89746B; }
-
-    .collapsible iframe {
-      width: 100%;
-      min-height: 500px;
-      border: none;
-    }
-
-    /* ---------------- Blurb ---------------- */
-    .blurb {
-      background: #DE8A64;
-      color: white;
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-
-    /* ---------------- Skimboards ---------------- */
-    .skimboard-icons {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .skimboard-icons a {
-      max-width: 160px;
-      text-decoration: none;
-      color: #DE8A64;
-      font-weight: 700;
-    }
-
-    .skimboard-icons img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease;
-    }
-
-    .skimboard-icons img:hover {
-      transform: scale(1.08);
-    }
-
-    /* ---------------- Footer ---------------- */
-    footer {
-      text-align: center;
-      margin: 2rem;
-      font-size: 0.9rem;
-      color: #ddd;
-    }
-
-    @media (max-width: 600px) {
-      .navbar ul {
-        gap: 0.7rem;
-      }
-    }
-
-  </style>
+  /* Responsive */
+  @media(max-width:700px){ .skimboard-icons {flex-direction:column; gap:1rem;} header img.logo{width:90vw;} }
+</style>
 </head>
-
 <body>
+
+<div id="cursor"></div>
 
 <!-- Splash -->
 <div id="splash">
-  <img src="Logo.png" class="splash-logo" alt="Skim Lessons Logo">
+  <img src="Logo.png" alt="Skim Lessons Logo" class="splash-logo" />
   <div class="arrow">&#x25BC;</div>
 </div>
 
 <!-- Navbar -->
-<nav class="navbar">
-  <a href="#header"><img src="Logo.png" class="nav-logo" alt="Logo"></a>
+<nav class="navbar" role="navigation" aria-label="Primary">
+  <a href="#header"><img src="Logo.png" alt="Nav Logo" class="nav-logo"/></a>
   <ul>
+    <li><a href="#header">Home</a></li>
     <li><a href="#lessons">Lessons</a></li>
     <li><a href="#skimboards">Skimboards</a></li>
     <li><a href="#community">Community</a></li>
     <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#booking">Book</a></li>
+    <li><a href="#contact">Book Now</a></li>
   </ul>
 </nav>
 
-<!-- Header -->
 <header id="header">
-  <img src="Logo.png" class="logo" alt="Skim Lessons Logo">
+  <img src="Logo.png" alt="Skim Lessons Logo" class="logo"/>
   <h1>Learn to Skimboard</h1>
 </header>
 
-<!-- Blurb -->
-<section class="blurb">
+<!-- About / Blurb -->
+<div class="section-card" id="about">
   <h2>Learn Skimboarding</h2>
-  <p>A mix of surfing, skating, and every board sport rolled into one.</p>
-</section>
+  <p>A mix of surfing, skating, and just about every board sport rolled into one.</p>
+  <p>A lifelong skill you can enjoy anywhere, anytime.</p>
+  <p>Fun in all kinds of conditions — whether it’s a powerful shorebreak or just a few inches of water.</p>
+</div>
 
 <!-- Lessons -->
-<section class="row white" id="lessons">
+<div class="section-card" id="lessons">
   <h2>Beginner Lessons</h2>
+  <p>Start from scratch – no board or experience needed.</p>
   <button class="book-btn" onclick="toggleCollapse('beginner')">Book Now</button>
-  <div id="beginner" class="collapsible">
-    <iframe data-tally-src="https://tally.so/embed/nWaXjj"></iframe>
+  <div id="beginner" style="display:none;">
+    <iframe data-tally-src="https://tally.so/embed/nWaXjj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
+    <p>Please bring swimwear or a wetsuit. Times are updated weekly and may change depending on weather and tide.</p>
   </div>
-</section>
+</div>
 
-<section class="row brown">
+<div class="section-card" style="background:#342923; color:white;" id="intermediate">
   <h2>Intermediate Progression</h2>
-</section>
+  <p>Already sliding? Let’s level up with technique and flow.</p>
+  <button class="book-btn" onclick="toggleCollapse('intermediate-book')">Book Now</button>
+  <div id="intermediate-book" style="display:none;">
+    <iframe data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
+  </div>
+</div>
 
-<section class="row taupe">
+<div class="section-card" style="background:#89746B; color:white;" id="advanced">
   <h2>Advanced Concepts</h2>
-</section>
+  <p>Tailored coaching for advanced techniques and tricks.</p>
+  <button class="book-btn" onclick="toggleCollapse('advanced-book')">Book Now</button>
+  <div id="advanced-book" style="display:none;">
+    <iframe data-tally-src="https://tally.so/r/3x5Mbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"></iframe>
+  </div>
+</div>
 
 <!-- Skimboards -->
-<section class="row white" id="skimboards">
+<div class="section-card" id="skimboards">
   <h2>Skimboards</h2>
   <div class="skimboard-icons">
-    <a href="https://oxsskimboards.co.nz/shop/Waves-c98771002" target="_blank">
-      <img src="Images/wave.png" alt="Wave Skimboards">
-      Wave
-    </a>
-    <a href="https://oxsskimboards.co.nz/shop/Flat-c103977036" target="_blank">
-      <img src="Images/flat.png" alt="Flatland Skimboards">
-      Flatland
-    </a>
+    <a href="https://oxsskimboards.co.nz/shop/Waves-c98771002" target="_blank"><img src="Images/WaveBoard.png" alt="Wave Skimboard"/><span>Wave Skimboards</span></a>
+    <a href="https://oxsskimboards.co.nz/shop/Flat-c103977036" target="_blank"><img src="Images/FlatBoard.png" alt="Flatland Skimboard"/><span>Flatland Skimboards</span></a>
   </div>
-</section>
+</div>
 
 <!-- Community -->
-<section class="row brown" id="community">
+<div class="section-card" style="background:#342923; color:white;" id="community">
   <h2>Community</h2>
-  <p>
-    <a href="https://www.facebook.com/groups/2032375760552448" target="_blank" style="color:#64DED0;">
-      New Zealand Skimboarding Association
-    </a>
-  </p>
-</section>
+  <p>Join the <a href="https://www.facebook.com/groups/2032375760552448" target="_blank" style="color:#64DED0;">New Zealand Skimboarding Association Facebook Group</a> to connect with other skimboarders.</p>
+</div>
+
+<!-- SimplyBook Widget -->
+<div class="section-card" id="booking">
+  <h2>Book a Lesson</h2>
+  <div id="simplybook-widget"></div>
+</div>
 
 <!-- Gallery -->
-<section class="row white" id="gallery">
+<div class="section-card" id="gallery">
   <h2>Skimboarding in Action</h2>
-  <img src="https://i.imgur.com/ZLfFKnB.jpeg" style="width:100%;max-width:700px;border-radius:8px;">
-</section>
+  <div class="gallery">
+    <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skimboarding action photo"/>
+  </div>
+</div>
 
-<!-- SimplyBook Booking Widget -->
-<section class="row taupe" id="booking">
-  <h2>Book a Lesson</h2>
-  <div id="simplybook_widget"></div>
-</section>
-
-<footer>
-  Hosted in New Zealand • IG: @devon_matten
+<!-- Footer -->
+<footer id="contact">
+  <div class="social-links">
+    <a href="https://instagram.com/devon_matten" target="_blank">IG</a>
+    <a href="https://facebook.com/devon_matten" target="_blank">FB</a>
+  </div>
+  <p>Hosted locally in New Zealand</p>
 </footer>
 
-<!-- Scripts -->
-<script async src="https://tally.so/widgets/embed.js"></script>
-
-<script type="text/javascript" src="//widget.simplybook.net/v2/widget/widget.js"></script>
-<script type="text/javascript">
+<script src="https://tally.so/widgets/embed.js"></script>
+<script src="//widget.simplybook.net/v2/widget/widget.js" type="text/javascript"></script>
+<script>
+  // SimplyBook widget init
   var widget = new SimplybookWidget({
     "widget_type":"iframe",
     "url":"https://wwwskimlessonsnz.simplybook.net",
     "theme":"minimal",
-    "theme_settings":{
-      "timeline_show_end_time":"1",
-      "timeline_modern_display":"as_slots",
-      "hide_company_label":"0",
-      "timeline_hide_unavailable":"1",
-      "hide_past_days":"0",
-      "sb_base_color":"#cb8d75",
-      "btn_color_1":"#f8ad31,#fc591e,#d68162",
-      "link_color":"#cb8d75",
-      "display_item_mode":"block",
-      "body_bg_color":"#ffffff",
-      "dark_font_color":"#403733",
-      "light_font_color":"#ffffff",
-      "sb_company_label_color":"#ffffff",
-      "hide_img_mode":"1",
-      "sb_busy":"#c7b3b3",
-      "sb_available":"#2b212b"
-    },
+    "theme_settings":{"timeline_show_end_time":"1","timeline_modern_display":"as_slots",
+                      "hide_company_label":"0","timeline_hide_unavailable":"1","hide_past_days":"0",
+                      "sb_base_color":"#cb8d75","btn_color_1":"#f8ad31,#fc591e,#d68162",
+                      "link_color":"#cb8d75","display_item_mode":"block","body_bg_color":"#ffffff",
+                      "sb_review_image":"8","dark_font_color":"#403733","light_font_color":"#ffffff",
+                      "sb_company_label_color":"#ffffff","hide_img_mode":"1","sb_busy":"#c7b3b3","sb_available":"#2b212b"},
     "timeline":"modern",
     "datepicker":"top_calendar"
   });
-</script>
 
-<script>
+  // Toggle collapsibles
   function toggleCollapse(id) {
     const el = document.getElementById(id);
-    el.style.display = el.style.display === "block" ? "none" : "block";
+    el.style.display = el.style.display==='block'?'none':'block';
   }
 
-  window.addEventListener("scroll", () => {
-    const splash = document.getElementById("splash");
-    if (splash && window.scrollY > 50) {
-      splash.style.opacity = "0";
-      setTimeout(() => splash.remove(), 1000);
-    }
+  // Splash fade
+  window.addEventListener('scroll',()=>{const splash=document.getElementById('splash'); if(!splash)return; if(window.scrollY>50){splash.style.opacity='0'; setTimeout(()=>splash.style.display='none',1000);}else{ splash.style.display='flex'; splash.style.opacity='1';}});
+
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cursor.style.top = e.clientY+'px';
+    cursor.style.left = e.clientX+'px';
+  });
+  const cards = document.querySelectorAll('.section-card');
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', ()=> { cursor.style.transform='translate(-50%,-50%) scale(1.5)'; cursor.style.background='rgba(255,255,255,0.2)'; })
+    card.addEventListener('mouseleave', ()=> { cursor.style.transform='translate(-50%,-50%) scale(1)'; cursor.style.background='transparent'; })
   });
 </script>
 

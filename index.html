@@ -10,13 +10,11 @@
     
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      /* Using a placeholder background color in case image loads slow */
-      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://i.imgur.com/ZLfFKnB.jpeg') center top / cover no-repeat fixed;
+      background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://i.imgur.com/ZLfFKnB.jpeg') center top / cover no-repeat fixed;
       background-color: #6F9E99;
       color: #333;
       scroll-behavior: smooth;
       overflow-x: hidden;
-      line-height: 1.6;
     }
 
     /* --- SPLASH SCREEN --- */
@@ -27,74 +25,55 @@
       z-index: 9999;
       transition: opacity 0.8s ease, visibility 0.8s;
     }
-    /* Class to hide splash via JS */
     #splash.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-
-    .splash-logo { max-width: 80vw; max-height: 60vh; height: auto; animation: fadeLogo 3s ease-in-out forwards; }
-    @keyframes fadeLogo { 0%{opacity:0; transform: scale(0.9);} 100%{opacity:1; transform: scale(1);} }
-    
-    .arrow { font-size: 3rem; color: #DE8A64; margin-top: 2rem; cursor: pointer; animation: bounce 2s infinite; }
-    @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-20px);} 60% {transform: translateY(-10px);} }
+    .splash-logo { max-width: 70vw; max-height: 70vh; height: auto; animation: fadeLogo 3s ease-in-out forwards; }
+    @keyframes fadeLogo { 0%{opacity:1;} 100%{opacity:0.3;} }
+    .arrow { font-size: 4rem; color: #DE8A64; margin-top: 2rem; animation: bounce 2s infinite; cursor: pointer; }
+    @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(20px);} }
 
     /* --- NAVBAR --- */
     .navbar {
       position: fixed;
-      top: 20px; /* Changed from mm to px */
+      top: 20px;
       left: 50%;
       transform: translateX(-50%);
-      background-color: rgba(52, 41, 35, 0.85); /* Slightly darker for readability */
-      padding: 0.5rem 2rem;
+      background-color: rgba(52, 41, 35, 0.8);
+      padding: 0 2rem;
+      height: 80px;
       border-radius: 50px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       box-shadow: 0 6px 15px rgba(0,0,0,0.3);
       z-index: 1000;
-      width: 95%;
+      width: 90%;
       max-width: 1200px;
       backdrop-filter: blur(5px);
     }
-    .navbar img.nav-logo { height: 40px; width: auto; cursor: pointer; }
-    .navbar ul { display: flex; align-items: center; gap: 1.5rem; list-style: none; margin: 0; }
+    .navbar img.nav-logo { height: 50px; cursor: pointer; }
+    .navbar ul { display: flex; align-items: center; gap: 2rem; list-style: none; }
     .navbar ul li a {
-      color: #DE8A64; font-weight: 800; font-size: 1rem;
+      color: #DE8A64; font-weight: 900; font-size: 1.1rem;
       text-transform: uppercase; text-decoration: none; transition: color 0.3s ease;
-      letter-spacing: 1px;
     }
     .navbar ul li a:hover { color: #64DED0; }
 
     /* --- HEADER --- */
-    header { text-align: center; padding: 120px 1rem 3rem; color: #DE8A64; }
-    header img.logo { 
-      display: block; margin: 0 auto; width: 80vw; max-width: 500px; height: auto; 
-      border: 5px solid white; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
-    header h1 { 
-      font-size: clamp(2rem, 6vw, 5rem); 
-      font-weight: 900; margin-top: 2rem; 
-      text-transform: uppercase; 
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-      color: #fff;
-    }
+    header { text-align: center; padding: 140px 1rem 3rem; color: #DE8A64; }
+    header img.logo { display: block; margin: 0 auto; width: 80vw; max-width: 500px; height: auto; border: 5px solid white; border-radius: 12px; }
+    header h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900; margin-top: 1rem; text-transform: uppercase; text-shadow: 2px 2px 0 #fff; }
 
-    /* --- SECTIONS --- */
+    /* --- SECTION STYLING --- */
     .row { padding: 4rem 1rem; text-align: center; }
-    .row h2 { font-size: 2.5rem; margin-bottom: 2rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: #342923; }
-    
-    .bg-white { background-color: rgba(255,255,255,0.95); border-radius: 20px; margin: 2rem auto; max-width: 1200px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-    .bg-brown { background-color: #342923; color: white; }
-    .bg-brown h2 { color: #DE8A64; }
+    .row h2 { font-size: 2.5rem; margin-bottom: 1.5rem; font-weight: 800; text-transform: uppercase; }
 
     /* --- BLURB --- */
     .blurb {
       background-color: #DE8A64; color: white; padding: 3rem 2rem; text-align: center;
-      border-radius: 15px; margin: 0 auto 4rem; width: 90%; max-width: 1000px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      border-radius: 15px; margin: 2rem auto; width: 90%; max-width: 1200px; box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     }
-    .blurb h2 { font-size: 2rem; margin-bottom: 1rem; text-transform: uppercase; }
-    .blurb p { font-size: 1.2rem; margin-bottom: 0.5rem; }
 
-    /* --- BOOKING CARD --- */
+    /* --- BOOKING CARD (Your Requested Style) --- */
     .booking-container {
       border: 2px solid #333; 
       border-radius: 15px;
@@ -104,87 +83,46 @@
       max-width: 1000px; 
       width: 100%; 
       margin: 0 auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
 
     /* --- SKIMBOARDS --- */
     .skimboard-icons { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-top: 1rem; }
-    .skimboard-icons a { 
-      display: flex; flex-direction: column; align-items: center; 
-      text-decoration: none; color: #333; font-weight: 700; font-size: 1.2rem; 
-      transition: transform 0.3s; 
-      background: white; padding: 1rem; border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    .skimboard-icons a:hover { transform: translateY(-10px); color: #DE8A64; }
-    .skimboard-icons img { 
-      width: 150px; height: auto; border-radius: 8px; margin-bottom: 1rem; 
-    }
+    .skimboard-icons a { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #333; font-weight: 700; font-size: 1.2rem; }
+    .skimboard-icons img { width: 150px; height: auto; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); margin-bottom: 0.5rem; transition: transform 0.3s; }
+    .skimboard-icons img:hover { transform: scale(1.1); }
 
     /* --- COMMUNITY --- */
-    .btn-community {
-      display: inline-block;
-      margin-top: 1rem;
-      background-color: #DE8A64;
-      color: white !important;
-      padding: 1rem 2rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      text-transform: uppercase;
-      transition: background 0.3s;
-    }
-    .btn-community:hover { background-color: #64DED0; }
-
-    /* --- GALLERY --- */
-    .gallery-img {
-      width: 100%; max-width: 900px; height: auto;
-      border-radius: 15px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      transition: transform 0.3s;
-    }
-    .gallery-img:hover { transform: scale(1.02); }
+    .row.brown { background: #342923; color: white; padding: 4rem 2rem; border-radius: 20px; width: 90%; max-width: 1200px; margin: 2rem auto; }
+    .row.brown h2 { color: #DE8A64; }
 
     /* --- FOOTER --- */
-    footer { 
-      text-align: center; padding: 3rem 1rem; font-size: 0.9rem; color: #fff; 
-      background-color: #342923; margin-top: 2rem;
-    }
+    footer { text-align: center; padding: 3rem; font-size: 0.9rem; color: #fff; background: rgba(52, 41, 35, 0.9); margin-top: 4rem; }
     footer a { color: #DE8A64; margin: 0 0.5rem; font-weight: bold; text-decoration: none; }
-    footer a:hover { color: #64DED0; }
 
     /* --- RESPONSIVE --- */
-    @media (max-width: 900px) { 
-      .navbar { 
-        flex-direction: column; 
-        height: auto; 
-        padding: 1rem;
-        border-radius: 20px;
-      }
-      .navbar ul { 
-        flex-wrap: wrap; 
-        justify-content: center; 
-        gap: 1rem; 
-        margin-top: 1rem;
-      }
-      .navbar ul li a { font-size: 0.9rem; }
+    @media (max-width:900px){
+      .navbar { height: auto; padding: 1rem; flex-direction: column; border-radius: 20px; }
+      .navbar ul { gap: 1rem; margin-top: 10px; }
+      .booking-container { padding: 1rem; }
     }
   </style>
 </head>
 <body>
 
   <div id="splash">
-    <img src="Logo.png" alt="Skim Lessons Logo" class="splash-logo" onerror="this.style.display='none'; document.querySelector('.arrow').innerText='Welcome - Scroll Down'">
+    <img src="Logo.png" alt="Skim Lessons Logo" class="splash-logo">
     <div class="arrow" onclick="dismissSplash()">&#x25BC;</div>
   </div>
 
   <nav class="navbar" role="navigation" aria-label="Primary">
     <a href="#header"><img src="Logo.png" alt="Nav Logo" class="nav-logo"></a>
     <ul>
+      <li><a href="#header">Home</a></li>
       <li><a href="#lessons">Lessons</a></li>
-      <li><a href="#skimboards">Gear</a></li>
+      <li><a href="#skimboards">Skimboards</a></li>
       <li><a href="#community">Community</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#lessons" style="color:#64DED0;">Book Now</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
@@ -194,107 +132,86 @@
   </header>
 
   <section class="blurb">
-    <h2>Why Skim?</h2>
+    <h2>The Ultimate Wave Sport</h2>
     <p>A mix of surfing, skating, and just about every board sport rolled into one.</p>
     <p>A lifelong skill you can enjoy anywhere, anytime.</p>
-    <p>Fun in all kinds of conditions — from powerful shorebreak to shallow flats.</p>
   </section>
 
-  <section class="row bg-white" id="lessons">
-  <h2>Book Your Lesson</h2>
-  <div class="booking-container">
-    <h3 style="margin-bottom: 1rem;">Select a Time</h3>
-    <p style="margin-bottom: 2rem;">Schedule your skimboarding session below.</p>
+  <section class="row" id="lessons">
+    <h2 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Book Your Lesson</h2>
     
-    <div id="simplybook-widget" style="width: 100%; height: 700px;"></div>
-  </div>
-</section>
+    <div class="booking-container">
+      <h3>Schedule Online</h3>
+      <p style="margin-bottom: 2rem;">Pick a time that works for you below.</p>
 
-  <section class="row" id="skimboards">
-    <h2 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Skimboards</h2>
+      <div id="simplybook-widget"></div>
+    </div>
+  </section>
+
+  <section class="row" id="skimboards" style="background: rgba(255,255,255,0.8); margin-top: 4rem; padding-bottom: 6rem;">
+    <h2>Skimboards</h2>
     <div class="skimboard-icons">
       <a href="https://oxsskimboards.co.nz/shop/Waves-c98771002" target="_blank">
-        <img src="Images/wave-board.png" alt="Wave Skimboard" onerror="this.src='https://placehold.co/150x200?text=Wave+Board'">
+        <img src="Images/wave-board.png" alt="Wave Skimboard" onerror="this.src='https://placehold.co/150x250?text=Wave+Board'">
         Wave Skimboards
       </a>
       <a href="https://oxsskimboards.co.nz/shop/Flat-c103977036" target="_blank">
-        <img src="Images/flat-board.png" alt="Flatland Skimboard" onerror="this.src='https://placehold.co/150x200?text=Flat+Board'">
+        <img src="Images/flat-board.png" alt="Flatland Skimboard" onerror="this.src='https://placehold.co/150x250?text=Flat+Board'">
         Flatland Skimboards
       </a>
     </div>
   </section>
 
-  <section class="row bg-brown" id="community">
+  <section class="row brown" id="community">
     <h2>Community</h2>
-    <p>Connect with local riders, share tips, and organize meetups.</p>
-    <a href="https://www.facebook.com/groups/2032375760552448" target="_blank" rel="noopener noreferrer" class="btn-community">
-      Join NZ Skimboarding Group
-    </a>
-  </section>
-
-  <section class="row bg-white" id="gallery">
-    <h2>Skimboarding in Action</h2>
-    <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skimboarding action" class="gallery-img">
+    <p>Join the <a href="https://www.facebook.com/groups/2032375760552448" target="_blank" rel="noopener noreferrer" style="color:#64DED0;font-weight:700;text-decoration:underline;">NZ Skimboarding FB Group</a> to connect with other skimboarders.</p>
   </section>
 
   <footer id="contact">
-    <p>Hosted locally in NZ</p>
-    <div style="margin-top: 1rem;">
-      IG: <a href="https://instagram.com/devon_matten" target="_blank">@devon_matten</a> • 
-      FB: <a href="https://facebook.com/devon_matten" target="_blank">@devon_matten</a>
-    </div>
+    Hosted locally in NZ • IG: <a href="https://instagram.com/devon_matten" target="_blank">@devon_matten</a> • FB: <a href="https://facebook.com/devon_matten" target="_blank">@devon_matten</a>
   </footer>
 
- <script src="//widget.simplybook.net/v2/widget/widget.js" type="text/javascript"></script>
-<script type="text/javascript">
-  var widget = new SimplybookWidget({
-    "widget_type": "iframe",
-    "url": "https://wwwskimlessonsnz.simplybook.net",
-    "theme": "minimal",
-    "theme_settings": {
-      "timeline_show_end_time": "1",
-      "timeline_modern_display": "as_slots",
-      "hide_company_label": "0",
-      "timeline_hide_unavailable": "1",
-      "hide_past_days": "0",
-      "sb_base_color": "#cb8d75",
-      "btn_color_1": "#f8ad31,#fc591e,#d68162",
-      "link_color": "#cb8d75",
-      "display_item_mode": "block",
-      "body_bg_color": "#ffffff",
-      "sb_review_image": "8",
-      "sb_review_image_preview": "/uploads/wwwskimlessonsnz/image_files/preview/9147d75b4def06a96fe7484e9b707312.png",
-      "dark_font_color": "#403733",
-      "light_font_color": "#ffffff",
-      "sb_company_label_color": "#ffffff",
-      "hide_img_mode": "1",
-      "sb_busy": "#c7b3b3",
-      "sb_available": "#2b212b"
-    },
-    "timeline": "modern",
-    "datepicker": "top_calendar",
-    "is_rtl": false,
-    "app_config": {
-      "clear_session": 0,
-      "allow_switch_to_ada": 0,
-      "predefined": []
-    },
-    "container_id": "simplybook-widget" /* <--- THIS IS THE MAGIC LINE */
-  });
-</script>
+  <script src="//widget.simplybook.net/v2/widget/widget.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    var widget = new SimplybookWidget({
+      "widget_type": "iframe",
+      "url": "https://wwwskimlessonsnz.simplybook.net",
+      "theme": "minimal",
+      "theme_settings": {
+        "timeline_show_end_time": "1",
+        "timeline_modern_display": "as_slots",
+        "hide_company_label": "0",
+        "timeline_hide_unavailable": "1",
+        "hide_past_days": "0",
+        "sb_base_color": "#cb8d75",
+        "btn_color_1": "#f8ad31,#fc591e,#d68162",
+        "link_color": "#cb8d75",
+        "display_item_mode": "block",
+        "body_bg_color": "#ffffff",
+        "sb_review_image": "8",
+        "dark_font_color": "#403733",
+        "light_font_color": "#ffffff",
+        "sb_company_label_color": "#ffffff",
+        "hide_img_mode": "1",
+        "sb_busy": "#c7b3b3",
+        "sb_available": "#2b212b"
+      },
+      "timeline": "modern",
+      "datepicker": "top_calendar",
+      "is_rtl": false,
+      "app_config": { "clear_session": 0, "allow_switch_to_ada": 0, "predefined": [] },
+      "container_id": "simplybook-widget" /* This puts it inside your booking-container */
+    });
+  </script>
 
-  <script async src="https://tally.so/widgets/embed.js"></script>
-  
   <script>
-    // Improved Splash Logic
+    // Logic to dismiss splash screen
     const splash = document.getElementById('splash');
-
     function dismissSplash() {
       splash.classList.add('hidden');
     }
 
     window.addEventListener('scroll', () => {
-      // Once scrolled past 50px, hide splash forever
       if (window.scrollY > 50) {
         dismissSplash();
       }

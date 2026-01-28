@@ -76,6 +76,7 @@
     .navbar img.nav-logo {
       height: 40px;
       width: auto;
+      cursor: pointer;
     }
 
     .navbar ul {
@@ -236,6 +237,7 @@
         gap: 0.7rem;
       }
     }
+
   </style>
 </head>
 
@@ -255,6 +257,7 @@
     <li><a href="#skimboards">Skimboards</a></li>
     <li><a href="#community">Community</a></li>
     <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#booking">Book</a></li>
   </ul>
 </nav>
 
@@ -318,11 +321,48 @@
   <img src="https://i.imgur.com/ZLfFKnB.jpeg" style="width:100%;max-width:700px;border-radius:8px;">
 </section>
 
+<!-- SimplyBook Booking Widget -->
+<section class="row taupe" id="booking">
+  <h2>Book a Lesson</h2>
+  <div id="simplybook_widget"></div>
+</section>
+
 <footer>
   Hosted in New Zealand • IG: @devon_matten
 </footer>
 
+<!-- Scripts -->
 <script async src="https://tally.so/widgets/embed.js"></script>
+
+<script type="text/javascript" src="//widget.simplybook.net/v2/widget/widget.js"></script>
+<script type="text/javascript">
+  var widget = new SimplybookWidget({
+    "widget_type":"iframe",
+    "url":"https://wwwskimlessonsnz.simplybook.net",
+    "theme":"minimal",
+    "theme_settings":{
+      "timeline_show_end_time":"1",
+      "timeline_modern_display":"as_slots",
+      "hide_company_label":"0",
+      "timeline_hide_unavailable":"1",
+      "hide_past_days":"0",
+      "sb_base_color":"#cb8d75",
+      "btn_color_1":"#f8ad31,#fc591e,#d68162",
+      "link_color":"#cb8d75",
+      "display_item_mode":"block",
+      "body_bg_color":"#ffffff",
+      "dark_font_color":"#403733",
+      "light_font_color":"#ffffff",
+      "sb_company_label_color":"#ffffff",
+      "hide_img_mode":"1",
+      "sb_busy":"#c7b3b3",
+      "sb_available":"#2b212b"
+    },
+    "timeline":"modern",
+    "datepicker":"top_calendar"
+  });
+</script>
+
 <script>
   function toggleCollapse(id) {
     const el = document.getElementById(id);
@@ -331,7 +371,7 @@
 
   window.addEventListener("scroll", () => {
     const splash = document.getElementById("splash");
-    if (window.scrollY > 50 && splash) {
+    if (splash && window.scrollY > 50) {
       splash.style.opacity = "0";
       setTimeout(() => splash.remove(), 1000);
     }

@@ -20,9 +20,9 @@
       background: #fff8dc; display:flex; flex-direction:column; justify-content:center; align-items:center;
       z-index:9999; transition: opacity 1s ease;
     }
-    .splash-logo { max-width:70vw; max-height:70vh; height:auto; animation:fadeLogo 3s ease-in-out forwards; }
+    .splash-logo { max-width:70vw; max-height:70vh; height:auto; animation:fadeLogo 10s ease-in-out forwards; }
     @keyframes fadeLogo { 0%{opacity:1;} 100%{opacity:0.3;} }
-    .arrow { font-size:4rem; color:#DE8A64; margin-top:2rem; animation:bounce 2s infinite; }
+    .arrow { font-size:4rem; color:#DE8A64; margin-top:2rem; animation:bounce 10s infinite; }
     @keyframes bounce {0%,100%{transform:translateY(0);}50%{transform:translateY(20px);} }
 
     /* Navbar */
@@ -214,41 +214,6 @@
   <footer id="contact">
     Hosted locally in NZ • IG: <a href="https://instagram.com/devon_matten" target="_blank">@devon_matten</a> • FB: <a href="https://facebook.com/devon_matten" target="_blank">@devon_matten</a>
   </footer>
-
-  <!-- SimplyBook Widget -->
-  <div id="simplybook-widget" style="margin:3rem auto; max-width:1200px;"></div>
-  <script src="//widget.simplybook.net/v2/widget/widget.js" type="text/javascript"></script>
-  <script type="text/javascript">
-    var widget = new SimplybookWidget({
-      "widget_type":"iframe",
-      "url":"https://wwwskimlessonsnz.simplybook.net",
-      "theme":"minimal",
-      "theme_settings":{
-        "timeline_show_end_time":"1",
-        "timeline_modern_display":"as_slots",
-        "hide_company_label":"0",
-        "timeline_hide_unavailable":"1",
-        "hide_past_days":"0",
-        "sb_base_color":"#cb8d75",
-        "btn_color_1":"#f8ad31,#fc591e,#d68162",
-        "link_color":"#cb8d75",
-        "display_item_mode":"block",
-        "body_bg_color":"#ffffff",
-        "sb_review_image":"8",
-        "sb_review_image_preview":"/uploads/wwwskimlessonsnz/image_files/preview/9147d75b4def06a96fe7484e9b707312.png",
-        "dark_font_color":"#403733",
-        "light_font_color":"#ffffff",
-        "sb_company_label_color":"#ffffff",
-        "hide_img_mode":"1",
-        "sb_busy":"#c7b3b3",
-        "sb_available":"#2b212b"
-      },
-      "timeline":"modern",
-      "datepicker":"top_calendar",
-      "is_rtl":false,
-      "app_config":{"clear_session":0,"allow_switch_to_ada":0,"predefined":[]}
-    });
-  </script>
 
   <script async src="https://tally.so/widgets/embed.js"></script>
   <script>

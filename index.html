@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Skimboarding Lessons | Learn to Skimboard</title>
   <style>
-    /* --- RESET & BASICS --- */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
     body {
@@ -14,207 +13,141 @@
       background-color: #6F9E99;
       color: #333;
       scroll-behavior: smooth;
-      overflow-x: hidden;
     }
 
-    /* --- SPLASH SCREEN --- */
+    /* Splash Screen */
     #splash {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: #fff8dc;
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      z-index: 9999;
-      transition: opacity 0.8s ease, visibility 0.8s;
+      background: #fff8dc; display: flex; flex-direction: column; justify-content: center; align-items: center;
+      z-index: 9999; transition: opacity 0.8s ease, visibility 0.8s;
     }
     #splash.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-    .splash-logo { max-width: 70vw; max-height: 70vh; height: auto; animation: fadeLogo 3s ease-in-out forwards; }
+    .splash-logo { max-width: 70vw; animation: fadeLogo 3s ease-in-out forwards; }
     @keyframes fadeLogo { 0%{opacity:1;} 100%{opacity:0.3;} }
     .arrow { font-size: 4rem; color: #DE8A64; margin-top: 2rem; animation: bounce 2s infinite; cursor: pointer; }
     @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(20px);} }
 
-    /* --- NAVBAR --- */
+    /* Navbar */
     .navbar {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: rgba(52, 41, 35, 0.8);
-      padding: 0 2rem;
-      height: 80px;
-      border-radius: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-      z-index: 1000;
-      width: 90%;
-      max-width: 1200px;
-      backdrop-filter: blur(5px);
+      position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+      background-color: rgba(52, 41, 35, 0.85); padding: 0 2rem; height: 70px;
+      border-radius: 50px; display: flex; align-items: center; justify-content: space-between;
+      z-index: 1000; width: 90%; max-width: 1200px; backdrop-filter: blur(5px);
     }
-    .navbar img.nav-logo { height: 50px; cursor: pointer; }
-    .navbar ul { display: flex; align-items: center; gap: 2rem; list-style: none; }
-    .navbar ul li a {
-      color: #DE8A64; font-weight: 900; font-size: 1.1rem;
-      text-transform: uppercase; text-decoration: none; transition: color 0.3s ease;
-    }
-    .navbar ul li a:hover { color: #64DED0; }
+    .navbar img.nav-logo { height: 40px; }
+    .navbar ul { display: flex; gap: 1.5rem; list-style: none; }
+    .navbar ul li a { color: #DE8A64; font-weight: 800; text-transform: uppercase; text-decoration: none; font-size: 0.9rem; }
 
-    /* --- HEADER --- */
-    header { text-align: center; padding: 140px 1rem 3rem; color: #DE8A64; }
-    header img.logo { display: block; margin: 0 auto; width: 80vw; max-width: 500px; height: auto; border: 5px solid white; border-radius: 12px; }
-    header h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900; margin-top: 1rem; text-transform: uppercase; text-shadow: 2px 2px 0 #fff; }
+    /* Header */
+    header { text-align: center; padding: 140px 1rem 3rem; color: #fff; }
+    header h1 { font-size: clamp(2.5rem, 8vw, 5rem); text-transform: uppercase; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
 
-    /* --- SECTION STYLING --- */
+    /* Booking Card Section */
     .row { padding: 4rem 1rem; text-align: center; }
-    .row h2 { font-size: 2.5rem; margin-bottom: 1.5rem; font-weight: 800; text-transform: uppercase; }
-
-    /* --- BLURB --- */
-    .blurb {
-      background-color: #DE8A64; color: white; padding: 3rem 2rem; text-align: center;
-      border-radius: 15px; margin: 2rem auto; width: 90%; max-width: 1200px; box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    }
-
-    /* --- BOOKING CARD (Your Requested Style) --- */
+    
     .booking-container {
       border: 2px solid #333; 
       border-radius: 15px;
       background: #fff;
-      padding: 2rem;
-      min-height: 700px; 
+      padding: 20px;
+      min-height: 600px; 
       max-width: 1000px; 
-      width: 100%; 
+      width: 95%; 
       margin: 0 auto;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      overflow: hidden; /* Keeps the iframe inside the rounded corners */
     }
 
-    /* --- SKIMBOARDS --- */
-    .skimboard-icons { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-top: 1rem; }
-    .skimboard-icons a { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #333; font-weight: 700; font-size: 1.2rem; }
-    .skimboard-icons img { width: 150px; height: auto; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); margin-bottom: 0.5rem; transition: transform 0.3s; }
-    .skimboard-icons img:hover { transform: scale(1.1); }
+    /* Skimboards */
+    .skimboard-icons { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 2rem; }
+    .skimboard-icons a { text-decoration: none; color: #333; font-weight: bold; }
+    .skimboard-icons img { width: 150px; border-radius: 12px; display: block; margin-bottom: 10px; transition: 0.3s; }
+    .skimboard-icons img:hover { transform: scale(1.05); }
 
-    /* --- COMMUNITY --- */
-    .row.brown { background: #342923; color: white; padding: 4rem 2rem; border-radius: 20px; width: 90%; max-width: 1200px; margin: 2rem auto; }
-    .row.brown h2 { color: #DE8A64; }
+    footer { text-align: center; padding: 3rem; background: #342923; color: #fff; margin-top: 4rem; }
+    footer a { color: #DE8A64; text-decoration: none; font-weight: bold; }
 
-    /* --- FOOTER --- */
-    footer { text-align: center; padding: 3rem; font-size: 0.9rem; color: #fff; background: rgba(52, 41, 35, 0.9); margin-top: 4rem; }
-    footer a { color: #DE8A64; margin: 0 0.5rem; font-weight: bold; text-decoration: none; }
-
-    /* --- RESPONSIVE --- */
-    @media (max-width:900px){
-      .navbar { height: auto; padding: 1rem; flex-direction: column; border-radius: 20px; }
-      .navbar ul { gap: 1rem; margin-top: 10px; }
-      .booking-container { padding: 1rem; }
+    @media (max-width: 600px) {
+      .navbar ul { display: none; } /* Simplified for mobile debug */
     }
   </style>
 </head>
 <body>
 
   <div id="splash">
-    <img src="Logo.png" alt="Skim Lessons Logo" class="splash-logo">
+    <img src="Logo.png" alt="Logo" class="splash-logo">
     <div class="arrow" onclick="dismissSplash()">&#x25BC;</div>
   </div>
 
-  <nav class="navbar" role="navigation" aria-label="Primary">
-    <a href="#header"><img src="Logo.png" alt="Nav Logo" class="nav-logo"></a>
+  <nav class="navbar">
+    <img src="Logo.png" alt="Logo" class="nav-logo">
     <ul>
-      <li><a href="#header">Home</a></li>
       <li><a href="#lessons">Lessons</a></li>
-      <li><a href="#skimboards">Skimboards</a></li>
-      <li><a href="#community">Community</a></li>
+      <li><a href="#skimboards">Boards</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <header id="header">
-    <img src="Logo.png" alt="Skim Lessons Logo" class="logo">
+  <header>
     <h1>Learn to Skimboard</h1>
   </header>
 
-  <section class="blurb">
-    <h2>The Ultimate Wave Sport</h2>
-    <p>A mix of surfing, skating, and just about every board sport rolled into one.</p>
-    <p>A lifelong skill you can enjoy anywhere, anytime.</p>
-  </section>
-
   <section class="row" id="lessons">
-    <h2 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Book Your Lesson</h2>
-    
     <div class="booking-container">
-      <h3>Schedule Online</h3>
-      <p style="margin-bottom: 2rem;">Pick a time that works for you below.</p>
-
-      <div id="simplybook-widget"></div>
+      <h2 style="margin-bottom:20px;">Book Your Session</h2>
+      
+      <div id="simplybook-widget-container"></div>
     </div>
   </section>
 
-  <section class="row" id="skimboards" style="background: rgba(255,255,255,0.8); margin-top: 4rem; padding-bottom: 6rem;">
-    <h2>Skimboards</h2>
+  <section class="row" id="skimboards">
+    <h2 style="color:white">Skimboards</h2>
     <div class="skimboard-icons">
       <a href="https://oxsskimboards.co.nz/shop/Waves-c98771002" target="_blank">
-        <img src="Images/wave-board.png" alt="Wave Skimboard" onerror="this.src='https://placehold.co/150x250?text=Wave+Board'">
-        Wave Skimboards
+        <img src="Images/wave-board.png" alt="Wave" onerror="this.src='https://placehold.co/150x200?text=Wave'">
+        Wave
       </a>
       <a href="https://oxsskimboards.co.nz/shop/Flat-c103977036" target="_blank">
-        <img src="Images/flat-board.png" alt="Flatland Skimboard" onerror="this.src='https://placehold.co/150x250?text=Flat+Board'">
-        Flatland Skimboards
+        <img src="Images/flat-board.png" alt="Flat" onerror="this.src='https://placehold.co/150x200?text=Flat'">
+        Flatland
       </a>
     </div>
-  </section>
-
-  <section class="row brown" id="community">
-    <h2>Community</h2>
-    <p>Join the <a href="https://www.facebook.com/groups/2032375760552448" target="_blank" rel="noopener noreferrer" style="color:#64DED0;font-weight:700;text-decoration:underline;">NZ Skimboarding FB Group</a> to connect with other skimboarders.</p>
   </section>
 
   <footer id="contact">
-    Hosted locally in NZ • IG: <a href="https://instagram.com/devon_matten" target="_blank">@devon_matten</a> • FB: <a href="https://facebook.com/devon_matten" target="_blank">@devon_matten</a>
+    IG: <a href="https://instagram.com/devon_matten" target="_blank">@devon_matten</a>
   </footer>
 
   <script src="//widget.simplybook.net/v2/widget/widget.js" type="text/javascript"></script>
+  
   <script type="text/javascript">
-    var widget = new SimplybookWidget({
-      "widget_type": "iframe",
-      "url": "https://wwwskimlessonsnz.simplybook.net",
-      "theme": "minimal",
-      "theme_settings": {
-        "timeline_show_end_time": "1",
-        "timeline_modern_display": "as_slots",
-        "hide_company_label": "0",
-        "timeline_hide_unavailable": "1",
-        "hide_past_days": "0",
-        "sb_base_color": "#cb8d75",
-        "btn_color_1": "#f8ad31,#fc591e,#d68162",
-        "link_color": "#cb8d75",
-        "display_item_mode": "block",
-        "body_bg_color": "#ffffff",
-        "sb_review_image": "8",
-        "dark_font_color": "#403733",
-        "light_font_color": "#ffffff",
-        "sb_company_label_color": "#ffffff",
-        "hide_img_mode": "1",
-        "sb_busy": "#c7b3b3",
-        "sb_available": "#2b212b"
-      },
-      "timeline": "modern",
-      "datepicker": "top_calendar",
-      "is_rtl": false,
-      "app_config": { "clear_session": 0, "allow_switch_to_ada": 0, "predefined": [] },
-      "container_id": "simplybook-widget" /* This puts it inside your booking-container */
-    });
-  </script>
+    // This function waits for the page to fully load before trying to inject the widget
+    window.onload = function() {
+      var widget = new SimplybookWidget({
+        "widget_type": "iframe",
+        "url": "https://wwwskimlessonsnz.simplybook.net",
+        "theme": "minimal",
+        "theme_settings": {
+          "sb_base_color": "#cb8d75",
+          "body_bg_color": "#ffffff",
+          "dark_font_color": "#403733",
+          "timeline_modern_display": "as_slots",
+          "display_item_mode": "block"
+        },
+        "timeline": "modern",
+        "datepicker": "top_calendar",
+        "is_rtl": false,
+        "app_config": { "clear_session": 0, "allow_switch_to_ada": 0, "predefined": [] },
+        "container_id": "simplybook-widget-container" // Targets the div inside your white box
+      });
+    };
 
-  <script>
-    // Logic to dismiss splash screen
-    const splash = document.getElementById('splash');
+    // Splash Logic
     function dismissSplash() {
-      splash.classList.add('hidden');
+      document.getElementById('splash').classList.add('hidden');
     }
-
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        dismissSplash();
-      }
+      if (window.scrollY > 50) dismissSplash();
     });
   </script>
 

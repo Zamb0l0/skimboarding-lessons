@@ -43,13 +43,24 @@
       mix-blend-mode: difference; 
     }
 
-    /* THE LANDING SLIDESHOW (Fixed Background) */
+    /* THE LANDING SLIDESHOW */
     .hero-slideshow {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100vh;
       z-index: 1;
       overflow: hidden;
+      background: #000;
+    }
+
+    /* Dark Overlay */
+    .hero-slideshow::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+      z-index: 2;
     }
 
     .slide {
@@ -58,18 +69,37 @@
       background-size: cover;
       background-position: center;
       opacity: 0;
-      transition: opacity 0.8s ease-in-out;
+      transition: opacity 1s ease-in-out;
     }
 
     .slide.active { opacity: 1; }
 
+    /* Hero Curly Text */
+    .hero-text-overlay {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+      text-align: center;
+      width: 90%;
+      color: #fff;
+    }
+
+    .hero-text-overlay h2 {
+      font-family: var(--font-curly);
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-style: italic;
+      line-height: 1.1;
+      text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+    }
+
     /* REVEAL CONTENT SCROLL */
     .main-content {
       position: relative;
-      z-index: 2;
+      z-index: 5; /* Above slideshow and text */
       margin-top: 100vh; 
       background-color: var(--bg-cream);
-      box-shadow: 0 -20px 50px rgba(0,0,0,0.1);
+      box-shadow: 0 -20px 50px rgba(0,0,0,0.2);
     }
 
     .navbar {
@@ -148,7 +178,6 @@
     }
     .gallery img { width: 100%; height: 250px; object-fit: cover; border-radius: 20px; transition: 0.4s; }
 
-    /* REVERTED SUPPORT THE DREAM */
     .support-box {
       background-color: var(--accent-orange);
       color: #fff; padding: 80px 5%; border-radius: 40px;
@@ -188,6 +217,10 @@
     <div class="slide active" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
     <div class="slide" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
     <div class="slide" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
+    
+    <div class="hero-text-overlay">
+      <h2>Sliding into Summer</h2>
+    </div>
   </div>
 
   <nav class="navbar">
@@ -302,7 +335,7 @@
       cursor.style.top = e.clientY + 'px';
     });
 
-    // SLIDESHOW (1.5 seconds)
+    // SLIDESHOW (2 seconds)
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
     function nextSlide() {
@@ -310,7 +343,7 @@
       currentSlide = (currentSlide + 1) % slides.length;
       slides[currentSlide].classList.add('active');
     }
-    setInterval(nextSlide, 1500);
+    setInterval(nextSlide, 2000);
   </script>
 </body>
 </html>

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="favicon/Logo.png">
-<link rel="apple-touch-icon" href="favicon/Logo.png">
+  <link rel="icon" type="image/png" href="favicon/Logo.png">
+  <link rel="apple-touch-icon" href="favicon/Logo.png">
   
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://assets.calendly.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://calendly.com https://marea.ooo; img-src 'self' https://i.imgur.com data:;">
   
@@ -15,6 +15,7 @@
   <style>
     :root {
       --bg-cream: #F9F7F2;
+      --bg-dark-cream: #EFECE5;
       --text-dark: #342923;
       --accent-orange: #DE8A64;
       --accent-brown: #5D473A; 
@@ -43,7 +44,6 @@
       mix-blend-mode: difference; 
     }
 
-    /* THE LANDING SLIDESHOW */
     .hero-slideshow {
       position: fixed;
       top: 0; left: 0;
@@ -53,7 +53,6 @@
       background: #000;
     }
 
-    /* Dark Overlay */
     .hero-slideshow::after {
       content: '';
       position: absolute;
@@ -74,7 +73,6 @@
 
     .slide.active { opacity: 1; }
 
-    /* Hero Curly Text */
     .hero-text-overlay {
       position: absolute;
       top: 50%; left: 50%;
@@ -93,10 +91,9 @@
       text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
     }
 
-    /* REVEAL CONTENT SCROLL */
     .main-content {
       position: relative;
-      z-index: 5; /* Above slideshow and text */
+      z-index: 5;
       margin-top: 100vh; 
       background-color: var(--bg-cream);
       box-shadow: 0 -20px 50px rgba(0,0,0,0.2);
@@ -117,11 +114,47 @@
       font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold;
     }
 
-    header { padding: 250px 5% 120px; text-align: center; }
+    header { padding: 150px 5% 120px; text-align: center; }
     header h1 {
       font-family: var(--font-curly);
       font-size: clamp(3rem, 10vw, 6rem);
       font-style: italic; line-height: 1.1; margin-bottom: 20px;
+    }
+
+    .marquee-bar {
+      background-color: var(--bg-dark-cream);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding: 20px 0;
+      overflow: hidden;
+      display: flex;
+      white-space: nowrap;
+      z-index: 10;
+    }
+
+    .marquee-content {
+      display: flex;
+      animation: scroll-left 25s linear infinite;
+    }
+
+    .marquee-item {
+      font-family: var(--font-curly);
+      font-size: 18px;
+      font-style: italic;
+      color: var(--accent-brown);
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .marquee-item::after {
+      content: "•";
+      margin-left: 40px;
+      opacity: 0.3;
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     .mission-container {
@@ -154,17 +187,6 @@
       display: inline-block; margin-top: 15px; font-size: 10px; 
       letter-spacing: 2px; color: var(--accent-orange); font-weight: bold; text-transform: uppercase;
     }
-
-    .services-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 5%;
-    }
-    .service-card {
-      background: var(--white); border-radius: 30px; overflow: hidden;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.05); transition: 0.3s;
-    }
-    .service-img { height: 250px; background-size: cover; background-position: center; }
-    .service-content { padding: 30px; text-align: center; }
 
     .booking-wrapper {
       background: var(--white); padding: 60px 20px;
@@ -200,54 +222,6 @@
     .footer-contact a { color: #fff; text-decoration: none; font-size: 20px; }
     .footer-socials a { color: var(--accent-orange); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 12px; letter-spacing: 2px; }
 
-/* ... existing styles ... */
-
-  header { padding: 150px 5% 120px; text-align: center; }
-
-  /* MARQUEE STYLES */
-  .marquee-bar {
-    background-color: var(--bg-dark-cream);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    padding: 20px 0;
-    overflow: hidden;
-    display: flex;
-    white-space: nowrap;
-    z-index: 10;
-  }
-
-  .marquee-content {
-    display: flex;
-    animation: scroll-left 25s linear infinite;
-  }
-
-  .marquee-item {
-    font-family: var(--font-curly);
-    font-size: 18px;
-    font-style: italic;
-    color: var(--accent-brown);
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-  }
-
-  .marquee-item::after {
-    content: "•";
-    margin-left: 40px;
-    opacity: 0.3;
-  }
-
-  @keyframes scroll-left {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  /* Keep your media queries at the very bottom of the style tag */
-  @media (max-width: 768px) {
-    .navbar ul { display: none; }
-    /* ... rest of your mobile styles ... */
-  }
-</style>
-    
     @media (max-width: 768px) {
       .navbar ul { display: none; }
       * { cursor: auto !important; }
@@ -282,27 +256,21 @@
   </nav>
 
   <div class="main-content">
-    <div class="main-content">
-
-  <div class="marquee-bar">
-    <div class="marquee-content">
-      <span class="marquee-item">Professional Instruction</span>
-      <span class="marquee-item">Hibiscus Coast</span>
-      <span class="marquee-item">Mt Maunganui</span>
-      <span class="marquee-item">Flatland & Wave</span>
-      <span class="marquee-item">All Ages Welcome</span>
-      <span class="marquee-item">Professional Instruction</span>
-      <span class="marquee-item">Hibiscus Coast</span>
-      <span class="marquee-item">Mt Maunganui</span>
-      <span class="marquee-item">Flatland & Wave</span>
-      <span class="marquee-item">All Ages Welcome</span>
+    <div class="marquee-bar">
+      <div class="marquee-content">
+        <span class="marquee-item">Professional Instruction</span>
+        <span class="marquee-item">Hibiscus Coast</span>
+        <span class="marquee-item">Mt Maunganui</span>
+        <span class="marquee-item">Flatland & Wave</span>
+        <span class="marquee-item">All Ages Welcome</span>
+        <span class="marquee-item">Professional Instruction</span>
+        <span class="marquee-item">Hibiscus Coast</span>
+        <span class="marquee-item">Mt Maunganui</span>
+        <span class="marquee-item">Flatland & Wave</span>
+        <span class="marquee-item">All Ages Welcome</span>
+      </div>
     </div>
-  </div>
 
-  <header>
-    <p style="letter-spacing: 5px; font-size: 10px; opacity: 0.6; margin-bottom: 10px;">HIBISCUS COAST • MT MAUNGANUI</p>
-    <h1>Learn to Skimboard</h1>
-  </header>
     <header>
       <p style="letter-spacing: 5px; font-size: 10px; opacity: 0.6; margin-bottom: 10px;">HIBISCUS COAST • MT MAUNGANUI</p>
       <h1>Learn to Skimboard</h1>
@@ -397,16 +365,13 @@
   </div>
 
   <script>
-  // CURSOR SELECTION
   const cursor = document.getElementById('cursor');
   
-  // TRACK MOUSE MOVEMENT
   document.addEventListener('mousemove', e => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
   });
 
-  // SLIDESHOW LOGIC (2 seconds)
   let currentSlide = 0;
   const slides = document.querySelectorAll('.slide');
   function nextSlide() {
@@ -415,23 +380,20 @@
     currentSlide = (currentSlide + 1) % slides.length;
     slides[currentSlide].classList.add('active');
   }
-  setInterval(nextSlide, 1500);
+  setInterval(nextSlide, 2000);
 
-  // ENHANCED CURSOR HOVER LOGIC (Fixed for new layout)
-  // This listens for mouseover on the entire document and checks the target
+  window.addEventListener('scroll', () => {
+    const heroText = document.querySelector('.hero-text-overlay');
+    if (heroText) {
+      const scrollValue = window.scrollY;
+      let opacity = 1 - (scrollValue / 500);
+      heroText.style.opacity = opacity >= 0 ? opacity : 0;
+    }
+  });
+
   document.addEventListener('mouseover', (e) => {
     const target = e.target;
-    
-    // List of tags or classes that should trigger the cursor enlargement
-    const isHoverable = target.closest('a') || 
-                        target.closest('button') || 
-                        target.closest('.service-card') || 
-                        target.closest('.location-card') || 
-                        target.closest('.mission-card') || 
-                        target.closest('summary') ||
-                        target.closest('img') ||
-                        target.closest('h1') ||
-                        target.closest('h2');
+    const isHoverable = target.closest('a') || target.closest('button') || target.closest('.location-card') || target.closest('.mission-card') || target.closest('summary') || target.closest('img') || target.closest('h1') || target.closest('h2');
 
     if (isHoverable) {
       cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
@@ -439,13 +401,11 @@
     }
   });
 
-  document.addEventListener('mouseout', (e) => {
-    // Reset when leaving a hoverable element
+  document.addEventListener('mouseout', () => {
     cursor.style.transform = 'translate(-50%, -50%) scale(1)';
     cursor.style.backgroundColor = 'rgba(222, 138, 100, 0.3)'; 
   });
 
-  // SPECIAL CASE FOR SUPPORT BOX (White cursor on orange background)
   const supportBox = document.getElementById('support');
   if (supportBox) {
     supportBox.addEventListener('mouseenter', () => {

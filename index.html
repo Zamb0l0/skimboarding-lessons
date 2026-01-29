@@ -27,6 +27,7 @@
       line-height: 1.6;
     }
 
+    /* --- INVERTING ORANGE CURSOR --- */
     #cursor {
       width: 25px; height: 25px;
       border: 2px solid #DE8A64; 
@@ -38,6 +39,7 @@
       mix-blend-mode: difference; 
     }
 
+    /* --- NAVBAR --- */
     .navbar {
       position: fixed; top: 25px; left: 50%; transform: translateX(-50%);
       background-color: rgba(52, 41, 35, 0.9);
@@ -53,6 +55,7 @@
       font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold;
     }
 
+    /* --- HEADER --- */
     header { padding: 250px 5% 120px; text-align: center; }
     header h1 {
       font-family: var(--font-curly);
@@ -60,6 +63,7 @@
       font-style: italic; line-height: 1.1; margin-bottom: 20px;
     }
 
+    /* --- MISSION BOXES --- */
     .mission-container {
       max-width: 1100px; margin: -60px auto 60px;
       display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -74,8 +78,11 @@
     .mission-card h4 { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-teal); margin-bottom: 15px; }
     .mission-card p { font-size: 15px; font-weight: bold; }
 
-    .section-title { font-family: var(--font-curly); font-size: 42px; font-style: italic; margin-bottom: 50px; text-align: center; }
-    
+    /* --- LOCATIONS & SERVICES --- */
+    .section-title {
+      font-family: var(--font-curly); font-size: 42px; 
+      font-style: italic; margin-bottom: 50px; text-align: center;
+    }
     .locations-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px; max-width: 1000px; margin: 0 auto 80px; padding: 0 5%;
@@ -98,6 +105,7 @@
     .service-img { height: 250px; background-size: cover; background-position: center; }
     .service-content { padding: 30px; text-align: center; }
 
+    /* --- CALENDLY WRAPPER --- */
     .booking-wrapper {
       background: var(--white); padding: 60px 20px;
       border-radius: 30px; max-width: 1000px; margin: 80px auto;
@@ -113,6 +121,7 @@
       transition: 0.4s; filter: grayscale(20%);
     }
 
+    /* --- SUPPORT THE DREAM --- */
     .support-box {
       background-color: var(--accent-orange);
       color: #fff; padding: 80px 5%; border-radius: 40px;
@@ -127,6 +136,7 @@
       font-size: 14px; display: inline-block; transition: 0.3s;
     }
 
+    /* --- FOOTER --- */
     footer {
       padding: 100px 50px; background: var(--text-dark); color: #fff;
       text-align: center; border-radius: 50px 50px 0 0; margin-top: 100px;
@@ -232,7 +242,7 @@
       
       <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR_USERNAME/skim-session" style="min-width:320px;height:700px;"></div>
       <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-    </div>
+      </div>
   </section>
 
   <section id="gallery" style="padding: 80px 0;">

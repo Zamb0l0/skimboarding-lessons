@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Skim Lessons NZ | Professional Instruction</title>
   
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -121,10 +121,11 @@
       font-style: italic; line-height: 1.1; margin-bottom: 20px;
     }
 
+    /* THINNER & FASTER MARQUEE STYLES */
     .marquee-bar {
       background-color: var(--bg-dark-cream);
       border-bottom: 1px solid rgba(0,0,0,0.05);
-      padding: 20px 0;
+      padding: 10px 0; /* Thinner bar height */
       overflow: hidden;
       display: flex;
       white-space: nowrap;
@@ -133,22 +134,23 @@
 
     .marquee-content {
       display: flex;
-      animation: scroll-left 25s linear infinite;
+      animation: scroll-left 12s linear infinite; /* Faster speed */
     }
 
     .marquee-item {
       font-family: var(--font-curly);
-      font-size: 18px;
+      font-size: 15px; /* Slightly smaller for elegance */
       font-style: italic;
+      font-weight: 400; /* Thinner font weight */
       color: var(--accent-brown);
-      padding: 0 20px;
+      padding: 0 30px;
       display: flex;
       align-items: center;
     }
 
     .marquee-item::after {
       content: "•";
-      margin-left: 40px;
+      margin-left: 60px;
       opacity: 0.3;
     }
 
@@ -258,7 +260,7 @@
 
   <div class="main-content">
     <div class="marquee-bar">
-      <div class="marquee-content" style="font-weight: 400;">
+      <div class="marquee-content">
         <span class="marquee-item">Professional Instruction</span>
         <span class="marquee-item">Hibiscus Coast</span>
         <span class="marquee-item">Mt Maunganui</span>

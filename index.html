@@ -121,11 +121,11 @@
       font-style: italic; line-height: 1.1; margin-bottom: 20px;
     }
 
-    /* THINNER & FASTER MARQUEE STYLES */
+    /* TALL, THIN, FAST & SEAMLESS MARQUEE */
     .marquee-bar {
       background-color: var(--bg-dark-cream);
       border-bottom: 1px solid rgba(0,0,0,0.05);
-      padding: 10px 0; /* Thinner bar height */
+      padding: 12px 0;
       overflow: hidden;
       display: flex;
       white-space: nowrap;
@@ -134,24 +134,29 @@
 
     .marquee-content {
       display: flex;
-      animation: scroll-left 12s linear infinite; /* Faster speed */
+      /* Adjusted speed to 15s for a smooth but fast flow */
+      animation: scroll-left 15s linear infinite;
     }
 
     .marquee-item {
-      font-family: var(--font-curly);
-      font-size: 15px; /* Slightly smaller for elegance */
-      font-style: italic;
-      font-weight: 400; /* Thinner font weight */
+      font-family: var(--font-main);
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
       color: var(--accent-brown);
-      padding: 0 30px;
+      padding: 0 15px; /* Closer word spacing */
       display: flex;
       align-items: center;
+      /* Stretching the font vertically */
+      transform: scaleY(1.4);
     }
 
     .marquee-item::after {
-      content: "•";
-      margin-left: 60px;
-      opacity: 0.3;
+      content: "|";
+      margin-left: 30px;
+      opacity: 0.4;
+      font-weight: normal;
     }
 
     @keyframes scroll-left {

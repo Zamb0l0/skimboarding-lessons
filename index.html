@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="favicon/Logo.png">
-<link rel="apple-touch-icon" href="favicon/Logo.png">
+  <link rel="icon" type="image/png" href="favicon/Logo.png">
+  <link rel="apple-touch-icon" href="favicon/Logo.png">
   
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://assets.calendly.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://calendly.com https://marea.ooo; img-src 'self' https://i.imgur.com data:;">
   
@@ -30,6 +30,7 @@
       background-color: var(--bg-cream);
       color: var(--text-dark);
       line-height: 1.6;
+      overflow-x: hidden; /* Prevents side-scrolling from animations */
     }
 
     #cursor {
@@ -51,22 +52,45 @@
       z-index: 1000; width: 90%; max-width: 1100px;
       backdrop-filter: blur(10px);
     }
-    .navbar img { height: 200px; width: auto; }
+    .navbar img { height: 100px; width: auto; }
     .navbar ul { display: flex; gap: 2.5rem; list-style: none; }
     .navbar ul li a {
       text-decoration: none; color: var(--accent-orange);
       font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold;
     }
 
-    header { padding: 250px 5% 120px; text-align: center; }
+    header { padding: 250px 5% 60px; text-align: center; }
     header h1 {
       font-family: var(--font-curly);
       font-size: clamp(3rem, 10vw, 6rem);
       font-style: italic; line-height: 1.1; margin-bottom: 20px;
     }
 
+    /* --- NEW MARQUEE STYLE --- */
+    .marquee {
+      background: var(--accent-brown);
+      color: var(--white);
+      padding: 20px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      margin-bottom: 100px;
+    }
+    .marquee-content {
+      display: inline-block;
+      animation: marquee-fade 25s linear infinite;
+      font-size: 14px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    @keyframes marquee-fade {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
     .mission-container {
-      max-width: 1100px; margin: -60px auto 60px;
+      max-width: 1100px; margin: 0 auto 60px;
       display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px; padding: 0 5%; position: relative; z-index: 10;
     }
@@ -77,8 +101,6 @@
       transition: 0.3s ease;
     }
     .mission-card:hover { transform: translateY(-10px); }
-    .mission-card h4 { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-brown); margin-bottom: 15px; }
-    .mission-card p { font-size: 15px; font-weight: bold; }
 
     .section-title { font-family: var(--font-curly); font-size: 42px; font-style: italic; margin-bottom: 50px; text-align: center; }
     
@@ -86,72 +108,60 @@
       display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 30px; max-width: 1100px; margin: 0 auto 80px; padding: 0 5%;
     }
-    .location-card {
-      background: #fff; border-radius: 30px; border: 1px solid rgba(0,0,0,0.03); 
-      overflow: hidden; transition: 0.3s;
-    }
-    .location-card summary {
-      padding: 40px; list-style: none; cursor: pointer; text-align: center;
-    }
-    .location-card summary h3 { margin-bottom: 10px; }
-    .location-card summary .view-map { 
-      display: inline-block; margin-top: 15px; font-size: 10px; 
-      letter-spacing: 2px; color: var(--accent-orange); font-weight: bold; text-transform: uppercase;
-    }
-    .location-card[open] { border-color: var(--accent-orange); }
-    .map-content { padding: 0 20px 20px; text-align: center; animation: slideDown 0.4s ease-out; }
-    .map-img { width: 100%; height: 250px; object-fit: cover; border-radius: 20px; border: 1px solid #eee; }
-
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .location-card { background: #fff; border-radius: 30px; overflow: hidden; transition: 0.3s; }
+    .location-card summary { padding: 40px; list-style: none; cursor: pointer; text-align: center; }
+    .map-img { width: 100%; height: 250px; object-fit: cover; border-radius: 20px; }
 
     .services-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 5%;
     }
-    .service-card {
-      background: var(--white); border-radius: 30px; overflow: hidden;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.05); transition: 0.3s;
-    }
-    .service-card:hover { transform: translateY(-10px); }
+    .service-card { background: var(--white); border-radius: 30px; overflow: hidden; transition: 0.3s; }
     .service-img { height: 250px; background-size: cover; background-position: center; }
-    .service-content { padding: 30px; text-align: center; }
 
     .shop-container {
       max-width: 1000px; margin: 80px auto; padding: 0 5%;
       display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
     }
-    .shop-card {
-      background: var(--white); padding: 50px 30px; border-radius: 40px;
-      text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-      border: 1px solid rgba(0,0,0,0.05); transition: 0.3s;
-    }
-    .shop-card:hover { transform: translateY(-5px); border-color: var(--accent-orange); }
-    .shop-card h3 { font-family: var(--font-curly); font-size: 28px; margin-bottom: 10px; font-style: italic; }
-    .shop-card p { font-size: 14px; margin-bottom: 25px; opacity: 0.8; }
+    .shop-card { background: var(--white); padding: 50px 30px; border-radius: 40px; text-align: center; transition: 0.3s; }
     .shop-btn {
       display: inline-block; padding: 15px 30px; border-radius: 50px;
       background: var(--accent-brown); color: #fff; text-decoration: none;
       font-size: 11px; letter-spacing: 2px; font-weight: bold; text-transform: uppercase;
-      transition: background 0.3s;
     }
-    .shop-btn:hover { background: var(--accent-orange); }
 
     .booking-wrapper {
       background: var(--white); padding: 60px 20px;
       border-radius: 30px; max-width: 1000px; margin: 80px auto;
-      border: 1px solid rgba(0,0,0,0.05); text-align: center;
+      text-align: center;
     }
 
-    .gallery {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 15px; padding: 0 5%; max-width: 1200px; margin: 0 auto;
+    /* --- NEW INFINITE GALLERY STYLE --- */
+    .infinite-gallery {
+      overflow: hidden;
+      padding: 60px 0;
+      background: var(--bg-cream);
+      width: 100vw;
+      position: relative;
     }
-    .gallery img {
-      width: 100%; height: 250px; object-fit: cover; border-radius: 20px;
-      transition: 0.4s; filter: grayscale(20%);
+    .gallery-track {
+      display: flex;
+      width: max-content;
+      animation: gallery-scroll 40s linear infinite;
+    }
+    .gallery-track img {
+      width: 350px;
+      height: 450px;
+      object-fit: cover;
+      margin-right: 20px;
+      border-radius: 25px;
+      filter: grayscale(10%);
+      transition: 0.5s;
+    }
+    .gallery-track img:hover { filter: grayscale(0%); transform: scale(1.02); }
+    @keyframes gallery-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
     }
 
     .support-box {
@@ -159,31 +169,19 @@
       color: #fff; padding: 80px 5%; border-radius: 40px;
       max-width: 1100px; margin: 80px auto; text-align: center;
     }
-    .support-box h2 { font-family: var(--font-curly); font-size: 50px; font-style: italic; margin-bottom: 20px; }
-    .support-box p { max-width: 700px; margin: 0 auto 40px; font-size: 18px; line-height: 1.6; }
-    .donate-btn {
-      background-color: #fff; color: var(--accent-orange);
-      padding: 20px 50px; border-radius: 100px; text-decoration: none;
-      font-weight: bold; letter-spacing: 2px; text-transform: uppercase;
-      font-size: 14px; display: inline-block; transition: 0.3s;
-    }
 
     footer {
       padding: 100px 50px; background: var(--text-dark); color: #fff;
-      text-align: center; border-radius: 50px 50px 0 0; margin-top: 100px;
+      text-align: center; border-radius: 50px 50px 0 0;
     }
-    .footer-contact { margin: 30px 0; display: flex; flex-direction: column; gap: 10px; }
-    .footer-contact a { color: #fff; text-decoration: none; font-size: 20px; }
     .footer-socials a { color: var(--accent-orange); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 12px; letter-spacing: 2px; }
 
     @media (max-width: 768px) {
       .navbar ul { display: none; }
-      * { cursor: auto !important; }
       #cursor { display: none; }
+      * { cursor: auto !important; }
       .navbar { height: 90px; }
       .navbar img { height: 60px; }
-      .mission-container { margin-top: -30px; }
-      .support-box h2 { font-size: 35px; }
       .shop-container { grid-template-columns: 1fr; }
     }
   </style>
@@ -207,6 +205,13 @@
     <h1>Learn to Skimboard</h1>
   </header>
 
+  <div class="marquee">
+    <div class="marquee-content">
+      SKIM LESSONS NZ • BOOK A SESSION • OREWA BEACH • MT MAUNGANUI • FLATLAND • WAVE RIDING • SLIDE INTO SUMMER • 
+      SKIM LESSONS NZ • BOOK A SESSION • OREWA BEACH • MT MAUNGANUI • FLATLAND • WAVE RIDING • SLIDE INTO SUMMER • 
+    </div>
+  </div>
+
   <section class="mission-container">
     <div class="mission-card">
       <h4>Together We Can Grow</h4>
@@ -225,23 +230,15 @@
   <section id="locations" style="padding: 40px 0;">
     <h2 class="section-title">Where We Slide</h2>
     <div class="locations-grid">
-      
       <details class="location-card">
         <summary>
           <h3>Hibiscus Coast</h3>
           <p>Orewa and Red Beach: the long, shallow flats.</p>
-          <span class="view-map">↓ View Map & Live Tides</span>
+          <span style="color:var(--accent-orange); font-size:10px; font-weight:bold;">↓ VIEW MAP & TIDES</span>
         </summary>
-        <div class="map-content">
-          <img src="https://i.imgur.com/8N69yXp.png" class="map-img" alt="Map of Orewa">
-          <div class="tide-box" style="margin-top: 25px; padding: 15px; background: #1a1a1a; border-radius: 20px; overflow: hidden;">
-            <h4 style="font-size: 10px; letter-spacing: 2px; color: #fff; margin-bottom: 15px; text-transform: uppercase; opacity: 0.6;">Live Orewa Tide Chart</h4>
-            <iframe src="https://marea.ooo/en/widget/-36.6202812/174.72140538254604?padding=m&components=text%2Cchart&theme=dark"
-                    style="background-color: transparent; border: none;"
-                    width="100%"
-                    height="400px"></iframe>
-            <a href="https://www.metservice.com/marine/regions/east-auckland/tides/locations/weiti-river-entrance" target="_blank" style="color: var(--accent-orange); font-size: 10px; text-decoration: none; letter-spacing: 1px; margin-top: 10px; display: block;">Open MetService Full Forecast →</a>
-          </div>
+        <div style="padding: 20px;">
+          <img src="https://i.imgur.com/8N69yXp.png" class="map-img" alt="Map">
+          <iframe src="https://marea.ooo/en/widget/-36.6202812/174.72140538254604?padding=m&components=text%2Cchart&theme=dark" width="100%" height="400px" style="border:none; border-radius:20px; margin-top:20px;"></iframe>
         </div>
       </details>
 
@@ -249,21 +246,13 @@
         <summary>
           <h3>Mt Maunganui</h3>
           <p>Main Beach or Tay Street coastal sliding.</p>
-          <span class="view-map">↓ View Map & Live Tides</span>
+          <span style="color:var(--accent-orange); font-size:10px; font-weight:bold;">↓ VIEW MAP & TIDES</span>
         </summary>
-        <div class="map-content">
-          <img src="https://i.imgur.com/8N69yXp.png" class="map-img" alt="Map of Mt Maunganui">
-          <div class="tide-box" style="margin-top: 25px; padding: 15px; background: #1a1a1a; border-radius: 20px; overflow: hidden;">
-            <h4 style="font-size: 10px; letter-spacing: 2px; color: #fff; margin-bottom: 15px; text-transform: uppercase; opacity: 0.6;">Live Mount Tide Chart</h4>
-            <iframe src="https://marea.ooo/en/widget/GESLA3%3A2d3d38c8a5?padding=m&components=text%2Cchart&theme=dark"
-                    style="background-color: transparent; border: none;"
-                    width="100%"
-                    height="400px"></iframe>
-            <a href="https://www.metservice.com/marine/regions/bay-of-plenty/tides/locations/tauranga" target="_blank" style="color: var(--accent-orange); font-size: 10px; text-decoration: none; letter-spacing: 1px; margin-top: 10px; display: block;">Open MetService Full Forecast →</a>
-          </div>
+        <div style="padding: 20px;">
+          <img src="https://i.imgur.com/8N69yXp.png" class="map-img" alt="Map">
+          <iframe src="https://marea.ooo/en/widget/GESLA3%3A2d3d38c8a5?padding=m&components=text%2Cchart&theme=dark" width="100%" height="400px" style="border:none; border-radius:20px; margin-top:20px;"></iframe>
         </div>
       </details>
-
     </div>
   </section>
 
@@ -272,23 +261,23 @@
     <div class="services-grid">
       <div class="service-card">
         <div class="service-img" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
-        <div class="service-content">
+        <div style="padding: 30px; text-align: center;">
           <h3>Private Lessons</h3>
-          <p>1-on-1 coaching tailored to your skill level. From first slide to wave riding.</p>
+          <p>Tailored 1-on-1 coaching.</p>
         </div>
       </div>
       <div class="service-card">
         <div class="service-img" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
-        <div class="service-content">
+        <div style="padding: 30px; text-align: center;">
           <h3>Group Sessions</h3>
-          <p>Perfect for friends or family. Learn the basics together in a fun environment.</p>
+          <p>Learn the basics with friends.</p>
         </div>
       </div>
       <div class="service-card">
         <div class="service-img" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
-        <div class="service-content">
+        <div style="padding: 30px; text-align: center;">
           <h3>Video Analysis</h3>
-          <p>Advanced riders: we film your session and break down your technique.</p>
+          <p>Break down your technique.</p>
         </div>
       </div>
     </div>
@@ -299,32 +288,32 @@
     <div class="shop-container">
       <div class="shop-card">
         <h3>Wave Skimboards</h3>
-        <p>Looking to hit the shorebreak? Check out the latest high-performance foam and carbon boards at OXS.</p>
-        <a href="https://oxsskimboards.com/" target="_blank" class="shop-btn">Shop Wave Boards</a>
+        <p>Check out the latest boards at OXS.</p>
+        <a href="https://oxsskimboards.com/" target="_blank" class="shop-btn">Shop Wave</a>
       </div>
       <div class="shop-card">
         <h3>Flatland Boards</h3>
-        <p>Best for the shallow flats of the Hibiscus Coast. Grab a durable wood or composite board for long slides.</p>
-        <a href="https://oxsskimboards.com/" target="_blank" class="shop-btn">Shop Flatland Boards</a>
+        <p>Grab a durable wood or composite board.</p>
+        <a href="https://oxsskimboards.com/" target="_blank" class="shop-btn">Shop Flatland</a>
       </div>
     </div>
   </section>
 
   <section id="lessons" style="padding: 0 5%;">
     <div class="booking-wrapper">
-      <h2 class="section-title" style="margin-bottom: 10px;">Grab a Spot</h2>
-      <p style="margin-bottom: 30px; opacity: 0.7; max-width: 600px; margin-left: auto; margin-right: auto;">
-        Check the calendar for upcoming sessions. I'll mark dates with the best tides and conditions. 
-        <strong>See you at the beach!</strong>
-      </p>
+      <h2 class="section-title">Grab a Spot</h2>
       <div class="calendly-inline-widget" data-url="https://calendly.com/nzskimmlessons/learn-to-skim" style="min-width:320px;height:700px;"></div>
       <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     </div>
   </section>
 
-  <section id="gallery" style="padding: 80px 0;">
+  <section id="gallery" class="infinite-gallery">
     <h2 class="section-title">Life on the Shore</h2>
-    <div class="gallery">
+    <div class="gallery-track">
+      <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 1">
+      <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 2">
+      <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 3">
+      <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 4">
       <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 1">
       <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 2">
       <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 3">
@@ -335,13 +324,12 @@
   <section id="support" style="padding: 0 5%;">
     <div class="support-box">
       <h2>Support the Dream!</h2>
-      <p>My goal is to grow the NZ skimboarding community. To keep the stoke accessible for everyone, I offer a "pay what you want" model for my coaching. Your support helps me keep this idea running and gets more boards under feet.</p>
+      <p>Your support helps me keep this idea running and gets more boards under feet.</p>
       <a href="#" class="donate-btn">DONATE & SUPPORT</a>
     </div>
   </section>
 
   <footer id="footer">
-    <p style="font-size: 10px; letter-spacing: 3px; opacity: 0.7;">GET IN TOUCH</p>
     <div class="footer-contact">
       <a href="tel:0211411796">021 141 1796</a>
       <a href="mailto:nzskimmlessons@gmail.com">nzskimmlessons@gmail.com</a>
@@ -369,16 +357,6 @@
         cursor.style.transform = 'translate(-50%, -50%) scale(1)';
         cursor.style.backgroundColor = 'rgba(222, 138, 100, 0.3)'; 
       });
-    });
-
-    const supportBox = document.getElementById('support');
-    supportBox.addEventListener('mouseenter', () => {
-      cursor.style.mixBlendMode = 'normal';
-      cursor.style.borderColor = '#ffffff';
-    });
-    supportBox.addEventListener('mouseleave', () => {
-      cursor.style.mixBlendMode = 'difference';
-      cursor.style.borderColor = '#DE8A64';
     });
   </script>
 </body>

@@ -46,7 +46,7 @@
       z-index: 1000; width: 90%; max-width: 1100px;
       backdrop-filter: blur(10px);
     }
-    .navbar img { height: 300px; width: auto; } /* Fixed height from 400px */
+    .navbar img { height: 100px; width: auto; }
     .navbar ul { display: flex; gap: 2.5rem; list-style: none; }
     .navbar ul li a {
       text-decoration: none; color: var(--accent-orange);
@@ -77,16 +77,32 @@
 
     .section-title { font-family: var(--font-curly); font-size: 42px; font-style: italic; margin-bottom: 50px; text-align: center; }
     
+    /* --- LOCATIONS DROP DOWN --- */
     .locations-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px; max-width: 1000px; margin: 0 auto 80px; padding: 0 5%;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px; max-width: 1100px; margin: 0 auto 80px; padding: 0 5%;
     }
     .location-card {
-      text-align: center; padding: 40px; background: #fff;
-      border-radius: 30px; border: 1px solid rgba(0,0,0,0.03); transition: 0.3s;
+      background: #fff; border-radius: 30px; border: 1px solid rgba(0,0,0,0.03); 
+      overflow: hidden; transition: 0.3s;
     }
-    .location-card:hover { border-color: var(--accent-orange); transform: translateY(-5px); }
-    
+    .location-card summary {
+      padding: 40px; list-style: none; cursor: pointer; text-align: center;
+    }
+    .location-card summary h3 { margin-bottom: 10px; }
+    .location-card summary .view-map { 
+      display: inline-block; margin-top: 15px; font-size: 10px; 
+      letter-spacing: 2px; color: var(--accent-orange); font-weight: bold; text-transform: uppercase;
+    }
+    .location-card[open] { border-color: var(--accent-orange); }
+    .map-content { padding: 0 20px 20px; text-align: center; animation: slideDown 0.4s ease-out; }
+    .map-img { width: 100%; height: 250px; object-fit: cover; border-radius: 20px; border: 1px solid #eee; }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .services-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 5%;
@@ -184,14 +200,31 @@
   <section id="locations" style="padding: 40px 0;">
     <h2 class="section-title">Where We Slide</h2>
     <div class="locations-grid">
-      <div class="location-card">
-        <h3>Hibiscus Coast</h3>
-        <p>Perfect for beginners. Those long, shallow flats at Orewa and Red Beach are world-class for learning your first slide.</p>
-      </div>
-      <div class="location-card">
-        <h3>Mt Maunganui</h3>
-        <p>The home of NZ summer. We hit the Main Beach or Tay Street depending on the tide for that iconic coastal experience.</p>
-      </div>
+      
+      <details class="location-card">
+        <summary>
+          <h3>Hibiscus Coast</h3>
+          <p>Orewa and Red Beach: the long, shallow flats.</p>
+          <span class="view-map">↓ Click to View Map</span>
+        </summary>
+        <div class="map-content">
+          <img src="https://i.imgur.com/8N69yXp.png" class="map-img" alt="Map of Orewa">
+          <p style="font-size: 13px; margin-top: 15px; opacity: 0.7;">We usually meet at the North end of Orewa beach near the surf club.</p>
+        </div>
+      </details>
+
+      <details class="location-card">
+        <summary>
+          <h3>Mt Maunganui</h3>
+          <p>Main Beach or Tay Street coastal sliding.</p>
+          <span class="view-map">↓ Click to View Map</span>
+        </summary>
+        <div class="map-content">
+          <img src="https://i.imgur.com/8N69yXp.png" class="map-img" alt="Map of Mt Maunganui">
+          <p style="font-size: 13px; margin-top: 15px; opacity: 0.7;">Meet at the Tay Street beach access point 20 mins before the lesson.</p>
+        </div>
+      </details>
+
     </div>
   </section>
 
@@ -273,7 +306,7 @@
       cursor.style.top = e.clientY + 'px';
     });
 
-    document.querySelectorAll('a, .service-card, .location-card, .mission-card, img').forEach(el => {
+    document.querySelectorAll('a, .service-card, .location-card, .mission-card, img, summary').forEach(el => {
       el.addEventListener('mouseenter', () => {
         cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
         cursor.style.backgroundColor = '#DE8A64'; 

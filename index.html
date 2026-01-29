@@ -55,20 +55,34 @@
       font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold;
     }
 
-    /* --- SECTIONS --- */
-    header { padding: 250px 5% 100px; text-align: center; }
+    /* --- HEADER --- */
+    header { padding: 250px 5% 120px; text-align: center; }
     header h1 {
       font-family: var(--font-curly);
       font-size: clamp(3rem, 10vw, 6rem);
       font-style: italic; line-height: 1.1; margin-bottom: 20px;
     }
 
+    /* --- MISSION BOXES --- */
+    .mission-container {
+      max-width: 1100px; margin: -60px auto 60px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px; padding: 0 5%; position: relative; z-index: 10;
+    }
+    .mission-card {
+      background: var(--white); padding: 40px 30px; border-radius: 30px;
+      text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      border-bottom: 3px solid var(--accent-teal); transition: 0.3s ease;
+    }
+    .mission-card:hover { transform: translateY(-10px); }
+    .mission-card h4 { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-teal); margin-bottom: 15px; }
+    .mission-card p { font-size: 15px; font-weight: bold; }
+
+    /* --- LOCATIONS & SERVICES --- */
     .section-title {
       font-family: var(--font-curly); font-size: 42px; 
       font-style: italic; margin-bottom: 50px; text-align: center;
     }
-
-    /* --- LOCATIONS GRID --- */
     .locations-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px; max-width: 1000px; margin: 0 auto 80px; padding: 0 5%;
@@ -78,9 +92,7 @@
       border-radius: 30px; border: 1px solid rgba(0,0,0,0.03); transition: 0.3s;
     }
     .location-card:hover { border-color: var(--accent-orange); transform: translateY(-5px); }
-    .location-card h3 { font-family: var(--font-curly); font-size: 28px; margin-bottom: 10px; }
-
-    /* --- SERVICES GRID --- */
+    
     .services-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 5%;
@@ -112,7 +124,7 @@
     .support-box {
       background-color: var(--accent-orange);
       color: #fff; padding: 80px 5%; border-radius: 40px;
-      max-width: 1100px; margin: 60px auto; text-align: center;
+      max-width: 1100px; margin: 80px auto; text-align: center;
     }
     .support-box h2 { font-family: var(--font-curly); font-size: 50px; font-style: italic; margin-bottom: 20px; }
     .support-box p { max-width: 700px; margin: 0 auto 40px; font-size: 18px; line-height: 1.6; }
@@ -138,6 +150,7 @@
       #cursor { display: none; }
       .navbar { height: 90px; }
       .navbar img { height: 60px; }
+      .mission-container { margin-top: -30px; }
       .support-box h2 { font-size: 35px; }
     }
   </style>
@@ -161,6 +174,21 @@
     <p style="letter-spacing: 5px; font-size: 10px; opacity: 0.6; margin-bottom: 10px;">HIBISCUS COAST • MT MAUNGANUI</p>
     <h1>Learn to Skimboard</h1>
   </header>
+
+  <section class="mission-container">
+    <div class="mission-card">
+      <h4>The Goal</h4>
+      <p>To simply share the fun and grow the level of skimboarding in New Zealand.</p>
+    </div>
+    <div class="mission-card">
+      <h4>Inclusivity</h4>
+      <p>All ages welcome. Whether you're a absolute grom or a seasoned slider.</p>
+    </div>
+    <div class="mission-card">
+      <h4>The Coast</h4>
+      <p>Let's have fun and make the best of what our iconic coastline has to offer.</p>
+    </div>
+  </section>
 
   <section id="locations" style="padding: 40px 0;">
     <h2 class="section-title">Where We Slide</h2>
@@ -249,7 +277,8 @@
       cursor.style.top = e.clientY + 'px';
     });
 
-    document.querySelectorAll('a, .service-card, .location-card, img').forEach(el => {
+    // Hover logic for links and mission cards
+    document.querySelectorAll('a, .service-card, .location-card, .mission-card, img').forEach(el => {
       el.addEventListener('mouseenter', () => {
         cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
         cursor.style.backgroundColor = '#DE8A64'; 

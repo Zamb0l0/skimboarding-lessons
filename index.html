@@ -27,7 +27,6 @@
       line-height: 1.6;
     }
 
-    /* --- CIRCLE CURSOR --- */
     #cursor {
       width: 25px; height: 25px;
       border: 1px solid var(--text-dark);
@@ -37,7 +36,6 @@
       transition: transform 0.1s ease-out;
     }
 
-    /* --- DETACHED NAVBAR --- */
     .navbar {
       position: fixed; top: 25px; left: 50%; transform: translateX(-50%);
       background-color: rgba(52, 41, 35, 0.9);
@@ -53,7 +51,6 @@
       font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold;
     }
 
-    /* --- HERO --- */
     header { padding: 200px 5% 100px; text-align: center; }
     header h1 {
       font-family: var(--font-curly);
@@ -61,11 +58,11 @@
       font-style: italic; line-height: 1.1; margin-bottom: 20px;
     }
 
-    /* --- SERVICES SECTION (Learn Love Skim Style) --- */
     .section-title {
       font-family: var(--font-curly); font-size: 42px; 
       font-style: italic; margin-bottom: 50px; text-align: center;
     }
+
     .services-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 5%;
@@ -79,14 +76,12 @@
     .service-content { padding: 30px; text-align: center; }
     .service-content h3 { font-family: var(--font-curly); margin-bottom: 15px; }
 
-    /* --- BOOKING CARD --- */
     .booking-wrapper {
       background: var(--white); padding: 60px 20px;
       border-radius: 30px; max-width: 1000px; margin: 80px auto;
       border: 1px solid rgba(0,0,0,0.05); text-align: center;
     }
 
-    /* --- GALLERY GRID --- */
     .gallery {
       display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 15px; padding: 0 5%; max-width: 1200px; margin: 0 auto;
@@ -95,15 +90,36 @@
       width: 100%; height: 250px; object-fit: cover; border-radius: 20px;
       transition: 0.4s; filter: grayscale(20%);
     }
-    .gallery img:hover { filter: grayscale(0%); transform: scale(1.02); }
 
+    /* --- ENHANCED FOOTER --- */
     footer {
-      padding: 80px; background: var(--text-dark); color: #fff;
-      text-align: center; border-radius: 50px 50px 0 0; margin-top: 100px;
+      padding: 100px 50px;
+      background: var(--text-dark);
+      color: #fff;
+      text-align: center;
+      border-radius: 50px 50px 0 0;
+      margin-top: 100px;
     }
+    .footer-contact {
+      margin: 30px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-contact a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+    .footer-contact a:hover { color: var(--accent-orange); }
+    .footer-socials a { color: var(--accent-orange); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 12px; letter-spacing: 2px; }
 
     @media (max-width: 768px) {
       .navbar ul { display: none; }
+      * { cursor: auto !important; }
+      #cursor { display: none; }
     }
   </style>
 </head>
@@ -156,8 +172,6 @@
   <section id="lessons" style="padding: 0 5%;">
     <div class="booking-wrapper">
       <h2 class="section-title" style="margin-bottom: 20px;">Book Your Session</h2>
-      <p style="margin-bottom: 40px; opacity: 0.6;">Select a time below to secure your spot.</p>
-      
       <div id="simplybook-widget-container"></div>
     </div>
   </section>
@@ -173,9 +187,19 @@
   </section>
 
   <footer id="footer">
-    <p style="font-size: 10px; letter-spacing: 3px; margin-bottom: 20px;">SKIM LESSONS NZ © 2026</p>
-    <a href="https://instagram.com/devon_matten">INSTAGRAM</a>
-    <a href="#">FACEBOOK</a>
+    <p style="font-size: 10px; letter-spacing: 3px; opacity: 0.7;">GET IN TOUCH</p>
+    
+    <div class="footer-contact">
+      <a href="tel:0211411796">021 141 1796</a>
+      <a href="mailto:devonmatten@gmail.com">devonmatten@gmail.com</a>
+    </div>
+
+    <div class="footer-socials">
+      <a href="https://instagram.com/devon_matten" target="_blank">INSTAGRAM</a>
+      <a href="#">FACEBOOK</a>
+    </div>
+    
+    <p style="font-size: 9px; letter-spacing: 2px; margin-top: 40px; opacity: 0.4;">SKIM LESSONS NZ © 2026</p>
   </footer>
 
   <script src="//widget.simplybook.net/v2/widget/widget.js" type="text/javascript"></script>

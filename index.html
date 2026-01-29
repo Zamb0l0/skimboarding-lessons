@@ -68,6 +68,19 @@
       font-style: italic; margin-bottom: 50px; text-align: center;
     }
 
+    /* --- LOCATIONS GRID --- */
+    .locations-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px; max-width: 1000px; margin: 0 auto 80px; padding: 0 5%;
+    }
+    .location-card {
+      text-align: center; padding: 40px; background: #fff;
+      border-radius: 30px; border: 1px solid rgba(0,0,0,0.03); transition: 0.3s;
+    }
+    .location-card:hover { border-color: var(--accent-orange); transform: translateY(-5px); }
+    .location-card h3 { font-family: var(--font-curly); font-size: 28px; margin-bottom: 10px; }
+
+    /* --- SERVICES GRID --- */
     .services-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 5%;
@@ -79,7 +92,6 @@
     .service-card:hover { transform: translateY(-10px); }
     .service-img { height: 250px; background-size: cover; background-position: center; }
     .service-content { padding: 30px; text-align: center; }
-    .service-content h3 { font-family: var(--font-curly); margin-bottom: 15px; }
 
     .booking-wrapper {
       background: var(--white); padding: 60px 20px;
@@ -96,12 +108,11 @@
       transition: 0.4s; filter: grayscale(20%);
     }
 
-    /* --- SUPPORT THE DREAM SECTION (Now outside the media query!) --- */
+    /* --- SUPPORT THE DREAM --- */
     .support-box {
       background-color: var(--accent-orange);
       color: #fff; padding: 80px 5%; border-radius: 40px;
       max-width: 1100px; margin: 60px auto; text-align: center;
-      box-shadow: 0 20px 40px rgba(222, 138, 100, 0.2);
     }
     .support-box h2 { font-family: var(--font-curly); font-size: 50px; font-style: italic; margin-bottom: 20px; }
     .support-box p { max-width: 700px; margin: 0 auto 40px; font-size: 18px; line-height: 1.6; }
@@ -111,15 +122,14 @@
       font-weight: bold; letter-spacing: 2px; text-transform: uppercase;
       font-size: 14px; display: inline-block; transition: 0.3s;
     }
-    .donate-btn:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(255,255,255,0.3); }
 
-    /* --- CLEAN FOOTER --- */
+    /* --- FOOTER --- */
     footer {
       padding: 100px 50px; background: var(--text-dark); color: #fff;
       text-align: center; border-radius: 50px 50px 0 0; margin-top: 100px;
     }
     .footer-contact { margin: 30px 0; display: flex; flex-direction: column; gap: 10px; }
-    .footer-contact a { color: #fff; text-decoration: none; font-size: 20px; transition: 0.3s; }
+    .footer-contact a { color: #fff; text-decoration: none; font-size: 20px; }
     .footer-socials a { color: var(--accent-orange); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 12px; letter-spacing: 2px; }
 
     @media (max-width: 768px) {
@@ -139,6 +149,7 @@
   <nav class="navbar">
     <img src="Logo.png" alt="Logo">
     <ul>
+      <li><a href="#locations">Locations</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#lessons">Book</a></li>
       <li><a href="#gallery">Gallery</a></li>
@@ -147,9 +158,23 @@
   </nav>
 
   <header>
-    <p style="letter-spacing: 5px; font-size: 10px; opacity: 0.6; margin-bottom: 10px;">AUCKLAND • NEW ZEALAND</p>
+    <p style="letter-spacing: 5px; font-size: 10px; opacity: 0.6; margin-bottom: 10px;">HIBISCUS COAST • MT MAUNGANUI</p>
     <h1>Learn to Skimboard</h1>
   </header>
+
+  <section id="locations" style="padding: 40px 0;">
+    <h2 class="section-title">Where We Slide</h2>
+    <div class="locations-grid">
+      <div class="location-card">
+        <h3>Hibiscus Coast</h3>
+        <p>Perfect for beginners. Those long, shallow flats at Orewa and Red Beach are world-class for learning your first slide.</p>
+      </div>
+      <div class="location-card">
+        <h3>Mt Maunganui</h3>
+        <p>The home of NZ summer. We hit the Main Beach or Tay Street depending on the tide for that iconic coastal experience.</p>
+      </div>
+    </div>
+  </section>
 
   <section id="services" style="padding: 80px 0;">
     <h2 class="section-title">Coaching Services</h2>
@@ -186,7 +211,7 @@
   </section>
 
   <section id="gallery" style="padding: 80px 0;">
-    <h2 class="section-title">Gallery</h2>
+    <h2 class="section-title">Life on the Shore</h2>
     <div class="gallery">
       <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 1">
       <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 2">
@@ -224,8 +249,7 @@
       cursor.style.top = e.clientY + 'px';
     });
 
-    // Hover logic for all links and cards
-    document.querySelectorAll('a, .service-card, img').forEach(el => {
+    document.querySelectorAll('a, .service-card, .location-card, img').forEach(el => {
       el.addEventListener('mouseenter', () => {
         cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
         cursor.style.backgroundColor = '#DE8A64'; 
@@ -236,7 +260,6 @@
       });
     });
 
-    // Specific logic for the Support Box (Inversion fix)
     const supportBox = document.getElementById('support');
     supportBox.addEventListener('mouseenter', () => {
       cursor.style.mixBlendMode = 'normal';
@@ -253,10 +276,7 @@
         "url": "https://wwwskimlessonsnz.simplybook.net",
         "theme": "minimal",
         "theme_settings": {
-          "sb_base_color": "#342923",
-          "body_bg_color": "#ffffff",
-          "dark_font_color": "#342923",
-          "timeline_modern_display": "as_slots"
+          "sb_base_color": "#342923", "body_bg_color": "#ffffff", "dark_font_color": "#342923", "timeline_modern_display": "as_slots"
         },
         "container_id": "simplybook-widget-container"
       });

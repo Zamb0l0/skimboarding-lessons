@@ -328,22 +328,66 @@
   </div>
 
   <script>
-    // CURSOR
-    const cursor = document.getElementById('cursor');
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-    });
+  // CURSOR SELECTION
+  const cursor = document.getElementById('cursor');
+  
+  // TRACK MOUSE MOVEMENT
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
 
-    // SLIDESHOW (2 seconds)
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    function nextSlide() {
-      slides[currentSlide].classList.remove('active');
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].classList.add('active');
+  // SLIDESHOW LOGIC (2 seconds)
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  function nextSlide() {
+    if(slides.length === 0) return;
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+  }
+  setInterval(nextSlide, 2000);
+
+  // ENHANCED CURSOR HOVER LOGIC (Fixed for new layout)
+  // This listens for mouseover on the entire document and checks the target
+  document.addEventListener('mouseover', (e) => {
+    const target = e.target;
+    
+    // List of tags or classes that should trigger the cursor enlargement
+    const isHoverable = target.closest('a') || 
+                        target.closest('button') || 
+                        target.closest('.service-card') || 
+                        target.closest('.location-card') || 
+                        target.closest('.mission-card') || 
+                        target.closest('summary') ||
+                        target.closest('img') ||
+                        target.closest('h1') ||
+                        target.closest('h2');
+
+    if (isHoverable) {
+      cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
+      cursor.style.backgroundColor = '#DE8A64'; 
     }
-    setInterval(nextSlide, 2000);
-  </script>
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    // Reset when leaving a hoverable element
+    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+    cursor.style.backgroundColor = 'rgba(222, 138, 100, 0.3)'; 
+  });
+
+  // SPECIAL CASE FOR SUPPORT BOX (White cursor on orange background)
+  const supportBox = document.getElementById('support');
+  if (supportBox) {
+    supportBox.addEventListener('mouseenter', () => {
+      cursor.style.mixBlendMode = 'normal';
+      cursor.style.borderColor = '#ffffff';
+    });
+    supportBox.addEventListener('mouseleave', () => {
+      cursor.style.mixBlendMode = 'difference';
+      cursor.style.borderColor = '#DE8A64';
+    });
+  }
+</script>
 </body>
 </html>

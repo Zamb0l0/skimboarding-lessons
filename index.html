@@ -200,6 +200,54 @@
     .footer-contact a { color: #fff; text-decoration: none; font-size: 20px; }
     .footer-socials a { color: var(--accent-orange); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 12px; letter-spacing: 2px; }
 
+/* ... existing styles ... */
+
+  header { padding: 150px 5% 120px; text-align: center; }
+
+  /* MARQUEE STYLES */
+  .marquee-bar {
+    background-color: var(--bg-dark-cream);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding: 20px 0;
+    overflow: hidden;
+    display: flex;
+    white-space: nowrap;
+    z-index: 10;
+  }
+
+  .marquee-content {
+    display: flex;
+    animation: scroll-left 25s linear infinite;
+  }
+
+  .marquee-item {
+    font-family: var(--font-curly);
+    font-size: 18px;
+    font-style: italic;
+    color: var(--accent-brown);
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .marquee-item::after {
+    content: "•";
+    margin-left: 40px;
+    opacity: 0.3;
+  }
+
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Keep your media queries at the very bottom of the style tag */
+  @media (max-width: 768px) {
+    .navbar ul { display: none; }
+    /* ... rest of your mobile styles ... */
+  }
+</style>
+    
     @media (max-width: 768px) {
       .navbar ul { display: none; }
       * { cursor: auto !important; }
@@ -234,6 +282,27 @@
   </nav>
 
   <div class="main-content">
+    <div class="main-content">
+
+  <div class="marquee-bar">
+    <div class="marquee-content">
+      <span class="marquee-item">Professional Instruction</span>
+      <span class="marquee-item">Hibiscus Coast</span>
+      <span class="marquee-item">Mt Maunganui</span>
+      <span class="marquee-item">Flatland & Wave</span>
+      <span class="marquee-item">All Ages Welcome</span>
+      <span class="marquee-item">Professional Instruction</span>
+      <span class="marquee-item">Hibiscus Coast</span>
+      <span class="marquee-item">Mt Maunganui</span>
+      <span class="marquee-item">Flatland & Wave</span>
+      <span class="marquee-item">All Ages Welcome</span>
+    </div>
+  </div>
+
+  <header>
+    <p style="letter-spacing: 5px; font-size: 10px; opacity: 0.6; margin-bottom: 10px;">HIBISCUS COAST • MT MAUNGANUI</p>
+    <h1>Learn to Skimboard</h1>
+  </header>
     <header>
       <p style="letter-spacing: 5px; font-size: 10px; opacity: 0.6; margin-bottom: 10px;">HIBISCUS COAST • MT MAUNGANUI</p>
       <h1>Learn to Skimboard</h1>

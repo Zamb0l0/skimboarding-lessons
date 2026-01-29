@@ -12,7 +12,7 @@
       --bg-cream: #F9F7F2;
       --text-dark: #342923;
       --accent-orange: #DE8A64;
-      --accent-brown: #5D473A; /* New Deep Brown Accent */
+      --accent-brown: #5D473A; 
       --white: #ffffff;
       --font-curly: 'Playfair Display', serif;
       --font-main: "Century Gothic", AppleGothic, sans-serif;
@@ -27,7 +27,6 @@
       line-height: 1.6;
     }
 
-    /* --- INVERTING ORANGE CURSOR --- */
     #cursor {
       width: 25px; height: 25px;
       border: 2px solid #DE8A64; 
@@ -39,23 +38,21 @@
       mix-blend-mode: difference; 
     }
 
-    /* --- NAVBAR --- */
     .navbar {
       position: fixed; top: 25px; left: 50%; transform: translateX(-50%);
       background-color: rgba(52, 41, 35, 0.9);
-      padding: 0 2rem; height: 120px; border-radius: 60px;
+      padding: 0 3rem; height: 120px; border-radius: 60px;
       display: flex; align-items: center; justify-content: space-between;
       z-index: 1000; width: 90%; max-width: 1100px;
       backdrop-filter: blur(10px);
     }
-    .navbar img { height: 400px; width: auto; }
-    .navbar ul { display: flex; gap: 2rem; list-style: none; }
+    .navbar img { height: 300px; width: auto; } /* Fixed height from 400px */
+    .navbar ul { display: flex; gap: 2.5rem; list-style: none; }
     .navbar ul li a {
       text-decoration: none; color: var(--accent-orange);
       font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold;
     }
 
-    /* --- HEADER --- */
     header { padding: 250px 5% 120px; text-align: center; }
     header h1 {
       font-family: var(--font-curly);
@@ -63,7 +60,6 @@
       font-style: italic; line-height: 1.1; margin-bottom: 20px;
     }
 
-    /* --- MISSION BOXES --- */
     .mission-container {
       max-width: 1100px; margin: -60px auto 60px;
       display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -72,24 +68,15 @@
     .mission-card {
       background: var(--white); padding: 40px 30px; border-radius: 30px;
       text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-      border-bottom: 3px solid var(--accent-brown); /* Updated to Brown */
+      border-bottom: 3px solid var(--accent-brown);
       transition: 0.3s ease;
     }
     .mission-card:hover { transform: translateY(-10px); }
-    .mission-card h4 { 
-      font-size: 11px; 
-      letter-spacing: 3px; 
-      text-transform: uppercase; 
-      color: var(--accent-brown); /* Updated to Brown */
-      margin-bottom: 15px; 
-    }
+    .mission-card h4 { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-brown); margin-bottom: 15px; }
     .mission-card p { font-size: 15px; font-weight: bold; }
 
-    /* --- LOCATIONS & SERVICES --- */
-    .section-title {
-      font-family: var(--font-curly); font-size: 42px; 
-      font-style: italic; margin-bottom: 50px; text-align: center;
-    }
+    .section-title { font-family: var(--font-curly); font-size: 42px; font-style: italic; margin-bottom: 50px; text-align: center; }
+    
     .locations-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px; max-width: 1000px; margin: 0 auto 80px; padding: 0 5%;
@@ -112,7 +99,6 @@
     .service-img { height: 250px; background-size: cover; background-position: center; }
     .service-content { padding: 30px; text-align: center; }
 
-    /* --- CALENDLY WRAPPER --- */
     .booking-wrapper {
       background: var(--white); padding: 60px 20px;
       border-radius: 30px; max-width: 1000px; margin: 80px auto;
@@ -128,7 +114,6 @@
       transition: 0.4s; filter: grayscale(20%);
     }
 
-    /* --- SUPPORT THE DREAM --- */
     .support-box {
       background-color: var(--accent-orange);
       color: #fff; padding: 80px 5%; border-radius: 40px;
@@ -143,7 +128,6 @@
       font-size: 14px; display: inline-block; transition: 0.3s;
     }
 
-    /* --- FOOTER --- */
     footer {
       padding: 100px 50px; background: var(--text-dark); color: #fff;
       text-align: center; border-radius: 50px 50px 0 0; margin-top: 100px;
@@ -175,7 +159,6 @@
       <li><a href="#lessons">Book</a></li>
       <li><a href="#gallery">Gallery</a></li>
     </ul>
-    <a href="#lessons" style="color: var(--accent-orange); text-decoration: none; font-weight: bold; font-size: 11px; letter-spacing: 2px;">RESERVE</a>
   </nav>
 
   <header>
@@ -244,12 +227,12 @@
       <h2 class="section-title" style="margin-bottom: 10px;">Grab a Spot</h2>
       <p style="margin-bottom: 30px; opacity: 0.7; max-width: 600px; margin-left: auto; margin-right: auto;">
         Check the calendar for upcoming sessions. I'll mark dates with the best tides and conditions. 
-        <strong>See you at the beach!.</strong>
+        <strong>See you at the beach!</strong>
       </p>
       
       <div class="calendly-inline-widget" data-url="https://calendly.com/nzskimmlessons/learn-to-skim" style="min-width:320px;height:700px;"></div>
       <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-      </div>
+    </div>
   </section>
 
   <section id="gallery" style="padding: 80px 0;">

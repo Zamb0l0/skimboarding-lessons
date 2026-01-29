@@ -28,12 +28,22 @@
     }
 
     #cursor {
-      width: 25px; height: 25px;
-      border: 1px solid var(--text-dark);
-      border-radius: 50%;
-      position: fixed; pointer-events: none; z-index: 10000;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s ease-out;
+  width: 25px;
+  height: 25px;
+  /* Use your orange color for the border */
+  border: 2px solid #DE8A64; 
+  /* Add a semi-transparent orange fill */
+  background-color: rgba(222, 138, 100, 0.3); 
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
+  
+  /* THE MAGIC LINE: This inverts colors underneath the circle */
+  mix-blend-mode: difference; 
+}
     }
 
     .navbar {
@@ -218,9 +228,14 @@
       cursor.style.top = e.clientY + 'px';
     });
 
-    document.querySelectorAll('a, .service-card, img').forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.style.transform = 'translate(-50%, -50%) scale(2.5)');
-      el.addEventListener('mouseleave', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
+   el.addEventListener('mouseenter', () => {
+  cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
+  cursor.style.backgroundColor = '#DE8A64'; /* Make it solid orange on hover */
+});
+el.addEventListener('mouseleave', () => {
+  cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+  cursor.style.backgroundColor = 'rgba(222, 138, 100, 0.3)'; /* Back to see-through */
+});
     });
 
     window.onload = function() {

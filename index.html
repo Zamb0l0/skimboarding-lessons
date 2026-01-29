@@ -30,7 +30,6 @@
       background-color: var(--bg-cream);
       color: var(--text-dark);
       line-height: 1.6;
-      overflow-x: hidden; /* Prevents side-scrolling from animations */
     }
 
     #cursor {
@@ -52,45 +51,44 @@
       z-index: 1000; width: 90%; max-width: 1100px;
       backdrop-filter: blur(10px);
     }
-    .navbar img { height: 100px; width: auto; }
+    .navbar img { height: 150px; width: auto; }
     .navbar ul { display: flex; gap: 2.5rem; list-style: none; }
     .navbar ul li a {
       text-decoration: none; color: var(--accent-orange);
       font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold;
     }
 
-    header { padding: 250px 5% 60px; text-align: center; }
+    header { padding: 250px 5% 120px; text-align: center; }
     header h1 {
       font-family: var(--font-curly);
       font-size: clamp(3rem, 10vw, 6rem);
       font-style: italic; line-height: 1.1; margin-bottom: 20px;
     }
 
-    /* --- NEW MARQUEE STYLE --- */
+    /* Marquee */
     .marquee {
-      background: var(--accent-brown);
-      color: var(--white);
-      padding: 20px 0;
+      background: var(--accent-orange);
+      color: white;
+      padding: 15px 0;
       overflow: hidden;
       white-space: nowrap;
-      position: relative;
-      margin-bottom: 100px;
+      margin-bottom: 50px;
     }
     .marquee-content {
       display: inline-block;
-      animation: marquee-fade 25s linear infinite;
-      font-size: 14px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
+      animation: marquee 20s linear infinite;
       font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 14px;
     }
-    @keyframes marquee-fade {
+    @keyframes marquee {
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
     }
 
     .mission-container {
-      max-width: 1100px; margin: 0 auto 60px;
+      max-width: 1100px; margin: -60px auto 60px;
       display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px; padding: 0 5%; position: relative; z-index: 10;
     }
@@ -108,81 +106,63 @@
       display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 30px; max-width: 1100px; margin: 0 auto 80px; padding: 0 5%;
     }
-    .location-card { background: #fff; border-radius: 30px; overflow: hidden; transition: 0.3s; }
-    .location-card summary { padding: 40px; list-style: none; cursor: pointer; text-align: center; }
-    .map-img { width: 100%; height: 250px; object-fit: cover; border-radius: 20px; }
+    .location-card {
+      background: #fff; border-radius: 30px; border: 1px solid rgba(0,0,0,0.03); 
+      overflow: hidden; transition: 0.3s;
+    }
+    .location-card summary {
+      padding: 40px; list-style: none; cursor: pointer; text-align: center;
+    }
 
     .services-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 5%;
     }
-    .service-card { background: var(--white); border-radius: 30px; overflow: hidden; transition: 0.3s; }
+    .service-card {
+      background: var(--white); border-radius: 30px; overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.05); transition: 0.3s;
+    }
     .service-img { height: 250px; background-size: cover; background-position: center; }
 
-    .shop-container {
-      max-width: 1000px; margin: 80px auto; padding: 0 5%;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
+    /* REVERTED: Proper Grid Gallery */
+    .gallery {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 15px; padding: 0 5%; max-width: 1200px; margin: 0 auto;
     }
-    .shop-card { background: var(--white); padding: 50px 30px; border-radius: 40px; text-align: center; transition: 0.3s; }
-    .shop-btn {
-      display: inline-block; padding: 15px 30px; border-radius: 50px;
-      background: var(--accent-brown); color: #fff; text-decoration: none;
-      font-size: 11px; letter-spacing: 2px; font-weight: bold; text-transform: uppercase;
-    }
-
-    .booking-wrapper {
-      background: var(--white); padding: 60px 20px;
-      border-radius: 30px; max-width: 1000px; margin: 80px auto;
-      text-align: center;
+    .gallery img {
+      width: 100%; height: 350px; object-fit: cover; border-radius: 20px;
+      transition: 0.4s;
     }
 
-    /* --- NEW INFINITE GALLERY STYLE --- */
-    .infinite-gallery {
-      overflow: hidden;
-      padding: 60px 0;
-      background: var(--bg-cream);
-      width: 100vw;
-      position: relative;
-    }
-    .gallery-track {
-      display: flex;
-      width: max-content;
-      animation: gallery-scroll 40s linear infinite;
-    }
-    .gallery-track img {
-      width: 350px;
-      height: 450px;
-      object-fit: cover;
-      margin-right: 20px;
-      border-radius: 25px;
-      filter: grayscale(10%);
-      transition: 0.5s;
-    }
-    .gallery-track img:hover { filter: grayscale(0%); transform: scale(1.02); }
-    @keyframes gallery-scroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
+    /* REVERTED: Support the Dream */
     .support-box {
       background-color: var(--accent-orange);
       color: #fff; padding: 80px 5%; border-radius: 40px;
       max-width: 1100px; margin: 80px auto; text-align: center;
     }
+    .support-box h2 { font-family: var(--font-curly); font-size: 50px; font-style: italic; margin-bottom: 20px; }
+    .support-box p { max-width: 700px; margin: 0 auto 40px; font-size: 18px; line-height: 1.6; }
+    .donate-btn {
+      background-color: #fff; color: var(--accent-orange);
+      padding: 20px 50px; border-radius: 100px; text-decoration: none;
+      font-weight: bold; letter-spacing: 2px; text-transform: uppercase;
+      font-size: 14px; display: inline-block; transition: 0.3s;
+    }
 
+    /* REVERTED: Footer Links */
     footer {
       padding: 100px 50px; background: var(--text-dark); color: #fff;
-      text-align: center; border-radius: 50px 50px 0 0;
+      text-align: center; border-radius: 50px 50px 0 0; margin-top: 100px;
     }
+    .footer-contact { margin: 30px 0; display: flex; flex-direction: column; gap: 10px; align-items: center; }
+    .footer-contact a { color: #fff; text-decoration: none; font-size: 20px; display: block; }
     .footer-socials a { color: var(--accent-orange); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 12px; letter-spacing: 2px; }
 
     @media (max-width: 768px) {
       .navbar ul { display: none; }
-      #cursor { display: none; }
       * { cursor: auto !important; }
-      .navbar { height: 90px; }
-      .navbar img { height: 60px; }
-      .shop-container { grid-template-columns: 1fr; }
+      #cursor { display: none; }
+      .navbar img { height: 80px; }
     }
   </style>
 </head>
@@ -207,8 +187,8 @@
 
   <div class="marquee">
     <div class="marquee-content">
-      SKIM LESSONS NZ • BOOK A SESSION • OREWA BEACH • MT MAUNGANUI • FLATLAND • WAVE RIDING • SLIDE INTO SUMMER • 
-      SKIM LESSONS NZ • BOOK A SESSION • OREWA BEACH • MT MAUNGANUI • FLATLAND • WAVE RIDING • SLIDE INTO SUMMER • 
+      SKIM LESSONS NZ • BOOK A SESSION • OREWA • MT MAUNGANUI • FLATLAND • WAVE RIDING • 
+      SKIM LESSONS NZ • BOOK A SESSION • OREWA • MT MAUNGANUI • FLATLAND • WAVE RIDING • 
     </div>
   </div>
 
@@ -234,11 +214,12 @@
         <summary>
           <h3>Hibiscus Coast</h3>
           <p>Orewa and Red Beach: the long, shallow flats.</p>
-          <span style="color:var(--accent-orange); font-size:10px; font-weight:bold;">↓ VIEW MAP & TIDES</span>
+          <span style="color:var(--accent-orange); font-size:10px; font-weight:bold; letter-spacing:2px;">↓ VIEW MAP & LIVE TIDES</span>
         </summary>
-        <div style="padding: 20px;">
-          <img src="https://i.imgur.com/8N69yXp.png" class="map-img" alt="Map">
-          <iframe src="https://marea.ooo/en/widget/-36.6202812/174.72140538254604?padding=m&components=text%2Cchart&theme=dark" width="100%" height="400px" style="border:none; border-radius:20px; margin-top:20px;"></iframe>
+        <div style="padding: 20px; text-align: center;">
+          <img src="https://i.imgur.com/8N69yXp.png" style="width:100%; border-radius:20px;" alt="Map">
+          <iframe src="https://marea.ooo/en/widget/-36.6202812/174.72140538254604?padding=m&components=text%2Cchart&theme=dark"
+                  width="100%" height="450px" style="border:none; border-radius:20px; margin-top:20px; background:#1a1a1a;"></iframe>
         </div>
       </details>
 
@@ -246,74 +227,20 @@
         <summary>
           <h3>Mt Maunganui</h3>
           <p>Main Beach or Tay Street coastal sliding.</p>
-          <span style="color:var(--accent-orange); font-size:10px; font-weight:bold;">↓ VIEW MAP & TIDES</span>
+          <span style="color:var(--accent-orange); font-size:10px; font-weight:bold; letter-spacing:2px;">↓ VIEW MAP & LIVE TIDES</span>
         </summary>
-        <div style="padding: 20px;">
-          <img src="https://i.imgur.com/8N69yXp.png" class="map-img" alt="Map">
-          <iframe src="https://marea.ooo/en/widget/GESLA3%3A2d3d38c8a5?padding=m&components=text%2Cchart&theme=dark" width="100%" height="400px" style="border:none; border-radius:20px; margin-top:20px;"></iframe>
+        <div style="padding: 20px; text-align: center;">
+          <img src="https://i.imgur.com/8N69yXp.png" style="width:100%; border-radius:20px;" alt="Map">
+          <iframe src="https://marea.ooo/en/widget/-37.6406/176.1856?padding=m&components=text%2Cchart&theme=dark"
+                  width="100%" height="450px" style="border:none; border-radius:20px; margin-top:20px; background:#1a1a1a;"></iframe>
         </div>
       </details>
     </div>
   </section>
 
-  <section id="services" style="padding: 80px 0;">
-    <h2 class="section-title">Coaching Services</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-img" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
-        <div style="padding: 30px; text-align: center;">
-          <h3>Private Lessons</h3>
-          <p>Tailored 1-on-1 coaching.</p>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-img" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
-        <div style="padding: 30px; text-align: center;">
-          <h3>Group Sessions</h3>
-          <p>Learn the basics with friends.</p>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-img" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
-        <div style="padding: 30px; text-align: center;">
-          <h3>Video Analysis</h3>
-          <p>Break down your technique.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="gear" style="padding: 60px 0;">
-    <h2 class="section-title">Get The Gear</h2>
-    <div class="shop-container">
-      <div class="shop-card">
-        <h3>Wave Skimboards</h3>
-        <p>Check out the latest boards at OXS.</p>
-        <a href="https://oxsskimboards.com/" target="_blank" class="shop-btn">Shop Wave</a>
-      </div>
-      <div class="shop-card">
-        <h3>Flatland Boards</h3>
-        <p>Grab a durable wood or composite board.</p>
-        <a href="https://oxsskimboards.com/" target="_blank" class="shop-btn">Shop Flatland</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="lessons" style="padding: 0 5%;">
-    <div class="booking-wrapper">
-      <h2 class="section-title">Grab a Spot</h2>
-      <div class="calendly-inline-widget" data-url="https://calendly.com/nzskimmlessons/learn-to-skim" style="min-width:320px;height:700px;"></div>
-      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-    </div>
-  </section>
-
-  <section id="gallery" class="infinite-gallery">
+  <section id="gallery" style="padding: 80px 0;">
     <h2 class="section-title">Life on the Shore</h2>
-    <div class="gallery-track">
-      <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 1">
-      <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 2">
-      <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 3">
-      <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 4">
+    <div class="gallery">
       <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 1">
       <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 2">
       <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 3">
@@ -324,12 +251,13 @@
   <section id="support" style="padding: 0 5%;">
     <div class="support-box">
       <h2>Support the Dream!</h2>
-      <p>Your support helps me keep this idea running and gets more boards under feet.</p>
+      <p>My goal is to grow the NZ skimboarding community. To keep the stoke accessible for everyone, I offer a "pay what you want" model for my coaching. Your support helps me keep this idea running and gets more boards under feet.</p>
       <a href="#" class="donate-btn">DONATE & SUPPORT</a>
     </div>
   </section>
 
   <footer id="footer">
+    <p style="font-size: 10px; letter-spacing: 3px; opacity: 0.7;">GET IN TOUCH</p>
     <div class="footer-contact">
       <a href="tel:0211411796">021 141 1796</a>
       <a href="mailto:nzskimmlessons@gmail.com">nzskimmlessons@gmail.com</a>
@@ -338,7 +266,6 @@
       <a href="https://instagram.com/devon_matten" target="_blank">INSTAGRAM</a>
       <a href="https://www.facebook.com/groups/2032375760552448" target="_blank">FACEBOOK</a>
     </div>
-    <p style="font-size: 9px; letter-spacing: 2px; margin-top: 40px; opacity: 0.4;">SKIM LESSONS NZ © 2026</p>
   </footer>
 
   <script>
@@ -346,17 +273,6 @@
     document.addEventListener('mousemove', e => {
       cursor.style.left = e.clientX + 'px';
       cursor.style.top = e.clientY + 'px';
-    });
-
-    document.querySelectorAll('a, .service-card, .location-card, .mission-card, .shop-card, img, summary').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
-        cursor.style.backgroundColor = '#DE8A64'; 
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-        cursor.style.backgroundColor = 'rgba(222, 138, 100, 0.3)'; 
-      });
     });
   </script>
 </body>

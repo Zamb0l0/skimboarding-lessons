@@ -3,164 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Skim Lessons NZ | Professional Skimboarding Instruction</title>
+  <title>Skim Lessons NZ | Learn Love Skim</title>
   
   <style>
-    /* --- DESIGN SYSTEM --- */
     :root {
-      --bg-cream: #F9F7F2;
-      --text-dark: #342923;
+      --bg-sunny: #FDFBF0; /* Warmer, sunnier cream */
+      --text-main: #2D2926;
+      --accent-yellow: #F4D03F; /* That classic skim vibe */
       --accent-orange: #DE8A64;
-      --accent-teal: #64DED0;
       --white: #ffffff;
-      /* Century Gothic is the star here */
       --font-main: "Century Gothic", "CenturyGothic", AppleGothic, sans-serif;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; cursor: none; } /* Cursor is hidden to use the custom circle */
+    * { box-sizing: border-box; margin: 0; padding: 0; cursor: none; }
     
     body {
       font-family: var(--font-main);
-      background-color: var(--bg-cream);
-      color: var(--text-dark);
+      background-color: var(--bg-sunny);
+      color: var(--text-main);
       line-height: 1.6;
-      overflow-x: hidden;
     }
 
-    /* --- GOOD LEMON STYLE CIRCLE CURSOR --- */
+    /* --- CURSOR --- */
     #cursor {
-      width: 25px;
-      height: 25px;
-      border: 1.5px solid var(--text-dark);
+      width: 20px; height: 20px;
+      border: 2px solid var(--text-main);
       border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 10000;
-      transition: transform 0.15s ease-out;
+      position: fixed; pointer-events: none; z-index: 10000;
       transform: translate(-50%, -50%);
+      transition: transform 0.1s ease-out;
     }
 
-    /* --- DETACHED NAV BAR --- */
+    /* --- THE FLOATING NAV (Good Lemon Style) --- */
     .navbar {
-      position: fixed;
-      top: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: rgba(52, 41, 35, 0.9);
-      padding: 0 2.5rem;
-      height: 80px;
-      border-radius: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-      z-index: 1000;
-      width: 90%;
-      max-width: 1100px;
+      position: fixed; top: 25px; left: 50%; transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.9);
+      padding: 0 2rem; height: 70px; border-radius: 50px;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      z-index: 1000; width: 92%; max-width: 1000px;
       backdrop-filter: blur(10px);
+      border: 1px solid rgba(0,0,0,0.05);
     }
-    .navbar .nav-logo { height: 50px; }
-    .navbar ul { display: flex; gap: 2.5rem; list-style: none; }
-    .navbar ul li a {
-      text-decoration: none;
-      color: var(--accent-orange);
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: bold;
-      transition: color 0.3s;
+    .navbar img { height: 40px; }
+    .navbar a { 
+      text-decoration: none; color: var(--text-main); 
+      font-size: 12px; font-weight: bold; letter-spacing: 1px;
     }
-    .navbar ul li a:hover { color: var(--accent-teal); }
 
-    /* --- HERO SECTION --- */
-    header {
-      padding: 220px 10% 120px;
-      text-align: center;
-    }
-    header span {
-      text-transform: uppercase;
-      letter-spacing: 5px;
-      font-size: 12px;
-      opacity: 0.7;
-      display: block;
-      margin-bottom: 15px;
-    }
+    /* --- HERO --- */
+    header { padding: 180px 5% 80px; text-align: center; }
     header h1 {
-      font-size: clamp(2.5rem, 8vw, 5.5rem);
-      text-transform: uppercase;
-      letter-spacing: -1px;
-      line-height: 1;
-      margin-bottom: 30px;
-      font-weight: normal;
+      font-size: clamp(3rem, 10vw, 6rem);
+      text-transform: uppercase; letter-spacing: -2px;
+      line-height: 0.9; margin-bottom: 20px;
     }
-    .hero-image-box {
-      width: 100%;
-      max-width: 1100px;
-      height: 550px;
-      background: url('https://i.imgur.com/ZLfFKnB.jpeg') center/cover no-repeat;
-      margin: 0 auto;
-      border-radius: 30px;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+    .hero-card {
+      width: 100%; max-width: 1100px; height: 500px;
+      background: url('https://i.imgur.com/ZLfFKnB.jpeg') center/cover;
+      margin: 0 auto; border-radius: 40px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
     }
 
-    /* --- CONTENT SECTIONS --- */
-    .section { padding: 100px 5%; text-align: center; }
-    
-    .booking-wrapper {
+    /* --- BOOKING CARD (The "White Area") --- */
+    .section { padding: 80px 5%; }
+    .booking-card {
       background: var(--white);
-      padding: 80px 30px;
-      border-radius: 30px;
-      max-width: 1100px;
+      padding: 60px 30px;
+      border-radius: 40px; /* Extra rounded like learnloveskim */
+      max-width: 900px;
       margin: 0 auto;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.04);
-      border: 1px solid rgba(0,0,0,0.03);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.02);
     }
 
-    .section-label {
-      color: var(--accent-orange);
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 13px;
-      margin-bottom: 20px;
-      display: block;
-    }
-
-    /* --- GEAR GRID (OXS HANDMADE) --- */
+    /* --- GEAR CARDS --- */
     .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 40px;
-      margin-top: 50px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px; max-width: 1100px; margin: 40px auto;
     }
-    .gear-card {
-      background: #fff;
-      padding: 60px 40px;
-      border-radius: 30px;
-      transition: all 0.4s ease;
-      text-decoration: none;
-      color: inherit;
+    .card {
+      background: #fff; padding: 50px; border-radius: 40px;
+      text-align: center; transition: 0.3s;
     }
-    .gear-card:hover { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-    .gear-card img { width: 180px; margin-bottom: 30px; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1)); }
-    .gear-card h3 { font-size: 24px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
-    .tag { font-size: 10px; background: var(--bg-cream); padding: 5px 15px; border-radius: 20px; letter-spacing: 1px; }
+    .card:hover { transform: translateY(-10px); }
+    .card img { width: 150px; margin-bottom: 20px; }
 
-    /* --- FOOTER --- */
-    footer {
-      padding: 100px 50px;
-      background: var(--text-dark);
-      color: #fff;
-      text-align: center;
-      border-radius: 50px 50px 0 0;
-    }
-    footer a { color: var(--accent-orange); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 13px; }
+    footer { padding: 60px; text-align: center; opacity: 0.6; font-size: 12px; }
 
-    /* --- MOBILE STYLES --- */
-    @media (max-width: 850px) {
+    @media (max-width: 768px) {
       .navbar ul { display: none; }
-      .navbar { justify-content: center; gap: 40px; }
-      .hero-image-box { height: 350px; }
-      header h1 { font-size: 3rem; }
+      header h1 { font-size: 3.5rem; }
     }
   </style>
 </head>
@@ -169,95 +102,71 @@
   <div id="cursor"></div>
 
   <nav class="navbar">
-    <img src="Logo.png" alt="Skim Lessons Logo" class="nav-logo">
-    <ul>
-      <li><a href="#lessons">Lessons</a></li>
-      <li><a href="#gear">Skimboards</a></li>
-      <li><a href="#footer">Contact</a></li>
-    </ul>
-    <a href="#lessons" style="color: var(--accent-teal); text-decoration: none; font-weight: bold; font-size: 13px; letter-spacing: 2px;">BOOK SESSION</a>
+    <img src="Logo.png" alt="Logo">
+    <div style="display:flex; gap: 30px;">
+      <a href="#lessons">LESSONS</a>
+      <a href="#gear">GEAR</a>
+    </div>
+    <a href="#lessons" style="background: var(--accent-yellow); padding: 12px 25px; border-radius: 30px;">BOOK</a>
   </nav>
 
   <header>
-    <span>ESTABLISHED 2024 • NEW ZEALAND</span>
-    <h1>The Art of <br>Skimboarding</h1>
-    <div class="hero-image-box"></div>
+    <h1>LEARN<br>LOVE<br>SKIM</h1>
+    <div class="hero-card"></div>
   </header>
 
   <section class="section" id="lessons">
-    <div class="booking-wrapper">
-      <span class="section-label">Professional Coaching</span>
-      <h2 style="font-size: 36px; margin-bottom: 40px; text-transform: uppercase; font-weight: normal;">Reserve Your Lesson</h2>
+    <div class="booking-card">
+      <h2 style="margin-bottom: 30px; letter-spacing: 2px;">RESERVE A SESSION</h2>
       
       <div id="simplybook-widget-container"></div>
     </div>
   </section>
 
-  <section class="section" id="gear">
-    <span class="section-label">Equipment</span>
-    <h2 style="font-size: 36px; text-transform: uppercase; font-weight: normal;">Handmade in NZ</h2>
+  <section id="gear" style="padding: 0 5% 100px;">
     <div class="grid">
-      <a href="https://oxsskimboards.co.nz/shop/Waves-c98771002" class="gear-card">
-        <img src="Images/wave-board.png" alt="Wave Board" onerror="this.src='https://placehold.co/180x250?text=Wave+Board'">
-        <h3>Wave Series</h3>
-        <span class="tag">OXS PARTNER</span>
-      </a>
-      <a href="https://oxsskimboards.co.nz/shop/Flat-c103977036" class="gear-card">
-        <img src="Images/flat-board.png" alt="Flatland Board" onerror="this.src='https://placehold.co/180x250?text=Flat+Board'">
-        <h3>Flatland Series</h3>
-        <span class="tag">TRICK OPTIMISED</span>
-      </a>
+      <div class="card">
+        <img src="Images/wave-board.png" alt="Wave" onerror="this.src='https://placehold.co/150x200?text=Wave'">
+        <h3>WAVE SERIES</h3>
+      </div>
+      <div class="card">
+        <img src="Images/flat-board.png" alt="Flat" onerror="this.src='https://placehold.co/150x200?text=Flat'">
+        <h3>FLATLAND SERIES</h3>
+      </div>
     </div>
   </section>
 
-  <footer id="footer">
-    <p style="letter-spacing: 3px; font-size: 11px; margin-bottom: 30px;">SKIM LESSONS NZ • AUCKLAND & BEYOND</p>
-    <div>
-      <a href="https://instagram.com/devon_matten" target="_blank">INSTAGRAM</a>
-      <a href="https://www.facebook.com/groups/2032375760552448" target="_blank">COMMUNITY</a>
-    </div>
+  <footer>
+    SKIM LESSONS NZ • EST 2024
   </footer>
 
   <script src="//widget.simplybook.net/v2/widget/widget.js" type="text/javascript"></script>
-  <script type="text/javascript">
-    // Circle Cursor Logic
+  <script>
     const cursor = document.getElementById('cursor');
     document.addEventListener('mousemove', e => {
       cursor.style.left = e.clientX + 'px';
       cursor.style.top = e.clientY + 'px';
     });
 
-    // Enlarge cursor on interactive elements
-    document.querySelectorAll('a, .nav-logo, button').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
-        cursor.style.backgroundColor = 'rgba(52, 41, 35, 0.05)';
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-        cursor.style.backgroundColor = 'transparent';
-      });
+    document.querySelectorAll('a, .hero-card').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.style.transform = 'translate(-50%, -50%) scale(2.5)');
+      el.addEventListener('mouseleave', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
     });
 
-    // SimplyBook Iframe Injection
     window.onload = function() {
       new SimplybookWidget({
         "widget_type": "iframe",
         "url": "https://wwwskimlessonsnz.simplybook.net",
         "theme": "minimal",
         "theme_settings": {
-          "sb_base_color": "#342923",
+          "sb_base_color": "#2D2926",
           "body_bg_color": "#ffffff",
-          "dark_font_color": "#342923",
-          "timeline_modern_display": "as_slots",
-          "display_item_mode": "block"
+          "dark_font_color": "#2D2926",
+          "timeline_modern_display": "as_slots"
         },
-        "timeline": "modern",
-        "datepicker": "top_calendar",
         "container_id": "simplybook-widget-container"
       });
     };
   </script>
-
 </body>
 </html>

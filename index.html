@@ -77,7 +77,6 @@
 
     .section-title { font-family: var(--font-curly); font-size: 42px; font-style: italic; margin-bottom: 50px; text-align: center; }
     
-    /* --- LOCATIONS DROP DOWN --- */
     .locations-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 30px; max-width: 1100px; margin: 0 auto 80px; padding: 0 5%;
@@ -114,6 +113,27 @@
     .service-card:hover { transform: translateY(-10px); }
     .service-img { height: 250px; background-size: cover; background-position: center; }
     .service-content { padding: 30px; text-align: center; }
+
+    /* --- SKIMBOARD SHOP SECTION --- */
+    .shop-container {
+      max-width: 1000px; margin: 80px auto; padding: 0 5%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
+    }
+    .shop-card {
+      background: var(--white); padding: 50px 30px; border-radius: 40px;
+      text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.05); transition: 0.3s;
+    }
+    .shop-card:hover { transform: translateY(-5px); border-color: var(--accent-orange); }
+    .shop-card h3 { font-family: var(--font-curly); font-size: 28px; margin-bottom: 10px; font-style: italic; }
+    .shop-card p { font-size: 14px; margin-bottom: 25px; opacity: 0.8; }
+    .shop-btn {
+      display: inline-block; padding: 15px 30px; border-radius: 50px;
+      background: var(--accent-brown); color: #fff; text-decoration: none;
+      font-size: 11px; letter-spacing: 2px; font-weight: bold; text-transform: uppercase;
+      transition: background 0.3s;
+    }
+    .shop-btn:hover { background: var(--accent-orange); }
 
     .booking-wrapper {
       background: var(--white); padding: 60px 20px;
@@ -160,6 +180,7 @@
       .navbar img { height: 60px; }
       .mission-container { margin-top: -30px; }
       .support-box h2 { font-size: 35px; }
+      .shop-container { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -200,7 +221,6 @@
   <section id="locations" style="padding: 40px 0;">
     <h2 class="section-title">Where We Slide</h2>
     <div class="locations-grid">
-      
       <details class="location-card">
         <summary>
           <h3>Hibiscus Coast</h3>
@@ -212,7 +232,6 @@
           <p style="font-size: 13px; margin-top: 15px; opacity: 0.7;">We usually meet at the North end of Orewa beach near the surf club.</p>
         </div>
       </details>
-
       <details class="location-card">
         <summary>
           <h3>Mt Maunganui</h3>
@@ -224,7 +243,6 @@
           <p style="font-size: 13px; margin-top: 15px; opacity: 0.7;">Meet at the Tay Street beach access point 20 mins before the lesson.</p>
         </div>
       </details>
-
     </div>
   </section>
 
@@ -255,6 +273,22 @@
     </div>
   </section>
 
+  <section id="gear" style="padding: 60px 0;">
+    <h2 class="section-title">Get The Gear</h2>
+    <div class="shop-container">
+      <div class="shop-card">
+        <h3>Wave Skimboards</h3>
+        <p>Looking to hit the shorebreak? Check out the latest high-performance foam and carbon boards at OXS.</p>
+        <a href="https://oxsskimboards.com/" target="_blank" class="shop-btn">Shop Wave Boards</a>
+      </div>
+      <div class="shop-card">
+        <h3>Flatland Boards</h3>
+        <p>Best for the shallow flats of the Hibiscus Coast. Grab a durable wood or composite board for long slides.</p>
+        <a href="https://oxsskimboards.com/" target="_blank" class="shop-btn">Shop Flatland Boards</a>
+      </div>
+    </div>
+  </section>
+
   <section id="lessons" style="padding: 0 5%;">
     <div class="booking-wrapper">
       <h2 class="section-title" style="margin-bottom: 10px;">Grab a Spot</h2>
@@ -262,7 +296,6 @@
         Check the calendar for upcoming sessions. I'll mark dates with the best tides and conditions. 
         <strong>See you at the beach!</strong>
       </p>
-      
       <div class="calendly-inline-widget" data-url="https://calendly.com/nzskimmlessons/learn-to-skim" style="min-width:320px;height:700px;"></div>
       <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     </div>
@@ -306,7 +339,7 @@
       cursor.style.top = e.clientY + 'px';
     });
 
-    document.querySelectorAll('a, .service-card, .location-card, .mission-card, img, summary').forEach(el => {
+    document.querySelectorAll('a, .service-card, .location-card, .mission-card, .shop-card, img, summary').forEach(el => {
       el.addEventListener('mouseenter', () => {
         cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
         cursor.style.backgroundColor = '#DE8A64'; 

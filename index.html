@@ -43,7 +43,7 @@
       mix-blend-mode: difference; 
     }
 
-    /* THE LANDING SLIDESHOW */
+    /* THE LANDING SLIDESHOW (Fixed Background) */
     .hero-slideshow {
       position: fixed;
       top: 0; left: 0;
@@ -67,27 +67,27 @@
     .main-content {
       position: relative;
       z-index: 2;
-      margin-top: 100vh; /* This creates the initial gap to see images */
+      margin-top: 100vh; 
       background-color: var(--bg-cream);
       box-shadow: 0 -20px 50px rgba(0,0,0,0.1);
     }
 
     .navbar {
       position: fixed; top: 25px; left: 50%; transform: translateX(-50%);
-      background-color: rgba(52, 41, 35, 0.8);
-      padding: 0 3rem; height: 100px; border-radius: 60px;
+      background-color: rgba(52, 41, 35, 0.9);
+      padding: 0 3rem; height: 120px; border-radius: 60px;
       display: flex; align-items: center; justify-content: space-between;
       z-index: 1000; width: 90%; max-width: 1100px;
       backdrop-filter: blur(10px);
     }
-    .navbar img { height: 140px; width: auto; }
+    .navbar img { height: 200px; width: auto; }
     .navbar ul { display: flex; gap: 2.5rem; list-style: none; }
     .navbar ul li a {
       text-decoration: none; color: var(--accent-orange);
       font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold;
     }
 
-    header { padding: 120px 5% 80px; text-align: center; }
+    header { padding: 250px 5% 120px; text-align: center; }
     header h1 {
       font-family: var(--font-curly);
       font-size: clamp(3rem, 10vw, 6rem);
@@ -95,9 +95,9 @@
     }
 
     .mission-container {
-      max-width: 1100px; margin: 0 auto 60px;
+      max-width: 1100px; margin: -60px auto 60px;
       display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px; padding: 0 5%;
+      gap: 20px; padding: 0 5%; position: relative; z-index: 10;
     }
     .mission-card {
       background: var(--white); padding: 40px 30px; border-radius: 30px;
@@ -136,37 +136,38 @@
     .service-img { height: 250px; background-size: cover; background-position: center; }
     .service-content { padding: 30px; text-align: center; }
 
-    .shop-container {
-      max-width: 1000px; margin: 80px auto; padding: 0 5%;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
-    }
-    .shop-card {
-      background: var(--white); padding: 50px 30px; border-radius: 40px;
-      text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-    }
-    .shop-btn {
-      display: inline-block; padding: 15px 30px; border-radius: 50px;
-      background: var(--accent-brown); color: #fff; text-decoration: none;
-      font-size: 11px; letter-spacing: 2px; font-weight: bold; text-transform: uppercase;
+    .booking-wrapper {
+      background: var(--white); padding: 60px 20px;
+      border-radius: 30px; max-width: 1000px; margin: 80px auto;
+      border: 1px solid rgba(0,0,0,0.05); text-align: center;
     }
 
     .gallery {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 15px; padding: 0 5%; max-width: 1200px; margin: 0 auto;
     }
-    .gallery img { width: 100%; height: 350px; object-fit: cover; border-radius: 20px; transition: 0.4s; }
+    .gallery img { width: 100%; height: 250px; object-fit: cover; border-radius: 20px; transition: 0.4s; }
 
+    /* REVERTED SUPPORT THE DREAM */
     .support-box {
       background-color: var(--accent-orange);
       color: #fff; padding: 80px 5%; border-radius: 40px;
       max-width: 1100px; margin: 80px auto; text-align: center;
+    }
+    .support-box h2 { font-family: var(--font-curly); font-size: 50px; font-style: italic; margin-bottom: 20px; }
+    .support-box p { max-width: 700px; margin: 0 auto 40px; font-size: 18px; line-height: 1.6; }
+    .donate-btn {
+      background-color: #fff; color: var(--accent-orange);
+      padding: 20px 50px; border-radius: 100px; text-decoration: none;
+      font-weight: bold; letter-spacing: 2px; text-transform: uppercase;
+      font-size: 14px; display: inline-block; transition: 0.3s;
     }
 
     footer {
       padding: 100px 50px; background: var(--text-dark); color: #fff;
       text-align: center; border-radius: 50px 50px 0 0; margin-top: 100px;
     }
-    .footer-contact { margin: 30px 0; display: flex; flex-direction: column; gap: 10px; align-items: center;}
+    .footer-contact { margin: 30px 0; display: flex; flex-direction: column; gap: 10px; align-items: center; }
     .footer-contact a { color: #fff; text-decoration: none; font-size: 20px; }
     .footer-socials a { color: var(--accent-orange); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 12px; letter-spacing: 2px; }
 
@@ -174,9 +175,8 @@
       .navbar ul { display: none; }
       * { cursor: auto !important; }
       #cursor { display: none; }
-      .navbar { height: 80px; }
-      .navbar img { height: 100px; }
-      .shop-container { grid-template-columns: 1fr; }
+      .navbar { height: 90px; }
+      .navbar img { height: 60px; }
     }
   </style>
 </head>
@@ -250,27 +250,13 @@
       </div>
     </section>
 
-    <section id="services" style="padding: 80px 0;">
-      <h2 class="section-title">Coaching Services</h2>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-img" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
-          <div class="service-content"><h3>Private Lessons</h3><p>Tailored skills progression.</p></div>
-        </div>
-        <div class="service-card">
-          <div class="service-img" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
-          <div class="service-content"><h3>Group Sessions</h3><p>Fun with friends.</p></div>
-        </div>
-        <div class="service-card">
-          <div class="service-img" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
-          <div class="service-content"><h3>Video Analysis</h3><p>Technique breakdown.</p></div>
-        </div>
-      </div>
-    </section>
-
     <section id="lessons" style="padding: 0 5%;">
       <div class="booking-wrapper">
-        <h2 class="section-title">Grab a Spot</h2>
+        <h2 class="section-title" style="margin-bottom: 10px;">Grab a Spot</h2>
+        <p style="margin-bottom: 30px; opacity: 0.7; max-width: 600px; margin-left: auto; margin-right: auto;">
+          Check the calendar for upcoming sessions. I'll mark dates with the best tides and conditions. 
+          <strong>See you at the beach!</strong>
+        </p>
         <div class="calendly-inline-widget" data-url="https://calendly.com/nzskimmlessons/learn-to-skim" style="min-width:320px;height:700px;"></div>
         <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
       </div>
@@ -289,7 +275,7 @@
     <section id="support" style="padding: 0 5%;">
       <div class="support-box">
         <h2>Support the Dream!</h2>
-        <p>I offer a "pay what you want" model for my coaching. Your support helps keep this idea running.</p>
+        <p>My goal is to grow the NZ skimboarding community. To keep the stoke accessible for everyone, I offer a "pay what you want" model for my coaching. Your support helps me keep this idea running and gets more boards under feet.</p>
         <a href="#" class="donate-btn">DONATE & SUPPORT</a>
       </div>
     </section>
@@ -309,14 +295,14 @@
   </div>
 
   <script>
-    // CURSOR LOGIC
+    // CURSOR
     const cursor = document.getElementById('cursor');
     document.addEventListener('mousemove', e => {
       cursor.style.left = e.clientX + 'px';
       cursor.style.top = e.clientY + 'px';
     });
 
-    // SLIDESHOW LOGIC (1.5 seconds)
+    // SLIDESHOW (1.5 seconds)
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
     function nextSlide() {

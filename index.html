@@ -25,7 +25,7 @@
       --font-main: "Century Gothic", AppleGothic, sans-serif;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; cursor: none; }
+    * { box-sizing: border-box; margin: 0; padding: 0; cursor: none !important; }
     
     html { scroll-behavior: smooth; }
 
@@ -37,24 +37,23 @@
       overflow-x: hidden;
     }
 
-    /* --- CURSOR --- */
+    /* --- CURSOR (Fixed Z-Index) --- */
     #cursor {
       width: 12px; height: 12px;
       background-color: #DE8A64;
       border-radius: 50%;
       position: fixed; 
       pointer-events: none; 
-      z-index: 10000;
+      z-index: 99999; /* Higher than everything else */
       transform: translate(-50%, -50%);
       mix-blend-mode: difference; 
-      transition: transform 0.1s ease-out;
+      transition: transform 0.15s ease-out, opacity 0.3s;
     }
 
     .reveal {
       opacity: 0;
-      transform: translateY(100px) scale(0.95);
-      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease-out;
-      will-change: transform, opacity;
+      transform: translateY(50px) scale(0.98); /* Less extreme start point */
+      transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out;
     }
 
     .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
@@ -140,25 +139,24 @@
       .menu-btn { display: block; }
     }
 
-    /* --- SECTIONS --- */
+    /* --- MARQUEE --- */
     .marquee-bar { background: var(--bg-dark-cream); padding: 12px 0; overflow: hidden; display: flex; }
     .marquee-content { display: flex; animation: scroll-left 15s linear infinite; }
     .marquee-item { font-size: 13px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-brown); padding: 0 15px; }
     @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-/* Find these around the middle of your <style> section */
 
-header { 
-  padding: 120px 5% 40px; /* This padding handles the space between Title and Subtitle */
-  text-align: center; 
-}
+    header { 
+      padding: 120px 5% 40px; 
+      text-align: center; 
+    }
 
-.mission-container { 
-  display: flex; 
-  flex-direction: column; 
-  max-width: 800px; 
-  margin: 150px auto 100px; /* I bumped this to 150px to give you "a lot more space" */
-  padding: 0 5% 150px; 
-}
+    .mission-container { 
+      display: flex; 
+      flex-direction: column; 
+      max-width: 800px; 
+      margin: 150px auto 100px; 
+      padding: 0 5% 150px; 
+    }
     .mission-card { position: sticky; padding: 80px 40px; border-radius: 40px; text-align: center; margin-bottom: 20px; box-shadow: 0 -10px 40px rgba(0,0,0,0.08); }
     .mission-card:nth-child(odd) { background: var(--white); }
     .mission-card:nth-child(even) { background: var(--accent-orange); color: white; }
@@ -186,7 +184,6 @@ header {
 
     .booking-wrapper { background: var(--white); padding: 60px 20px; border-radius: 30px; max-width: 1000px; margin: 80px auto; border: 1px solid rgba(0,0,0,0.05); text-align: center; }
 
-    /* --- SUPPORT THE DREAM STYLES --- */
     .support-box { background: var(--white); padding: 80px 40px; border-radius: 40px; text-align: center; max-width: 900px; margin: 80px auto; border: 1px solid rgba(0,0,0,0.05); }
     .support-box h2 { font-family: var(--font-curly); font-style: italic; font-size: 42px; margin-bottom: 20px; }
     .donate-btn { display: inline-block; background: var(--text-dark); color: white; padding: 20px 45px; border-radius: 100px; text-decoration: none; font-weight: bold; letter-spacing: 2px; font-size: 12px; margin-top: 30px; transition: 0.3s; }
@@ -257,16 +254,14 @@ header {
     </div>
 
     <header class="reveal">
-  <p style="letter-spacing: 5px; font-size: 10px; opacity: 0.6; margin-bottom: 10px;">HIBISCUS COAST • MT MAUNGANUI</p>
-  
-  <h1 style="font-family: var(--font-curly); font-size: clamp(3rem, 10vw, 6rem); font-style: italic; margin-bottom: 15px;">
-    Learn to Skimboard
-  </h1>
-  
-  <p style="font-family: Georgia, serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: bold; font-style: italic; line-height: 1.2; opacity: 0.9; max-width: 800px; margin: 0 auto;">
-    "Committed to growing skimboarding in NZ by passing on my knowledge."
-  </p>
-</header>
+      <p style="letter-spacing: 5px; font-size: 10px; opacity: 0.6; margin-bottom: 10px;">HIBISCUS COAST • MT MAUNGANUI</p>
+      <h1 style="font-family: var(--font-curly); font-size: clamp(3rem, 10vw, 6rem); font-style: italic; margin-bottom: 15px;">
+        Learn to Skimboard
+      </h1>
+      <p style="font-family: Georgia, serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: bold; font-style: italic; line-height: 1.2; opacity: 0.9; max-width: 800px; margin: 0 auto;">
+        "Committed to growing skimboarding in NZ by passing on my knowledge."
+      </p>
+    </header>
 
     <section class="mission-container">
       <div class="mission-card reveal">
@@ -376,77 +371,63 @@ header {
   </div>
 
   <script>
-   <script>
-  const cursor = document.getElementById('cursor');
-  let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
-
-  // Follow Mouse Logic
- document.addEventListener('mouseover', (e) => {
-  // This now checks for links, buttons, images, headings, and paragraphs
-  const target = e.target.closest('a, button, summary, img, h1, h2, h3, h4, h5, p, span, li');
-  
-  if (target) { 
-    cursor.style.transform = 'translate(-50%, -50%) scale(5)'; 
-    cursor.style.opacity = "0.6"; 
-  }
-});
-
-document.addEventListener('mouseout', () => { 
-  cursor.style.transform = 'translate(-50%, -50%) scale(1)'; 
-  cursor.style.opacity = "1";
-});
-
-  function animateCursor() {
-    cursorX += (mouseX - cursorX) * 0.15;
-    cursorY += (mouseY - cursorY) * 0.15;
-    if (cursor) { 
-      cursor.style.left = cursorX + 'px'; 
-      cursor.style.top = cursorY + 'px'; 
-    }
-    requestAnimationFrame(animateCursor);
-  }
-  animateCursor();
-
-  // Navigation Menu Logic
-  function toggleMenu() {
-    const overlay = document.getElementById('navOverlay');
-    overlay.classList.toggle('active');
-    document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : 'auto';
-  }
-
-  // Background Slideshow Logic
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.slide');
-  setInterval(() => {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
-  }, 3000);
-
-  // Reveal Animation Logic
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) { entry.target.classList.add('active'); }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-  // --- UPDATED CURSOR INTERACTION LOGIC ---
-  document.addEventListener('mouseover', (e) => {
-    // This list targets links, buttons, images, logos, and all text elements
-    const target = e.target.closest('a, button, summary, img, h1, h2, h3, h4, h5, p, span, li');
+    const cursor = document.getElementById('cursor');
+    let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
     
-    if (target) { 
-      cursor.style.transform = 'translate(-50%, -50%) scale(5)'; 
-      cursor.style.opacity = "0.5"; // Slight transparency looks better when enlarged over text
-    }
-  });
+    document.addEventListener('mousemove', e => { 
+      mouseX = e.clientX; 
+      mouseY = e.clientY; 
+    });
 
-  document.addEventListener('mouseout', () => { 
-    cursor.style.transform = 'translate(-50%, -50%) scale(1)'; 
-    cursor.style.opacity = "1";
-  });
-</script>
+    function animateCursor() {
+      cursorX += (mouseX - cursorX) * 0.15;
+      cursorY += (mouseY - cursorY) * 0.15;
+      if (cursor) { 
+        cursor.style.left = cursorX + 'px'; 
+        cursor.style.top = cursorY + 'px'; 
+      }
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    function toggleMenu() {
+      const overlay = document.getElementById('navOverlay');
+      overlay.classList.toggle('active');
+      document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : 'auto';
+    }
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    setInterval(() => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }, 3000);
+
+    // REVEAL ANIMATION FIX
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { 
+            entry.target.classList.add('active'); 
+        }
+      });
+    }, { threshold: 0.05, rootMargin: "0px 0px -50px 0px" });
+    
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // CURSOR INTERACTION (All text and images)
+    document.addEventListener('mouseover', (e) => {
+      const target = e.target.closest('a, button, summary, img, h1, h2, h3, h4, h5, p, span, li');
+      if (target) { 
+        cursor.style.transform = 'translate(-50%, -50%) scale(5)'; 
+        cursor.style.opacity = "0.7";
+      }
+    });
+
+    document.addEventListener('mouseout', () => { 
+      cursor.style.transform = 'translate(-50%, -50%) scale(1)'; 
+      cursor.style.opacity = "1";
+    });
   </script>
 </body>
 </html>

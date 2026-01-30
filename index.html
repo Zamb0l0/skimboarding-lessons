@@ -376,42 +376,67 @@ header {
   </div>
 
   <script>
-    const cursor = document.getElementById('cursor');
-    let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
-    document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
-    function animateCursor() {
-      cursorX += (mouseX - cursorX) * 0.15;
-      cursorY += (mouseY - cursorY) * 0.15;
-      if (cursor) { cursor.style.left = cursorX + 'px'; cursor.style.top = cursorY + 'px'; }
-      requestAnimationFrame(animateCursor);
+   <script>
+  const cursor = document.getElementById('cursor');
+  let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+
+  // Follow Mouse Logic
+  document.addEventListener('mousemove', e => { 
+    mouseX = e.clientX; 
+    mouseY = e.clientY; 
+  });
+
+  function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.15;
+    cursorY += (mouseY - cursorY) * 0.15;
+    if (cursor) { 
+      cursor.style.left = cursorX + 'px'; 
+      cursor.style.top = cursorY + 'px'; 
     }
-    animateCursor();
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
 
-    function toggleMenu() {
-      const overlay = document.getElementById('navOverlay');
-      overlay.classList.toggle('active');
-      document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : 'auto';
-    }
+  // Navigation Menu Logic
+  function toggleMenu() {
+    const overlay = document.getElementById('navOverlay');
+    overlay.classList.toggle('active');
+    document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : 'auto';
+  }
 
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    setInterval(() => {
-      slides[currentSlide].classList.remove('active');
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].classList.add('active');
-    }, 3000);
+  // Background Slideshow Logic
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  setInterval(() => {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+  }, 3000);
 
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) { entry.target.classList.add('active'); }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    document.addEventListener('mouseover', (e) => {
-      if (e.target.closest('a, button, summary')) { cursor.style.transform = 'translate(-50%, -50%) scale(4)'; }
+  // Reveal Animation Logic
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) { entry.target.classList.add('active'); }
     });
-    document.addEventListener('mouseout', () => { cursor.style.transform = 'translate(-50%, -50%) scale(1)'; });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // --- UPDATED CURSOR INTERACTION LOGIC ---
+  document.addEventListener('mouseover', (e) => {
+    // This list targets links, buttons, images, logos, and all text elements
+    const target = e.target.closest('a, button, summary, img, h1, h2, h3, h4, h5, p, span, li');
+    
+    if (target) { 
+      cursor.style.transform = 'translate(-50%, -50%) scale(5)'; 
+      cursor.style.opacity = "0.5"; // Slight transparency looks better when enlarged over text
+    }
+  });
+
+  document.addEventListener('mouseout', () => { 
+    cursor.style.transform = 'translate(-50%, -50%) scale(1)'; 
+    cursor.style.opacity = "1";
+  });
+</script>
   </script>
 </body>
 </html>

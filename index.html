@@ -96,16 +96,14 @@
   z-index: 2; /* Active slide sits on top */
 }
 
-  .hero-text-overlay {
-  position: fixed; 
-  top: 45%; 
-  left: 50%; 
-  transform: translate(-50%, -50%);
-  z-index: 10; /* Higher layer to stay on top */
-  text-align: center; 
-  width: 90%; 
-  color: #fff; 
-  pointer-events: none; 
+ .hero-text-overlay h2 {
+  font-family: var(--font-curly); /* This uses Playfair Display */
+  font-size: clamp(3rem, 10vw, 6rem); /* Matches the 'Learn to Skim' size */
+  font-style: italic;
+  font-weight: 400; /* Keeps it elegant and not too chunky */
+  line-height: 1.1;
+  text-shadow: 2px 2px 30px rgba(0,0,0,0.5); /* Stronger shadow so it pops against the images */
+  margin-bottom: 20px;
 }
    /* Ensure the scroll indicator is clickable */
 .scroll-indicator {
@@ -235,12 +233,17 @@
   <div class="slide" style="background-image: url('https://res.cloudinary.com/dyphplbk4/image/upload/f_auto,q_auto/v1769754498/MCP00257_wzpd0q.jpg');"></div>
 </div>
   <div class="hero-text-overlay">
-    <h2>Sliding into Summer</h2>
-    <a href="#mission-start" class="scroll-indicator">
-      <span style="display:block; font-size: 10px; letter-spacing: 3px; margin-bottom: 10px; opacity: 0.8; font-weight: bold;">SCROLL</span>
-      <div class="arrow"></div>
-    </a>
-  </div>
+  <p style="letter-spacing: 5px; font-size: 10px; opacity: 0.8; margin-bottom: 10px; text-transform: uppercase;">
+    Hibiscus Coast • Mt Maunganui
+  </p>
+
+  <h2>Sliding into Summer</h2>
+
+  <a href="#mission-start" class="scroll-indicator">
+    <span style="display:block; font-size: 10px; letter-spacing: 3px; margin-bottom: 10px; opacity: 0.8; font-weight: bold;">SCROLL</span>
+    <div class="arrow"></div>
+  </a>
+</div>
 
   <nav class="navbar">
     <img src="Logo.png" alt="Logo">

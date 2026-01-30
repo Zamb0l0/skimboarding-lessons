@@ -223,39 +223,54 @@
       border-radius: 40px; border: 1px solid rgba(0,0,0,0.03); text-align: center;
     }
 
-   /* --- MISSION CARD STACKING (SOLITAIRE STYLE) --- */
+  /* --- MISSION CARD STACKING (SOLITAIRE STYLE) --- */
 .mission-container {
   display: flex;
   flex-direction: column; 
   gap: 0; 
   max-width: 800px; 
-  margin: -100px auto 100px; /* Adjusted to pull it up into the hero transition */
+  margin: -100px auto 100px;
   padding: 0 5% 150px 5%;
 }
 
 .mission-card {
   position: sticky;
-  background: var(--white);
-  padding: 80px 40px; /* Taller cards look better for stacking */
+  padding: 80px 40px; 
   border-radius: 40px;
   text-align: center;
   box-shadow: 0 -10px 40px rgba(0,0,0,0.08);
   border: 1px solid rgba(0,0,0,0.03);
-  margin-bottom: 20px; /* Space between cards as they unstack */
+  margin-bottom: 20px; 
   transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out;
 }
 
-/* Stacking Heights: Where they 'catch' when scrolling UP */
-.mission-card:nth-child(1) { top: 120px; z-index: 10; }
-.mission-card:nth-child(2) { top: 180px; z-index: 11; }
-.mission-card:nth-child(3) { top: 240px; z-index: 12; }
-
-/* The 'Hidden' state for unstacking on the way down */
-.mission-card.reveal {
-  opacity: 0;
-  transform: translateY(200px); /* Starts deep so it feels like it un-stacks */
+/* PATTERN: Card 1 & 3 (White Background, Black Text) */
+.mission-card:nth-child(odd) {
+  background: var(--white);
+  color: #1a1a1a; /* Black/Dark text */
 }
 
+/* PATTERN: Card 2 (Colored Background, White Text) */
+.mission-card:nth-child(even) {
+  background: var(--accent-orange); /* Your brand orange */
+  color: var(--white); /* White text */
+}
+
+/* Ensure the paragraph text inside colored cards is also white */
+.mission-card:nth-child(even) p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Stacking Heights (The Solitaire Effect) */
+.mission-card:nth-child(1) { top: 100px; z-index: 10; }
+.mission-card:nth-child(2) { top: 160px; z-index: 11; }
+.mission-card:nth-child(3) { top: 220px; z-index: 12; }
+
+/* Animation Reveal */
+.mission-card.reveal {
+  opacity: 0;
+  transform: translateY(200px);
+}
 .mission-card.reveal.active {
   opacity: 1;
   transform: translateY(0);

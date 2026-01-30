@@ -3,13 +3,13 @@
 <head>
   <link rel="icon" type="image/png" href="favicon/Logo.png">
   <link rel="apple-touch-icon" href="favicon/Logo.png">
-  
+
  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://assets.calendly.com https://marea.ooo; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://calendly.com https://marea.ooo; img-src 'self' https://i.imgur.com https://res.cloudinary.com data:; connect-src https://marea.ooo;">
-  
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Skim Lessons NZ | Professional Instruction</title>
-  
+
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
   <style>
@@ -26,7 +26,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; cursor: none !important; }
-    
+
     html { scroll-behavior: smooth; }
 
     body {
@@ -264,7 +264,7 @@
     Hibiscus Coast • Mt Maunganui
   </p>
 
-  <h2>Learn. Slide. Repeat</h2>
+  <h2>Sliding into Summer</h2>
 
   <a href="#mission-start" class="scroll-indicator">
     <span style="display:block; font-size: 10px; letter-spacing: 3px; margin-bottom: 10px; opacity: 0.8; font-weight: bold;">SCROLL</span>
@@ -316,7 +316,7 @@
         Learn to Skimboard
       </h1>
       <p style="font-family: Georgia, serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: bold; font-style: italic; line-height: 1.2; opacity: 0.9; max-width: 800px; margin: 0 auto;">
-        Committed to growing skimboarding in NZ
+        Committed to growing skimboarding in NZ by passing on my knowledge
       </p>
     </header>
 
@@ -345,7 +345,7 @@
           </div>
         </details>
         <details class="location-card reveal">
-          <summary>Mt Maunganui <br><small>Main Beach</small></summary>
+          <summary>Mt Maunganui <br><small>Main Beach & Tay St</small></summary>
           <div style="padding: 20px;">
             <iframe src="https://marea.ooo/en/widget/-37.6406/176.1856?padding=m&components=text%2Cchart&theme=dark" width="100%" height="450px" style="border:none; border-radius:20px; background:#1a1a1a;"></iframe>
           </div>
@@ -392,15 +392,15 @@
     <section id="lessons" class="reveal" style="padding: 0 5%;">
       <div class="booking-wrapper">
         <h2 style="font-family: var(--font-curly); font-style: italic; font-size: 42px;">Grab a Spot</h2>
-        <p style="margin-bottom: 20px; opacity: 0.7;">Secure your lesson</p>
+        <p style="margin-bottom: 20px; opacity: 0.7;">Secure your lesson time below. All equipment provided.</p>
         <div class="calendly-inline-widget" data-url="https://calendly.com/nzskimmlessons/learn-to-skim" style="min-width:320px;height:700px;"></div>
         <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
       </div>
     </section>
 
-    <section id="Gallery" style="padding: 80px 0;">
+    <section id="gallery" style="padding: 80px 0;">
       <h2 class="reveal" style="text-align: center; font-family: var(--font-curly); font-style: italic; font-size: 42px; margin-bottom: 50px;">gallery</h2>
-      <div class="Gallery">
+      <div class="gallery">
         <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 1" class="reveal">
         <img src="https://res.cloudinary.com/dyphplbk4/image/upload/f_auto,q_auto/v1769754484/IMG_2313_eejznr.heic" alt="Skim 1" class="reveal">
         <img src="https://res.cloudinary.com/dyphplbk4/image/upload/f_auto,q_auto/v1769754478/24B81EA9-1450-403D-9D9E-122CB2BC6B3C_hzlftu.jpg" alt="Skim 2" class="reveal">
@@ -423,7 +423,7 @@
         <a href="mailto:nzskimmlessons@gmail.com">nzskimmlessons@gmail.com</a>
       </div>
       <div class="footer-socials">
-        <a href="https://www.instagram.com/devon_matten/" target="_blank">INSTAGRAM</a>
+        <a href="https://www.instagram.com/skimlessonsnz/" target="_blank">INSTAGRAM</a>
       </div>
       <p style="font-size: 9px; letter-spacing: 2px; margin-top: 40px; opacity: 0.4;">SKIM LESSONS NZ © 2026</p>
     </footer>
@@ -432,7 +432,7 @@
   <script>
     const cursor = document.getElementById('cursor');
     let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
-    
+
     document.addEventListener('mousemove', e => { 
       mouseX = e.clientX; 
       mouseY = e.clientY; 
@@ -465,10 +465,10 @@ const slides = document.querySelectorAll('.slide');
 function nextSlide() {
   // 1. Remove active class from the current slide
   slides[currentSlide].classList.remove('active');
-  
+
   // 2. Move to the next index
   currentSlide = (currentSlide + 1) % slides.length;
-  
+
   // 3. Add active class to the new slide
   slides[currentSlide].classList.add('active');
 }
@@ -486,7 +486,7 @@ if (slides.length > 0) {
         }
       });
     }, { threshold: 0.1 });
-    
+
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
     // Advanced Cursor Interaction (Hovering over text/links/images)

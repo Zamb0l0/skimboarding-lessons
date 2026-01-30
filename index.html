@@ -31,7 +31,6 @@
       background-color: var(--bg-cream);
       color: var(--text-dark);
       line-height: 1.6;
-      /* Prevents horizontal scroll during animations */
       overflow-x: hidden;
     }
 
@@ -48,16 +47,19 @@
       transition: transform 0.2s ease, background-color 0.3s;
     }
 
-    /* --- REVEAL ANIMATION BASE --- */
+    /* --- THE UNSTACKING REVEAL --- */
+    /* Starting state: hidden, pushed down, and slightly scaled back */
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateY(100px) scale(0.95);
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease-out;
+      will-change: transform, opacity;
     }
 
+    /* Active state: slides into place */
     .reveal.active {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
 
     .hero-slideshow {
@@ -126,7 +128,6 @@
     }
 
     .navbar img { height: 160px; width: auto; margin-top: 15px; z-index: 3001; }
-
     .nav-links { display: flex; gap: 3rem; list-style: none; }
     .nav-links li a {
       text-decoration: none; color: var(--accent-orange);
@@ -135,66 +136,35 @@
     }
 
     .menu-btn {
-      display: none;
-      background: white;
-      border: none;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      position: relative;
-      z-index: 3001;
-      transition: 0.3s;
+      display: none; background: white; border: none; width: 50px; height: 50px;
+      border-radius: 50%; position: relative; z-index: 3001; transition: 0.3s;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
     .hamburger {
-      width: 20px;
-      height: 2px;
-      background: var(--text-dark);
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      transition: 0.3s;
+      width: 20px; height: 2px; background: var(--text-dark);
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: 0.3s;
     }
     .hamburger::before, .hamburger::after {
-      content: '';
-      position: absolute;
-      width: 20px; height: 2px;
-      background: var(--text-dark);
-      transition: 0.3s;
+      content: ''; position: absolute; width: 20px; height: 2px;
+      background: var(--text-dark); transition: 0.3s;
     }
     .hamburger::before { top: -6px; left: 0; }
     .hamburger::after { top: 6px; left: 0; }
 
-    .menu-btn.active .hamburger { background: transparent; }
-    .menu-btn.active .hamburger::before { transform: rotate(45deg); top: 0; }
-    .menu-btn.active .hamburger::after { transform: rotate(-45deg); top: 0; }
-
     .nav-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: var(--bg-cream); 
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      z-index: 2000; 
-      transition: opacity 0.4s ease, visibility 0.4s;
-      opacity: 0; visibility: hidden;
+      background: var(--bg-cream); display: flex; flex-direction: column;
+      align-items: center; justify-content: center; z-index: 2000; 
+      transition: opacity 0.4s ease, visibility 0.4s; opacity: 0; visibility: hidden;
     }
     .nav-overlay.active { opacity: 1; visibility: visible; }
-
     .nav-overlay ul { list-style: none; text-align: center; }
     .nav-overlay ul li { margin: 30px 0; }
-    
     .nav-overlay ul li a {
-      font-family: var(--font-main); 
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 35px; 
-      color: var(--accent-orange); 
-      text-decoration: none;
-      transition: 0.3s;
+      font-family: var(--font-main); font-weight: 900; text-transform: uppercase;
+      letter-spacing: 4px; font-size: 35px; color: var(--accent-orange); text-decoration: none; transition: 0.3s;
     }
-    .nav-overlay ul li a:hover { color: var(--text-dark); } 
 
     @media (max-width: 1024px) {
       * { cursor: auto !important; }
@@ -203,128 +173,55 @@
       .navbar img { height: 100px; margin-top: 10px; }
       .nav-links { display: none; }
       .menu-btn { display: block; }
-      .nzsass-box { padding: 30px; text-align: center; flex-direction: column; }
-      .nzsass-btn { width: 100%; }
     }
 
     header { padding: 120px 5% 80px; text-align: center; }
     header h1 {
-      font-family: var(--font-curly);
-      font-size: clamp(3rem, 10vw, 6rem);
+      font-family: var(--font-curly); font-size: clamp(3rem, 10vw, 6rem);
       font-style: italic; line-height: 1.1; margin-bottom: 20px;
     }
 
     .marquee-bar {
-      background-color: var(--bg-dark-cream);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      padding: 12px 0;
-      overflow: hidden;
-      display: flex;
-      white-space: nowrap;
-      z-index: 10;
+      background-color: var(--bg-dark-cream); border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding: 12px 0; overflow: hidden; display: flex; white-space: nowrap; z-index: 10;
     }
 
-    .marquee-content {
-      display: flex;
-      animation: scroll-left 15s linear infinite;
-    }
-
+    .marquee-content { display: flex; animation: scroll-left 15s linear infinite; }
     .marquee-item {
-      font-family: var(--font-main);
-      font-size: 13px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--accent-brown);
-      padding: 0 15px;
-      display: flex;
-      align-items: center;
-      transform: scaleY(1.4);
+      font-family: var(--font-main); font-size: 13px; font-weight: bold; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent-brown); padding: 0 15px;
+      display: flex; align-items: center; transform: scaleY(1.4);
     }
 
-    .marquee-item::after {
-      content: "|";
-      margin-left: 30px;
-      opacity: 0.4;
-      font-weight: normal;
-    }
+    @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-    @keyframes scroll-left {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
+    /* GRID LOGIC */
     .journal-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 5%;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px; max-width: 1100px; margin: 0 auto; padding: 0 5%;
     }
     .journal-post {
-      background: var(--white);
-      border-radius: 30px;
-      overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.03);
-      transition: 0.3s;
+      background: var(--white); border-radius: 30px; overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.03); transition: 0.3s;
     }
-    .journal-post:hover { transform: translateY(-5px); }
-    .journal-image {
-      width: 100%;
-      height: 220px;
-      background-size: cover;
-      background-position: center;
-    }
+    .journal-image { width: 100%; height: 220px; background-size: cover; background-position: center; }
     .journal-meta { padding: 30px; }
-    .journal-meta span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-orange); font-weight: bold; }
-    .journal-meta h4 { font-family: var(--font-curly); font-style: italic; font-size: 24px; margin: 10px 0; }
     
     .nzsass-box {
-      grid-column: 1 / -1;
-      background: var(--text-dark);
-      color: #fff;
-      padding: 50px;
-      border-radius: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 30px;
-      margin: 20px 0;
+      grid-column: 1 / -1; background: var(--text-dark); color: #fff;
+      padding: 50px; border-radius: 40px; display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 30px; margin: 20px 0;
     }
-    .nzsass-content { flex: 1; min-width: 300px; }
-    .nzsass-content h3 { font-family: var(--font-curly); font-style: italic; font-size: 32px; margin-bottom: 10px; color: var(--accent-orange); }
     .nzsass-btn {
-      background: var(--accent-orange);
-      color: #fff;
-      padding: 20px 40px;
-      border-radius: 100px;
-      text-decoration: none;
-      font-weight: bold;
-      letter-spacing: 2px;
-      font-size: 12px;
-      text-transform: uppercase;
-      transition: 0.3s;
+      background: var(--accent-orange); color: #fff; padding: 20px 40px; border-radius: 100px;
+      text-decoration: none; font-weight: bold; letter-spacing: 2px; font-size: 12px;
+      text-transform: uppercase; transition: 0.3s;
     }
-    .nzsass-btn:hover { background: #fff; color: var(--text-dark); }
 
     .community-card {
-      grid-column: 1 / -1;
-      background: var(--white);
-      padding: 60px 40px;
-      border-radius: 40px;
-      border: 1px solid rgba(0,0,0,0.03);
-      text-align: center;
+      grid-column: 1 / -1; background: var(--white); padding: 60px 40px;
+      border-radius: 40px; border: 1px solid rgba(0,0,0,0.03); text-align: center;
     }
-    .oxs-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-    .oxs-btn {
-      padding: 18px 40px; border-radius: 100px; text-decoration: none; font-weight: bold;
-      letter-spacing: 2px; text-transform: uppercase; font-size: 12px; transition: 0.3s;
-      border: 2px solid var(--accent-brown);
-    }
-    .oxs-btn.wave { background: var(--accent-brown); color: #fff; }
-    .oxs-btn.flat { background: transparent; color: var(--accent-brown); }
 
     .mission-container {
       max-width: 1100px; margin: -60px auto 60px;
@@ -334,15 +231,9 @@
     .mission-card {
       background: var(--white); padding: 40px 30px; border-radius: 30px;
       text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-      border-bottom: 3px solid var(--accent-brown);
-      transition: 0.3s ease;
+      border-bottom: 3px solid var(--accent-brown); transition: 0.3s ease;
     }
-    .mission-card:hover { transform: translateY(-10px); }
-    .mission-card h4 { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-brown); margin-bottom: 15px; }
-    .mission-card p { font-size: 15px; font-weight: bold; }
 
-    .section-title { font-family: var(--font-curly); font-size: 42px; font-style: italic; margin-bottom: 50px; text-align: center; }
-    
     .locations-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 30px; max-width: 1100px; margin: 0 auto 80px; padding: 0 5%;
@@ -352,10 +243,6 @@
       overflow: hidden; transition: 0.3s;
     }
     .location-card summary { padding: 40px; list-style: none; cursor: pointer; text-align: center; }
-    .location-card summary .view-map { 
-      display: inline-block; margin-top: 15px; font-size: 10px; 
-      letter-spacing: 2px; color: var(--accent-orange); font-weight: bold; text-transform: uppercase;
-    }
 
     .booking-wrapper {
       background: var(--white); padding: 60px 20px;
@@ -370,36 +257,16 @@
     .gallery img { width: 100%; height: 250px; object-fit: cover; border-radius: 20px; transition: 0.4s; }
 
     .support-box {
-      background-color: var(--accent-orange);
-      color: #fff; padding: 80px 5%; border-radius: 40px;
-      max-width: 1100px; margin: 80px auto; text-align: center;
-    }
-    .support-box h2 { font-family: var(--font-curly); font-size: 50px; font-style: italic; margin-bottom: 20px; }
-    .support-box p { max-width: 700px; margin: 0 auto 40px; font-size: 18px; line-height: 1.6; }
-    .donate-btn {
-      background-color: #fff; color: var(--accent-orange);
-      padding: 20px 50px; border-radius: 100px; text-decoration: none;
-      font-weight: bold; letter-spacing: 2px; text-transform: uppercase;
-      font-size: 14px; display: inline-block; transition: 0.3s;
+      background-color: var(--accent-orange); color: #fff; padding: 80px 5%; 
+      border-radius: 40px; max-width: 1100px; margin: 80px auto; text-align: center;
     }
 
     footer {
       padding: 100px 50px; background: var(--text-dark); color: #fff;
       text-align: center; border-radius: 50px 50px 0 0; margin-top: 100px;
     }
-    .footer-contact { margin: 30px 0; display: flex; flex-direction: column; gap: 10px; align-items: center; }
-    .footer-contact a { color: #fff; text-decoration: none; font-size: 20px; }
-    .footer-socials a { color: var(--accent-orange); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 12px; letter-spacing: 2px; }
-
-    @media (max-width: 768px) {
-      .navbar ul { display: none; }
-      * { cursor: auto !important; }
-      #cursor { display: none; }
-      .navbar { height: 70px; padding: 0 1.5rem; }
-      .navbar img { height: 80px; }
-      .nzsass-box { padding: 30px; text-align: center; }
-      .nzsass-btn { width: 100%; }
-    }
+    .footer-contact a { color: #fff; text-decoration: none; display: block; margin: 5px; }
+    .footer-socials a { color: var(--accent-orange); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 12px; }
   </style>
 </head>
 <body>
@@ -409,23 +276,19 @@
   <div class="hero-slideshow">
     <div class="slide active" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
     <div class="slide" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
-    <div class="slide" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
-    <div class="slide" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
     <div class="hero-text-overlay">
       <h2>Sliding into Summer</h2>
     </div>
   </div>
 
-<nav class="navbar">
+  <nav class="navbar">
     <img src="Logo.png" alt="Logo">
-    
     <ul class="nav-links">
       <li><a href="#locations">Locations</a></li>
       <li><a href="#lessons">Book</a></li>
       <li><a href="#community">Community</a></li>
       <li><a href="#gallery">Gallery</a></li>
     </ul>
-
     <button class="menu-btn" onclick="toggleMenu()">
       <div class="hamburger"></div>
     </button>
@@ -456,9 +319,9 @@
       </div>
     </div>
 
-    <header>
+    <header class="reveal">
       <p style="letter-spacing: 5px; font-size: 10px; opacity: 0.6; margin-bottom: 10px;">HIBISCUS COAST • MT MAUNGANUI</p>
-      <h1>Learn to Skimboard</h1>
+      <h1 style="font-family: var(--font-curly); font-size: clamp(3rem, 10vw, 6rem); font-style: italic;">Learn to Skimboard</h1>
     </header>
 
     <section class="mission-container">
@@ -477,87 +340,70 @@
     </section>
 
     <section id="locations" style="padding: 40px 0;">
-      <h2 class="section-title">Where We Slide</h2>
+      <h2 class="reveal" style="text-align: center; font-family: var(--font-curly); font-style: italic; font-size: 42px; margin-bottom: 50px;">Where We Slide</h2>
       <div class="locations-grid">
-        <details class="location-card">
+        <details class="location-card reveal">
           <summary>
             <h3>Hibiscus Coast</h3>
             <p>Orewa and Red Beach: the long, shallow flats.</p>
-            <span class="view-map">↓ View Map & Live Tides</span>
+            <span style="color: var(--accent-orange); font-size: 10px; font-weight: bold;">↓ VIEW TIDES</span>
           </summary>
-          <div style="padding: 20px; text-align: center;">
-            <iframe src="https://marea.ooo/en/widget/-36.6202812/174.72140538254604?padding=m&components=text%2Cchart&theme=dark"
-                    width="100%" height="450px" style="border:none; border-radius:20px; background:#1a1a1a;"></iframe>
+          <div style="padding: 20px;">
+            <iframe src="https://marea.ooo/en/widget/-36.6202812/174.72140538254604?padding=m&components=text%2Cchart&theme=dark" width="100%" height="450px" style="border:none; border-radius:20px; background:#1a1a1a;"></iframe>
           </div>
         </details>
 
-        <details class="location-card">
+        <details class="location-card reveal">
           <summary>
             <h3>Mt Maunganui</h3>
             <p>Main Beach or Tay Street coastal sliding.</p>
-            <span class="view-map">↓ View Map & Live Tides</span>
+            <span style="color: var(--accent-orange); font-size: 10px; font-weight: bold;">↓ VIEW TIDES</span>
           </summary>
-          <div style="padding: 20px; text-align: center;">
-            <iframe src="https://marea.ooo/en/widget/-37.6406/176.1856?padding=m&components=text%2Cchart&theme=dark"
-                    width="100%" height="450px" style="border:none; border-radius:20px; background:#1a1a1a;"></iframe>
+          <div style="padding: 20px;">
+            <iframe src="https://marea.ooo/en/widget/-37.6406/176.1856?padding=m&components=text%2Cchart&theme=dark" width="100%" height="450px" style="border:none; border-radius:20px; background:#1a1a1a;"></iframe>
           </div>
         </details>
       </div>
     </section>
 
     <section id="community" style="padding: 80px 0;">
-      <h2 class="section-title">Community</h2>
-      
+      <h2 class="reveal" style="text-align: center; font-family: var(--font-curly); font-style: italic; font-size: 42px; margin-bottom: 50px;">Community</h2>
       <div class="journal-grid">
-        <div class="journal-post">
+        <div class="journal-post reveal">
           <div class="journal-image" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
-          <div class="journal-meta">
-            <span>Session Report • Jan 2026</span>
-            <h4>Morning Glass at Orewa</h4>
-          </div>
+          <div class="journal-meta"><h4>Morning Glass at Orewa</h4></div>
         </div>
-
-        <div class="journal-post">
+        <div class="journal-post reveal">
           <div class="journal-image" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
-          <div class="journal-meta">
-            <span>Technique • Tips</span>
-            <h4>Mastering the One-Step Drop</h4>
-          </div>
+          <div class="journal-meta"><h4>Mastering the One-Step Drop</h4></div>
         </div>
-
-        <div class="nzsass-box">
-          <div class="nzsass-content">
-            <h3>Connect with NZSASS</h3>
-            <p>Join the New Zealand Skimboarding Association (NZSASS) to find local meetups and national events.</p>
+        <div class="nzsass-box reveal">
+          <div>
+            <h3 style="font-family: var(--font-curly); font-style: italic; font-size: 32px; color: var(--accent-orange);">Connect with NZSASS</h3>
+            <p>Join the New Zealand Skimboarding Association.</p>
           </div>
           <a href="https://www.facebook.com/groups/NZSASS/" target="_blank" class="nzsass-btn">Join Group</a>
         </div>
-
-        <div class="community-card">
-          <p style="text-transform: uppercase; letter-spacing: 3px; font-size: 10px; margin-bottom: 10px; color: var(--accent-orange); font-weight: bold;">Support Local Gear</p>
-          <h3 style="font-family: var(--font-curly); font-style: italic; font-size: 38px; margin-bottom: 20px;">Hand-Crafted by OXS</h3>
-          <p style="max-width: 650px; margin: 0 auto 40px; font-size: 16px; opacity: 0.8;">Proudly supporting Sam Price at OXS Skimboards. World-class boards built for NZ shores.</p>
-          <div class="oxs-buttons">
-            <a href="https://oxsskimboards.co.nz/shop/Waves-c98771002" target="_blank" class="oxs-btn wave">Shop Wave</a>
-            <a href="https://oxsskimboards.co.nz/shop/Flat-c103977036" target="_blank" class="oxs-btn flat">Shop Flat</a>
+        <div class="community-card reveal">
+          <h3 style="font-family: var(--font-curly); font-style: italic; font-size: 38px;">Hand-Crafted by OXS</h3>
+          <p>Proudly supporting Sam Price at OXS Skimboards.</p>
+          <div style="margin-top: 20px;">
+            <a href="https://oxsskimboards.co.nz/" target="_blank" class="nzsass-btn">Shop OXS</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="lessons" style="padding: 0 5%;">
+    <section id="lessons" class="reveal" style="padding: 0 5%;">
       <div class="booking-wrapper">
-        <h2 class="section-title" style="margin-bottom: 10px;">Grab a Spot</h2>
-        <p style="margin-bottom: 30px; opacity: 0.7; max-width: 600px; margin-left: auto; margin-right: auto;">
-          Check the calendar for upcoming sessions. I'll mark dates with the best tides. 
-        </p>
+        <h2 style="font-family: var(--font-curly); font-style: italic; font-size: 42px;">Grab a Spot</h2>
         <div class="calendly-inline-widget" data-url="https://calendly.com/nzskimmlessons/learn-to-skim" style="min-width:320px;height:700px;"></div>
         <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
       </div>
     </section>
 
     <section id="gallery" style="padding: 80px 0;">
-      <h2 class="section-title">Life on the Shore</h2>
+      <h2 class="reveal" style="text-align: center; font-family: var(--font-curly); font-style: italic; font-size: 42px; margin-bottom: 50px;">Life on the Shore</h2>
       <div class="gallery">
         <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 1" class="reveal">
         <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 2" class="reveal">
@@ -566,11 +412,11 @@
       </div>
     </section>
 
-    <section id="support" style="padding: 0 5%;">
+    <section id="support" class="reveal" style="padding: 0 5%;">
       <div class="support-box">
-        <h2>Support the Dream!</h2>
-        <p>I offer a "pay what you want" model for coaching to keep the stoke accessible for everyone.</p>
-        <a href="#" class="donate-btn">DONATE & SUPPORT</a>
+        <h2 style="font-family: var(--font-curly); font-size: 50px; font-style: italic;">Support the Dream!</h2>
+        <p>I offer a "pay what you want" model for coaching.</p>
+        <a href="#" style="background:#fff; color:var(--accent-orange); padding:20px 40px; border-radius:100px; text-decoration:none; font-weight:bold;">DONATE & SUPPORT</a>
       </div>
     </section>
 
@@ -580,91 +426,70 @@
         <a href="mailto:nzskimmlessons@gmail.com">nzskimmlessons@gmail.com</a>
       </div>
       <div class="footer-socials">
-        <a href="https://instagram.com/devon_matten" target="_blank">INSTAGRAM</a>
-        <a href="https://www.facebook.com/groups/2032375760552448" target="_blank">FACEBOOK</a>
+        <a href="#">INSTAGRAM</a>
+        <a href="#">FACEBOOK</a>
       </div>
       <p style="font-size: 9px; letter-spacing: 2px; margin-top: 40px; opacity: 0.4;">SKIM LESSONS NZ © 2026</p>
     </footer>
   </div>
 
   <script>
-  // 1. CUSTOM CURSOR LOGIC (UPDATED WITH LAG)
-  const cursor = document.getElementById('cursor');
-  let mouseX = 0, mouseY = 0;
-  let cursorX = 0, cursorY = 0;
-
-  document.addEventListener('mousemove', e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
-
-  function animateCursor() {
-    const speed = 0.15; 
-    cursorX += (mouseX - cursorX) * speed;
-    cursorY += (mouseY - cursorY) * speed;
-    if (cursor) {
-      cursor.style.left = cursorX + 'px';
-      cursor.style.top = cursorY + 'px';
+    // 1. CURSOR
+    const cursor = document.getElementById('cursor');
+    let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+    document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+    function animateCursor() {
+      cursorX += (mouseX - cursorX) * 0.15;
+      cursorY += (mouseY - cursorY) * 0.15;
+      if (cursor) { cursor.style.left = cursorX + 'px'; cursor.style.top = cursorY + 'px'; }
+      requestAnimationFrame(animateCursor);
     }
-    requestAnimationFrame(animateCursor);
-  }
-  animateCursor();
+    animateCursor();
 
-  // 2. MOBILE MENU TOGGLE
-  function toggleMenu() {
-    const overlay = document.getElementById('navOverlay');
-    const menuBtn = document.querySelector('.menu-btn');
-    overlay.classList.toggle('active');
-    menuBtn.classList.toggle('active'); 
-    document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : 'auto';
-  }
-
-  // 3. HERO SLIDESHOW
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.slide');
-  setInterval(() => {
-    if(slides.length === 0) return;
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
-  }, 2000);
-
-  // 4. SCROLL EFFECTS (Hero Fade)
-  window.addEventListener('scroll', () => {
-    const heroText = document.querySelector('.hero-text-overlay');
-    if (heroText) {
-      let opacity = 1 - (window.scrollY / 500);
-      heroText.style.opacity = opacity >= 0 ? opacity : 0;
+    // 2. MOBILE MENU
+    function toggleMenu() {
+      const overlay = document.getElementById('navOverlay');
+      const menuBtn = document.querySelector('.menu-btn');
+      overlay.classList.toggle('active');
+      menuBtn.classList.toggle('active'); 
+      document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : 'auto';
     }
-  });
 
-  // 5. HOVER SCALING FOR CURSOR
-  document.addEventListener('mouseover', (e) => {
-    const target = e.target;
-    const isHoverable = target.closest('a') || target.closest('button') || target.closest('.location-card') || target.closest('.mission-card') || target.closest('.journal-post') || target.closest('.nzsass-box') || target.closest('summary') || target.closest('img') || target.closest('h1') || target.closest('h2');
-    if (isHoverable && cursor) {
-      cursor.style.transform = 'translate(-50%, -50%) scale(3.5)';
-    }
-  });
+    // 3. SLIDESHOW
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    setInterval(() => {
+      if(slides.length === 0) return;
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }, 2000);
 
-  document.addEventListener('mouseout', () => {
-    if (cursor) { cursor.style.transform = 'translate(-50%, -50%) scale(1)'; }
-  });
+    // 4. UNSTACKING OBSERVER
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Stagger effect: finds current element's order in the view
+          const delay = entry.target.getBoundingClientRect().left > 0 ? 150 : 0;
+          setTimeout(() => {
+            entry.target.classList.add('active');
+          }, delay);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
-  // 6. NEW: REVEAL OBSERVER (Unstacking Effect)
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        // Staggered delay logic
-        setTimeout(() => {
-          entry.target.classList.add('active');
-        }, index % 3 * 150); // Stagger by 150ms based on row position
-        revealObserver.unobserve(entry.target);
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    
+    // 5. CURSOR HOVER
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest('a, button, summary, .location-card, .mission-card')) {
+        cursor.style.transform = 'translate(-50%, -50%) scale(4)';
       }
     });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    document.addEventListener('mouseout', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
   </script>
 </body>
 </html>

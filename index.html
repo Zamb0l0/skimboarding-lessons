@@ -610,29 +610,33 @@
   </div>
 
   <script>
-function toggleMenu() {
+<script>
+  // 1. CUSTOM CURSOR LOGIC (Must be at the top)
+  const cursor = document.getElementById('cursor');
+  
+  document.addEventListener('mousemove', e => {
+    if (cursor) {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    }
+  });
+
+  // 2. MOBILE MENU TOGGLE
+  function toggleMenu() {
     const overlay = document.getElementById('navOverlay');
     const menuBtn = document.querySelector('.menu-btn');
     
     overlay.classList.toggle('active');
-    menuBtn.classList.toggle('active'); // Animates Hamburger to X
+    menuBtn.classList.toggle('active'); 
     
-    // Locks background scroll when menu is open
     if (overlay.classList.contains('active')) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
   }
-    
-  // --- Custom Cursor Logic ---
-  const cursor = document.getElementById('cursor');
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-  });
 
-  // --- Slideshow Logic ---
+  // 3. HERO SLIDESHOW
   let currentSlide = 0;
   const slides = document.querySelectorAll('.slide');
   function nextSlide() {
@@ -643,7 +647,7 @@ function toggleMenu() {
   }
   setInterval(nextSlide, 2000);
 
-  // --- Hero Parallax/Fade ---
+  // 4. SCROLL EFFECTS
   window.addEventListener('scroll', () => {
     const heroText = document.querySelector('.hero-text-overlay');
     if (heroText) {
@@ -652,21 +656,23 @@ function toggleMenu() {
     }
   });
 
-  // --- Cursor Hover Effects ---
+  // 5. HOVER SCALING FOR CURSOR
   document.addEventListener('mouseover', (e) => {
     const target = e.target;
     const isHoverable = target.closest('a') || target.closest('button') || target.closest('.location-card') || target.closest('.mission-card') || target.closest('.journal-post') || target.closest('.nzsass-box') || target.closest('summary') || target.closest('img') || target.closest('h1') || target.closest('h2');
-    if (isHoverable) {
+    if (isHoverable && cursor) {
       cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
       cursor.style.backgroundColor = '#DE8A64'; 
     }
   });
 
   document.addEventListener('mouseout', () => {
-    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-    cursor.style.backgroundColor = 'rgba(222, 138, 100, 0.3)'; 
+    if (cursor) {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      cursor.style.backgroundColor = 'rgba(222, 138, 100, 0.3)'; 
+    }
   });
-    });
+</script>
   </script>
 </body>
 </html>

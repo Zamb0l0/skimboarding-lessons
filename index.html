@@ -4,7 +4,7 @@
   <link rel="icon" type="image/png" href="favicon/Logo.png">
   <link rel="apple-touch-icon" href="favicon/Logo.png">
   
- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://assets.calendly.com https://marea.ooo; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://calendly.com https://marea.ooo; img-src 'self' https://i.imgur.com data:; connect-src https://marea.ooo;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://assets.calendly.com https://marea.ooo; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://calendly.com https://marea.ooo; img-src 'self' https://i.imgur.com data:; connect-src https://marea.ooo;">
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,16 +26,19 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; cursor: none; }
     
-   body {
+    html {
+      scroll-behavior: smooth;
+      overflow-y: auto;
+    }
+
+    body {
       font-family: var(--font-main);
       background-color: var(--bg-cream);
       color: var(--text-dark);
       line-height: 1.6;
-      /* --- THE FIX --- */
       overflow-y: auto !important; 
       overflow-x: hidden;
       height: auto;
-      /* ---------------- */
     }
 
     /* --- CURSOR --- */
@@ -64,6 +67,7 @@
       transform: translateY(0) scale(1);
     }
 
+    /* --- HERO & SCROLL FIX --- */
     .hero-slideshow {
       position: fixed;
       top: 0; left: 0;
@@ -71,6 +75,7 @@
       z-index: 1;
       overflow: hidden;
       background: #000;
+      pointer-events: none; /* Allows scrolling through to content */
     }
 
     .hero-slideshow::after {
@@ -93,15 +98,16 @@
 
     .slide.active { opacity: 1; }
 
-   .hero-text-overlay {
+    .hero-text-overlay {
       position: absolute;
-      top: 45%; /* Lifted slightly to balance the arrow below */
+      top: 45%; 
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 3;
       text-align: center;
       width: 90%;
       color: #fff;
+      pointer-events: auto; /* Allows clicking the scroll arrow */
     }
 
     .hero-text-overlay h2 {
@@ -113,15 +119,17 @@
       margin-bottom: 20px;
     }
 
-    /* --- SCROLL INDICATOR ANIMATION --- */
+    /* --- SCROLL INDICATOR --- */
     .scroll-indicator {
       position: absolute;
-      bottom: -150px; /* Distance below the H2 */
+      bottom: -150px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
+      text-decoration: none;
+      color: #fff;
       animation: bounce 2s infinite;
     }
 
@@ -217,11 +225,7 @@
     }
 
     header { padding: 120px 5% 80px; text-align: center; }
-    header h1 {
-      font-family: var(--font-curly); font-size: clamp(3rem, 10vw, 6rem);
-      font-style: italic; line-height: 1.1; margin-bottom: 20px;
-    }
-
+    
     .marquee-bar {
       background-color: var(--bg-dark-cream); border-bottom: 1px solid rgba(0,0,0,0.05);
       padding: 12px 0; overflow: hidden; display: flex; white-space: nowrap; z-index: 10;
@@ -236,7 +240,7 @@
 
     @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-    /* --- MISSION CARDS (SOLITAIRE STACKING) --- */
+    /* --- MISSION CARDS --- */
     .mission-container {
       display: flex;
       flex-direction: column; 
@@ -257,61 +261,19 @@
       transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out;
     }
 
-    /* ALTERNATING COLORS: White -> Orange -> White */
-    .mission-card:nth-child(odd) {
-      background: var(--white);
-      color: var(--text-dark);
-    }
-
-    .mission-card:nth-child(even) {
-      background: var(--accent-orange);
-      color: var(--white);
-    }
-
-    .mission-card:nth-child(even) p { color: rgba(255, 255, 255, 0.9); }
-
-    /* Sticky Offsets for the 'Solitaire Deck' look */
+    .mission-card:nth-child(odd) { background: var(--white); color: var(--text-dark); }
+    .mission-card:nth-child(even) { background: var(--accent-orange); color: var(--white); }
     .mission-card:nth-child(1) { top: 120px; z-index: 10; }
     .mission-card:nth-child(2) { top: 180px; z-index: 11; }
     .mission-card:nth-child(3) { top: 240px; z-index: 12; }
 
-    /* Initial Reveal state */
-    .mission-card.reveal {
-      opacity: 0;
-      transform: translateY(150px);
-    }
-
-    .mission-card.reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* --- LOCATIONS & GRID LOGIC --- */
-    #locations {
-      position: relative;
-      z-index: 20; 
-      background-color: var(--bg-cream);
-      padding: 80px 0;
-    }
-
-    .locations-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 30px; max-width: 1100px; margin: 0 auto 80px; padding: 0 5%;
-    }
-    .location-card {
-      background: #fff; border-radius: 30px; border: 1px solid rgba(0,0,0,0.03); 
-      overflow: hidden; transition: 0.3s;
-    }
+    #locations { position: relative; z-index: 20; background-color: var(--bg-cream); padding: 80px 0; }
+    .locations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto 80px; padding: 0 5%; }
+    .location-card { background: #fff; border-radius: 30px; border: 1px solid rgba(0,0,0,0.03); overflow: hidden; }
     .location-card summary { padding: 40px; list-style: none; cursor: pointer; text-align: center; }
 
-    .journal-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px; max-width: 1100px; margin: 0 auto; padding: 0 5%;
-    }
-    .journal-post {
-      background: var(--white); border-radius: 30px; overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.03); transition: 0.3s;
-    }
+    .journal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto; padding: 0 5%; }
+    .journal-post { background: var(--white); border-radius: 30px; overflow: hidden; border: 1px solid rgba(0,0,0,0.03); }
     .journal-image { width: 100%; height: 220px; background-size: cover; background-position: center; }
     .journal-meta { padding: 30px; }
     
@@ -326,21 +288,13 @@
       text-transform: uppercase; transition: 0.3s;
     }
 
-    .community-card {
-      grid-column: 1 / -1; background: var(--white); padding: 60px 40px;
-      border-radius: 40px; border: 1px solid rgba(0,0,0,0.03); text-align: center;
-    }
-
     .booking-wrapper {
       background: var(--white); padding: 60px 20px;
       border-radius: 30px; max-width: 1000px; margin: 80px auto;
       border: 1px solid rgba(0,0,0,0.05); text-align: center;
     }
 
-    .gallery {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 15px; padding: 0 5%; max-width: 1200px; margin: 0 auto;
-    }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; padding: 0 5%; max-width: 1200px; margin: 0 auto; }
     .gallery img { width: 100%; height: 250px; object-fit: cover; border-radius: 20px; transition: 0.4s; }
 
     .support-box {
@@ -363,14 +317,14 @@
   <div class="hero-slideshow">
     <div class="slide active" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
     <div class="slide" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
-    <div class="hero-text-overlay">
-      <div class="hero-text-overlay">
-      <h2>Sliding into Summer</h2>
-      <div class="scroll-indicator">
-        <span style="display:block; font-size: 10px; letter-spacing: 3px; margin-bottom: 10px; opacity: 0.8;">SCROLL</span>
-        <div class="arrow"></div>
-      </div>
-    </div>
+  </div>
+
+  <div class="hero-text-overlay">
+    <h2>Sliding into Summer</h2>
+    <a href="#mission-start" class="scroll-indicator">
+      <span style="display:block; font-size: 10px; letter-spacing: 3px; margin-bottom: 10px; opacity: 0.8; font-weight: bold;">SCROLL</span>
+      <div class="arrow"></div>
+    </a>
   </div>
 
   <nav class="navbar">
@@ -395,7 +349,7 @@
     </ul>
   </div>
 
-  <div class="main-content">
+  <div class="main-content" id="mission-start">
     <div class="marquee-bar">
       <div class="marquee-content">
         <span class="marquee-item">Professional Instruction</span>
@@ -476,13 +430,6 @@
           </div>
           <a href="https://www.facebook.com/groups/NZSASS/" target="_blank" class="nzsass-btn">Join Group</a>
         </div>
-        <div class="community-card reveal">
-          <h3 style="font-family: var(--font-curly); font-style: italic; font-size: 38px;">Hand-Crafted by OXS</h3>
-          <p>Proudly supporting Sam Price at OXS Skimboards.</p>
-          <div style="margin-top: 20px;">
-            <a href="https://oxsskimboards.co.nz/" target="_blank" class="nzsass-btn">Shop OXS</a>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -504,22 +451,10 @@
       </div>
     </section>
 
-    <section id="support" class="reveal" style="padding: 0 5%;">
-      <div class="support-box">
-        <h2 style="font-family: var(--font-curly); font-size: 50px; font-style: italic;">Support the Dream!</h2>
-        <p>I offer a "pay what you want" model for coaching.</p>
-        <a href="#" style="background:#fff; color:var(--accent-orange); padding:20px 40px; border-radius:100px; text-decoration:none; font-weight:bold;">DONATE & SUPPORT</a>
-      </div>
-    </section>
-
     <footer>
       <div class="footer-contact">
         <a href="tel:0211411796">021 141 1796</a>
         <a href="mailto:nzskimmlessons@gmail.com">nzskimmlessons@gmail.com</a>
-      </div>
-      <div class="footer-socials">
-        <a href="#">INSTAGRAM</a>
-        <a href="#">FACEBOOK</a>
       </div>
       <p style="font-size: 9px; letter-spacing: 2px; margin-top: 40px; opacity: 0.4;">SKIM LESSONS NZ © 2026</p>
     </footer>
@@ -561,14 +496,11 @@
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const delay = entry.target.getBoundingClientRect().left > 0 ? 150 : 0;
-          setTimeout(() => {
-            entry.target.classList.add('active');
-          }, delay);
+          entry.target.classList.add('active');
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+    }, { threshold: 0.1 });
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     
@@ -581,6 +513,10 @@
     document.addEventListener('mouseout', () => {
       cursor.style.transform = 'translate(-50%, -50%) scale(1)';
     });
+
+    // 6. FORCE SCROLL
+    document.body.style.overflow = 'auto';
+    document.documentElement.style.overflow = 'auto';
   </script>
 </body>
 </html>

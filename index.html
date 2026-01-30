@@ -21,6 +21,7 @@
       --accent-brown: #5D473A; 
       --white: #ffffff;
       --font-curly: 'Playfair Display', serif;
+      --font-serif: Georgia, 'Times New Roman', serif;
       --font-main: "Century Gothic", AppleGothic, sans-serif;
     }
 
@@ -145,9 +146,9 @@
     .marquee-item { font-size: 13px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-brown); padding: 0 15px; }
     @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-    header { padding: 120px 5% 80px; text-align: center; }
+    header { padding: 120px 5% 40px; text-align: center; }
 
-    .mission-container { display: flex; flex-direction: column; max-width: 800px; margin: -100px auto 100px; padding: 0 5% 150px; }
+    .mission-container { display: flex; flex-direction: column; max-width: 800px; margin: 100px auto 100px; padding: 0 5% 150px; }
     .mission-card { position: sticky; padding: 80px 40px; border-radius: 40px; text-align: center; margin-bottom: 20px; box-shadow: 0 -10px 40px rgba(0,0,0,0.08); }
     .mission-card:nth-child(odd) { background: var(--white); }
     .mission-card:nth-child(even) { background: var(--accent-orange); color: white; }
@@ -245,12 +246,10 @@
       </div>
     </div>
 
-    <header class="reveal" style="padding: 140px 5% 100px;">
-      <p style="letter-spacing: 5px; font-size: 10px; opacity: 0.6; margin-bottom: 15px;">HIBISCUS COAST • MT MAUNGANUI</p>
-      <h1 style="font-family: var(--font-curly); font-size: clamp(3rem, 10vw, 6rem); font-style: italic; margin-bottom: 40px;">Learn to Skimboard</h1>
-      <p style="font-family: Georgia, 'Times New Roman', serif; font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: bold; line-height: 1.2; opacity: 0.9; max-width: 850px; margin: 0 auto; color: var(--text-dark);">
-        "Committed to growing skimboarding in NZ by passing on my knowledge."
-      </p>
+    <header class="reveal">
+      <p style="letter-spacing: 5px; font-size: 10px; opacity: 0.6; margin-bottom: 10px;">HIBISCUS COAST • MT MAUNGANUI</p>
+      <h1 style="font-family: var(--font-curly); font-size: clamp(3rem, 10vw, 6rem); font-style: italic; margin-bottom: 20px;">Learn to Skimboard</h1>
+      <p style="font-family: var(--font-serif); font-size: clamp(1.8rem, 4vw, 3rem); font-weight: bold; line-height: 1.2; opacity: 0.9; max-width: 800px; margin: 0 auto;">"Committed to growing skimboarding in NZ by passing on my knowledge."</p>
     </header>
 
     <section class="mission-container">

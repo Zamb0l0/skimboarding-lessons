@@ -164,13 +164,13 @@
       100% { transform: translateX(-50%); }
     }
 
-    /* BLOG & COMMUNITY STYLES */
+    /* COMMUNITY HUB STYLES */
     .journal-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
       max-width: 1100px;
-      margin: 0 auto 60px;
+      margin: 0 auto;
       padding: 0 5%;
     }
     .journal-post {
@@ -183,7 +183,7 @@
     .journal-post:hover { transform: translateY(-5px); }
     .journal-image {
       width: 100%;
-      height: 200px;
+      height: 220px;
       background-size: cover;
       background-position: center;
     }
@@ -204,6 +204,7 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 30px;
+      margin: 20px 0;
     }
     .nzsass-content { flex: 1; min-width: 300px; }
     .nzsass-content h3 { font-family: var(--font-curly); font-style: italic; font-size: 32px; margin-bottom: 10px; color: var(--accent-orange); }
@@ -221,16 +222,14 @@
     }
     .nzsass-btn:hover { background: #fff; color: var(--text-dark); }
 
-    /* GEAR SECTION STYLES */
-    .community-section { padding: 100px 5%; max-width: 1100px; margin: 0 auto; text-align: center; }
     .community-card {
+      grid-column: 1 / -1;
       background: var(--white);
       padding: 60px 40px;
       border-radius: 40px;
       border: 1px solid rgba(0,0,0,0.03);
+      text-align: center;
     }
-    .community-card h3 { font-family: var(--font-curly); font-style: italic; font-size: 38px; margin-bottom: 20px; }
-    .community-card p { max-width: 650px; margin: 0 auto 40px; font-size: 16px; opacity: 0.8; }
     .oxs-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
     .oxs-btn {
       padding: 18px 40px; border-radius: 100px; text-decoration: none; font-weight: bold;
@@ -240,6 +239,7 @@
     .oxs-btn.wave { background: var(--accent-brown); color: #fff; }
     .oxs-btn.flat { background: transparent; color: var(--accent-brown); }
 
+    /* CORE SECTIONS */
     .mission-container {
       max-width: 1100px; margin: -60px auto 60px;
       display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -325,7 +325,6 @@
     <div class="slide" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
     <div class="slide" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
     <div class="slide" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
-    
     <div class="hero-text-overlay">
       <h2>Sliding into Summer</h2>
     </div>
@@ -336,8 +335,7 @@
     <ul>
       <li><a href="#locations">Locations</a></li>
       <li><a href="#lessons">Book</a></li>
-      <li><a href="#journal">Journal</a></li>
-      <li><a href="#gear">Gear</a></li>
+      <li><a href="#community">Community</a></li>
       <li><a href="#gallery">Gallery</a></li>
     </ul>
   </nav>
@@ -378,7 +376,7 @@
       </div>
     </section>
 
-     <section id="locations" style="padding: 40px 0;">
+    <section id="locations" style="padding: 40px 0;">
       <h2 class="section-title">Where We Slide</h2>
       <div class="locations-grid">
         <details class="location-card">
@@ -407,8 +405,8 @@
       </div>
     </section>
 
-    <section id="journal" style="padding: 80px 0;">
-      <h2 class="section-title">Shore Journal</h2>
+    <section id="community" style="padding: 80px 0;">
+      <h2 class="section-title">Community & Gear</h2>
       
       <div class="journal-grid">
         <div class="journal-post">
@@ -430,31 +428,28 @@
         <div class="nzsass-box">
           <div class="nzsass-content">
             <h3>Connect with NZSASS</h3>
-            <p>Join the New Zealand Skimboarding Association to find local meetups, events, and stoke from across the country.</p>
+            <p>Join the New Zealand Skimboarding Association (NZSASS) to find local meetups and national events.</p>
           </div>
-          <a href="https://www.facebook.com/groups/NZSASS/" target="_blank" class="nzsass-btn">Join the Community</a>
+          <a href="https://www.facebook.com/groups/NZSASS/" target="_blank" class="nzsass-btn">Join Group</a>
+        </div>
+
+        <div class="community-card">
+          <p style="text-transform: uppercase; letter-spacing: 3px; font-size: 10px; margin-bottom: 10px; color: var(--accent-orange); font-weight: bold;">Support Local Gear</p>
+          <h3 style="font-family: var(--font-curly); font-style: italic; font-size: 38px; margin-bottom: 20px;">Hand-Crafted by OXS</h3>
+          <p style="max-width: 650px; margin: 0 auto 40px; font-size: 16px; opacity: 0.8;">Proudly supporting Sam Price at OXS Skimboards. World-class boards built for NZ shores.</p>
+          <div class="oxs-buttons">
+            <a href="https://oxsskimboards.co.nz/shop/Waves-c98771002" target="_blank" class="oxs-btn wave">Shop Wave</a>
+            <a href="https://oxsskimboards.co.nz/shop/Flat-c103977036" target="_blank" class="oxs-btn flat">Shop Flat</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="gear" class="community-section">
-      <div class="community-card">
-        <p style="text-transform: uppercase; letter-spacing: 3px; font-size: 10px; margin-bottom: 10px; color: var(--accent-orange); font-weight: bold;">Support Local</p>
-        <h3>Hand-Crafted in NZ</h3>
-        <p>We're proud to support Sam Price at OXS Skimboards. World-class boards built for NZ conditions.</p>
-        <div class="oxs-buttons">
-          <a href="https://oxsskimboards.co.nz/shop/Waves-c98771002" target="_blank" class="oxs-btn wave">Shop Wave Boards</a>
-          <a href="https://oxsskimboards.co.nz/shop/Flat-c103977036" target="_blank" class="oxs-btn flat">Shop Flat Boards</a>
-        </div>
-      </div>
-    </section>
-
-      <section id="lessons" style="padding: 0 5%;">
+    <section id="lessons" style="padding: 0 5%;">
       <div class="booking-wrapper">
         <h2 class="section-title" style="margin-bottom: 10px;">Grab a Spot</h2>
         <p style="margin-bottom: 30px; opacity: 0.7; max-width: 600px; margin-left: auto; margin-right: auto;">
-          Check the calendar for upcoming sessions. I'll mark dates with the best tides and conditions. 
-          <strong>See you at the beach!</strong>
+          Check the calendar for upcoming sessions. I'll mark dates with the best tides. 
         </p>
         <div class="calendly-inline-widget" data-url="https://calendly.com/nzskimmlessons/learn-to-skim" style="min-width:320px;height:700px;"></div>
         <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
@@ -474,13 +469,12 @@
     <section id="support" style="padding: 0 5%;">
       <div class="support-box">
         <h2>Support the Dream!</h2>
-        <p>My goal is to grow the NZ skimboarding community. To keep the stoke accessible for everyone, I offer a "pay what you want" model for my coaching. Your support helps me keep this idea running and gets more boards under feet.</p>
+        <p>I offer a "pay what you want" model for coaching to keep the stoke accessible for everyone.</p>
         <a href="#" class="donate-btn">DONATE & SUPPORT</a>
       </div>
     </section>
 
     <footer>
-      <p style="font-size: 10px; letter-spacing: 3px; opacity: 0.7;">GET IN TOUCH</p>
       <div class="footer-contact">
         <a href="tel:0211411796">021 141 1796</a>
         <a href="mailto:nzskimmlessons@gmail.com">nzskimmlessons@gmail.com</a>
@@ -494,58 +488,43 @@
   </div>
 
   <script>
-  const cursor = document.getElementById('cursor');
-  
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-  });
-
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.slide');
-  function nextSlide() {
-    if(slides.length === 0) return;
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
-  }
-  setInterval(nextSlide, 2000);
-
-  window.addEventListener('scroll', () => {
-    const heroText = document.querySelector('.hero-text-overlay');
-    if (heroText) {
-      const scrollValue = window.scrollY;
-      let opacity = 1 - (scrollValue / 500);
-      heroText.style.opacity = opacity >= 0 ? opacity : 0;
-    }
-  });
-
-  document.addEventListener('mouseover', (e) => {
-    const target = e.target;
-    const isHoverable = target.closest('a') || target.closest('button') || target.closest('.location-card') || target.closest('.mission-card') || target.closest('.journal-post') || target.closest('.nzsass-box') || target.closest('summary') || target.closest('img') || target.closest('h1') || target.closest('h2');
-
-    if (isHoverable) {
-      cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
-      cursor.style.backgroundColor = '#DE8A64'; 
-    }
-  });
-
-  document.addEventListener('mouseout', () => {
-    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-    cursor.style.backgroundColor = 'rgba(222, 138, 100, 0.3)'; 
-  });
-
-  const supportBox = document.getElementById('support');
-  if (supportBox) {
-    supportBox.addEventListener('mouseenter', () => {
-      cursor.style.mixBlendMode = 'normal';
-      cursor.style.borderColor = '#ffffff';
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
     });
-    supportBox.addEventListener('mouseleave', () => {
-      cursor.style.mixBlendMode = 'difference';
-      cursor.style.borderColor = '#DE8A64';
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    function nextSlide() {
+      if(slides.length === 0) return;
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+    setInterval(nextSlide, 2000);
+
+    window.addEventListener('scroll', () => {
+      const heroText = document.querySelector('.hero-text-overlay');
+      if (heroText) {
+        let opacity = 1 - (window.scrollY / 500);
+        heroText.style.opacity = opacity >= 0 ? opacity : 0;
+      }
     });
-  }
-</script>
+
+    document.addEventListener('mouseover', (e) => {
+      const target = e.target;
+      const isHoverable = target.closest('a') || target.closest('button') || target.closest('.location-card') || target.closest('.mission-card') || target.closest('.journal-post') || target.closest('.nzsass-box') || target.closest('summary') || target.closest('img') || target.closest('h1') || target.closest('h2');
+      if (isHoverable) {
+        cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
+        cursor.style.backgroundColor = '#DE8A64'; 
+      }
+    });
+
+    document.addEventListener('mouseout', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      cursor.style.backgroundColor = 'rgba(222, 138, 100, 0.3)'; 
+    });
+  </script>
 </body>
 </html>

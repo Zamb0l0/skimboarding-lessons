@@ -99,24 +99,91 @@
       box-shadow: 0 -20px 50px rgba(0,0,0,0.2);
     }
 
+    /* --- UPDATED NAVBAR & FULL SCREEN MENU --- */
     .navbar {
       position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-      background-color: rgba(52, 41, 35, 0.75);
-      padding: 0 2.5rem; 
-      height: 80px; 
-      border-radius: 100px;
+      background-color: rgba(52, 41, 35, 0.85);
+      padding: 0 4rem; height: 100px; border-radius: 100px;
       display: flex; align-items: center; justify-content: space-between;
-      z-index: 1000; width: 95%; max-width: 1000px;
-      backdrop-filter: blur(8px);
-      transition: 0.3s ease;
-    }
-    .navbar img { height: 140px; width: auto; margin-top: 10px; }
-    .navbar ul { display: flex; gap: 1.5rem; list-style: none; }
-    .navbar ul li a {
-      text-decoration: none; color: var(--accent-orange);
-      font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold;
+      z-index: 1000; width: 98%; max-width: 1400px;
+      backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05);
     }
 
+    .navbar img { height: 160px; width: auto; margin-top: 15px; z-index: 1001; }
+
+    /* Desktop Links */
+    .nav-links { display: flex; gap: 3rem; list-style: none; }
+    .nav-links li a {
+      text-decoration: none; color: var(--accent-orange);
+      font-size: 15px; letter-spacing: 4px; text-transform: uppercase;
+      font-weight: 900; transition: 0.3s;
+    }
+
+    /* Mobile Menu Button (Hidden on Desktop) */
+    .menu-btn {
+      display: none; background: none; border: none;
+      color: var(--accent-orange); font-size: 14px; font-weight: 900;
+      letter-spacing: 2px; text-transform: uppercase; z-index: 2001;
+    }
+
+    /* Full Screen Overlay */
+    .nav-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--text-dark); display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      z-index: 2000; transition: transform 0.5s cubic-bezier(0.77,0,0.175,1);
+      transform: translateY(-100%); /* Start hidden above */
+    }
+
+    .nav-overlay.active { transform: translateY(0); }
+
+    .nav-overlay ul { list-style: none; text-align: center; }
+    .nav-overlay ul li { margin: 25px 0; }
+    .nav-overlay ul li a {
+      font-family: var(--font-curly); font-style: italic;
+      font-size: 50px; color: #fff; text-decoration: none;
+      transition: 0.3s;
+    }
+    .nav-overlay ul li a:hover { color: var(--accent-orange); }
+
+    /* Consolidated Mobile Responsiveness */
+    @media (max-width: 1024px) {
+      * { cursor: auto !important; }
+      #cursor { display: none; }
+
+      .navbar { 
+        width: 95%; 
+        height: 80px; 
+        padding: 0 1.5rem; 
+      }
+      
+      .navbar img { 
+        height: 100px; 
+        margin-top: 10px;
+      }
+
+      .nav-links { 
+        display: none; 
+      }
+
+      .menu-btn { 
+        display: block; 
+      }
+
+      .nzsass-box { 
+        padding: 30px; 
+        text-align: center; 
+        flex-direction: column;
+      }
+      
+      .nzsass-btn { 
+        width: 100%; 
+      }
+      
+      .nav-overlay ul li a {
+        font-size: 40px; /* Slightly smaller for mobile screens */
+      }
+    }
     header { padding: 120px 5% 80px; text-align: center; }
     header h1 {
       font-family: var(--font-curly);
@@ -330,15 +397,27 @@
     </div>
   </div>
 
-  <nav class="navbar">
+<nav class="navbar">
     <img src="Logo.png" alt="Logo">
-    <ul>
+    
+    <ul class="nav-links">
       <li><a href="#locations">Locations</a></li>
       <li><a href="#lessons">Book</a></li>
       <li><a href="#community">Community</a></li>
       <li><a href="#gallery">Gallery</a></li>
     </ul>
+
+    <button class="menu-btn" onclick="toggleMenu()">Menu</button>
   </nav>
+
+  <div class="nav-overlay" id="navOverlay">
+    <ul>
+      <li><a href="#locations" onclick="toggleMenu()">Locations</a></li>
+      <li><a href="#lessons" onclick="toggleMenu()">Booking</a></li>
+      <li><a href="#community" onclick="toggleMenu()">Community</a></li>
+      <li><a href="#gallery" onclick="toggleMenu()">Gallery</a></li>
+    </ul>
+  </div>
 
   <div class="main-content">
     <div class="marquee-bar">
@@ -488,6 +567,22 @@
   </div>
 
   <script>
+function toggleMenu() {
+    const overlay = document.getElementById('navOverlay');
+    const menuBtn = document.querySelector('.menu-btn');
+    
+    overlay.classList.toggle('active');
+    
+    // Change button text based on state
+    if (overlay.classList.contains('active')) {
+      menuBtn.innerHTML = "Close";
+      menuBtn.style.color = "#fff";
+    } else {
+      menuBtn.innerHTML = "Menu";
+      menuBtn.style.color = "var(--accent-orange)";
+    }
+  }
+    
     const cursor = document.getElementById('cursor');
     document.addEventListener('mousemove', e => {
       cursor.style.left = e.clientX + 'px';

@@ -100,16 +100,17 @@
     }
 
     /* --- UPDATED NAVBAR & FULL SCREEN MENU --- */
+    /* UPDATED Z-INDEX TO 3000 SO IT SITS ON TOP OF OVERLAY */
     .navbar {
       position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
       background-color: rgba(52, 41, 35, 0.85);
       padding: 0 4rem; height: 100px; border-radius: 100px;
       display: flex; align-items: center; justify-content: space-between;
-      z-index: 1000; width: 98%; max-width: 1400px;
+      z-index: 3000; width: 98%; max-width: 1400px;
       backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05);
     }
 
-    .navbar img { height: 160px; width: auto; margin-top: 15px; z-index: 1001; }
+    .navbar img { height: 160px; width: auto; margin-top: 15px; z-index: 3001; }
 
     /* Desktop Links */
     .nav-links { display: flex; gap: 3rem; list-style: none; }
@@ -120,6 +121,7 @@
     }
 
     /* Mobile Menu Button - Circle Style */
+    /* UPDATED Z-INDEX TO 3001 */
     .menu-btn {
       display: none;
       background: white;
@@ -128,7 +130,7 @@
       height: 50px;
       border-radius: 50%;
       position: relative;
-      z-index: 2001;
+      z-index: 3001;
       transition: 0.3s;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
@@ -188,10 +190,9 @@
     .nav-overlay ul li a:hover { color: var(--accent-orange); }
 
     /* Consolidated Mobile Responsiveness */
-   @media (max-width: 1024px) {
-      * { cursor: auto !important; } /* Returns to standard finger/pointer */
-      #cursor { display: none; }    /* Hides the orange circle */
-    }
+    @media (max-width: 1024px) {
+      * { cursor: auto !important; }
+      #cursor { display: none; }
 
       .navbar { 
         width: 95%; 
@@ -611,7 +612,6 @@
   </div>
 
   <script>
-<script>
   // 1. CUSTOM CURSOR LOGIC (Must be at the top)
   const cursor = document.getElementById('cursor');
   
@@ -673,7 +673,6 @@
       cursor.style.backgroundColor = 'rgba(222, 138, 100, 0.3)'; 
     }
   });
-</script>
   </script>
 </body>
 </html>

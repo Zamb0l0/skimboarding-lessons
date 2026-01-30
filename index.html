@@ -37,22 +37,25 @@
       overflow-x: hidden;
     }
 
-    /* --- CURSOR (Fixed Z-Index) --- */
+    /* --- CURSOR (Fixed Z-Index & Interaction) --- */
     #cursor {
       width: 12px; height: 12px;
       background-color: #DE8A64;
       border-radius: 50%;
       position: fixed; 
       pointer-events: none; 
-      z-index: 99999; /* Higher than everything else */
+      z-index: 99999;
       transform: translate(-50%, -50%);
       mix-blend-mode: difference; 
-      transition: transform 0.15s ease-out, opacity 0.3s;
+      transition: transform 0.15s ease-out, opacity 0.3s, background-color 0.3s;
     }
+
+    /* Click effect class */
+    #cursor.clicking { transform: translate(-50%, -50%) scale(0.7) !important; }
 
     .reveal {
       opacity: 0;
-      transform: translateY(50px) scale(0.98); /* Less extreme start point */
+      transform: translateY(40px) scale(0.98);
       transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out;
     }
 
@@ -139,7 +142,7 @@
       .menu-btn { display: block; }
     }
 
-    /* --- MARQUEE --- */
+    /* --- SECTIONS --- */
     .marquee-bar { background: var(--bg-dark-cream); padding: 12px 0; overflow: hidden; display: flex; }
     .marquee-content { display: flex; animation: scroll-left 15s linear infinite; }
     .marquee-item { font-size: 13px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-brown); padding: 0 15px; }
@@ -390,6 +393,10 @@
     }
     animateCursor();
 
+    // Click Animation
+    document.addEventListener('mousedown', () => cursor.classList.add('clicking'));
+    document.addEventListener('mouseup', () => cursor.classList.remove('clicking'));
+
     function toggleMenu() {
       const overlay = document.getElementById('navOverlay');
       overlay.classList.toggle('active');
@@ -404,23 +411,23 @@
       slides[currentSlide].classList.add('active');
     }, 3000);
 
-    // REVEAL ANIMATION FIX
+    // Visibility Fix: Trigger reveal earlier
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) { 
             entry.target.classList.add('active'); 
         }
       });
-    }, { threshold: 0.05, rootMargin: "0px 0px -50px 0px" });
+    }, { threshold: 0.1 });
     
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    // CURSOR INTERACTION (All text and images)
+    // Advanced Cursor Interaction (Hovering over text/links/images)
     document.addEventListener('mouseover', (e) => {
       const target = e.target.closest('a, button, summary, img, h1, h2, h3, h4, h5, p, span, li');
       if (target) { 
         cursor.style.transform = 'translate(-50%, -50%) scale(5)'; 
-        cursor.style.opacity = "0.7";
+        cursor.style.opacity = "0.6";
       }
     });
 

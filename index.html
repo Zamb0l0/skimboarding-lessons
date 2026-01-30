@@ -188,9 +188,10 @@
     .nav-overlay ul li a:hover { color: var(--accent-orange); }
 
     /* Consolidated Mobile Responsiveness */
-    @media (max-width: 1024px) {
-      * { cursor: auto !important; }
-      #cursor { display: none; }
+   @media (max-width: 1024px) {
+      * { cursor: auto !important; } /* Returns to standard finger/pointer */
+      #cursor { display: none; }    /* Hides the orange circle */
+    }
 
       .navbar { 
         width: 95%; 

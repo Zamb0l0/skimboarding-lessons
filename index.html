@@ -25,6 +25,19 @@
       --font-main: "Century Gothic", AppleGothic, sans-serif;
     }
 
+    .oxs-brand-logo {
+  height: 50px; /* Adjust size to fit your aesthetic */
+  width: auto;
+  margin-bottom: 20px;
+  opacity: 0.9;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+  transition: transform 0.3s ease;
+}
+
+.community-card:hover .oxs-brand-logo {
+  transform: scale(1.05);
+}
+
     * { box-sizing: border-box; margin: 0; padding: 0; cursor: none !important; }
 
     html { scroll-behavior: smooth; }
@@ -496,20 +509,25 @@
           <div class="journal-meta"><h4>Mastering the One-Step Drop</h4></div>
         </div>
 
-        <div class="community-card reveal" style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
-          <p style="text-transform: uppercase; letter-spacing: 3px; font-size: 10px; margin-bottom: 10px; color: var(--accent-orange); font-weight: bold;">Support Local</p>
-          <h3 style="font-family: var(--font-curly); font-style: italic; font-size: 38px; margin-bottom: 20px;">NZ Handmade - OXS Skimboards</h3>
-          <p style="max-width: 650px; margin: 0 auto 40px; font-size: 16px; opacity: 0.8;">Proudly supporting Sam Price at OXS Skimboards. World-class boards built for New Zealand beaches.</p>
-          <div class="gear-grid">
-  <a href="https://oxsskimboards.co.nz/shop/Waves-c98771002" target="_blank" class="gear-link-card">
-    <img src="https://res.cloudinary.com/dyphplbk4/image/upload/v1769779349/Untitled-4_b99hjq.png" alt="OXS Wave Skimboard" class="gear-board-img">
-    <h5>Shop OXS Wave</h5>
-  </a>
+       <div class="community-card reveal" style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
+  <p style="text-transform: uppercase; letter-spacing: 3px; font-size: 10px; margin-bottom: 15px; color: var(--accent-orange); font-weight: bold;">Support Local</p>
+  
+  <img src="https://res.cloudinary.com/dyphplbk4/image/upload/v1769779930/logo_smhphh.png" alt="OXS Logo" class="oxs-brand-logo">
+  
+  <h3 style="font-family: var(--font-curly); font-style: italic; font-size: 38px; margin-bottom: 20px;">NZ Handmade - OXS Skimboards</h3>
+  <p style="max-width: 650px; margin: 0 auto 40px; font-size: 16px; opacity: 0.8;">Proudly supporting Sam Price at OXS Skimboards. World-class boards built for New Zealand beaches.</p>
+  
+  <div class="gear-grid">
+    <a href="https://oxsskimboards.co.nz/shop/Waves-c98771002" target="_blank" class="gear-link-card">
+      <img src="https://res.cloudinary.com/dyphplbk4/image/upload/v1769779349/Untitled-4_b99hjq.png" alt="OXS Wave Skimboard" class="gear-board-img">
+      <h5>Shop OXS Wave</h5>
+    </a>
 
-  <a href="https://oxsskimboards.co.nz/shop/Flat-c103977036" target="_blank" class="gear-link-card">
-    <img src="https://res.cloudinary.com/dyphplbk4/image/upload/v1769779349/Untitled-3_rohuks.png" alt="OXS Flatland Skimboard" class="gear-board-img">
-    <h5>Shop OXS Flat</h5>
-  </a>
+    <a href="https://oxsskimboards.co.nz/shop/Flat-c103977036" target="_blank" class="gear-link-card">
+      <img src="https://res.cloudinary.com/dyphplbk4/image/upload/v1769779349/Untitled-3_rohuks.png" alt="OXS Flatland Skimboard" class="gear-board-img">
+      <h5>Shop OXS Flat</h5>
+    </a>
+  </div>
 </div>
 
         <div class="nzsass-box reveal">

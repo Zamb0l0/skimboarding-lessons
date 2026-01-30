@@ -95,7 +95,34 @@
   opacity: 1; 
   z-index: 2; /* Active slide sits on top */
 }
+.hero-text-overlay {
+  position: fixed; 
+  top: 45%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  z-index: 10; /* This pulls the text and arrow to the very front */
+  text-align: center; 
+  width: 90%; 
+  color: #fff; 
+  pointer-events: none; /* Allows mouse to click the arrow through the div */
+}
 
+/* Ensure the scroll indicator is clickable and on top */
+.scroll-indicator {
+  position: absolute; 
+  bottom: -150px; 
+  left: 50%; 
+  transform: translateX(-50%);
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
+  text-decoration: none; 
+  color: #fff; 
+  animation: bounce 2s infinite; 
+  pointer-events: auto; /* Makes the SCROLL link clickable */
+  z-index: 11;
+}
+        
  .hero-text-overlay h2 {
   font-family: var(--font-curly); /* This uses Playfair Display */
   font-size: clamp(3rem, 10vw, 6rem); /* Matches the 'Learn to Skim' size */

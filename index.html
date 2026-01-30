@@ -223,17 +223,51 @@
       border-radius: 40px; border: 1px solid rgba(0,0,0,0.03); text-align: center;
     }
 
-    .mission-container {
-      max-width: 1100px; margin: -60px auto 60px;
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px; padding: 0 5%; position: relative; z-index: 10;
-    }
-    .mission-card {
-      background: var(--white); padding: 40px 30px; border-radius: 30px;
-      text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-      border-bottom: 3px solid var(--accent-brown); transition: 0.3s ease;
-    }
+   /* --- MISSION CARD STACKING (SOLITAIRE STYLE) --- */
+.mission-container {
+  display: flex;
+  flex-direction: column; 
+  gap: 0; 
+  max-width: 800px; 
+  margin: -100px auto 100px; /* Adjusted to pull it up into the hero transition */
+  padding: 0 5% 150px 5%;
+}
 
+.mission-card {
+  position: sticky;
+  background: var(--white);
+  padding: 80px 40px; /* Taller cards look better for stacking */
+  border-radius: 40px;
+  text-align: center;
+  box-shadow: 0 -10px 40px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.03);
+  margin-bottom: 20px; /* Space between cards as they unstack */
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out;
+}
+
+/* Stacking Heights: Where they 'catch' when scrolling UP */
+.mission-card:nth-child(1) { top: 120px; z-index: 10; }
+.mission-card:nth-child(2) { top: 180px; z-index: 11; }
+.mission-card:nth-child(3) { top: 240px; z-index: 12; }
+
+/* The 'Hidden' state for unstacking on the way down */
+.mission-card.reveal {
+  opacity: 0;
+  transform: translateY(200px); /* Starts deep so it feels like it un-stacks */
+}
+
+.mission-card.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#locations {
+  position: relative;
+  z-index: 20; /* Higher than mission cards (which are 10-12) */
+  background-color: var(--bg-cream); /* Blocks the cards from showing through */
+  padding-top: 50px;
+}
+    
     .locations-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 30px; max-width: 1100px; margin: 0 auto 80px; padding: 0 5%;
@@ -319,7 +353,7 @@
       </div>
     </div>
 
-    <header class="reveal">
+       <header class="reveal">
       <p style="letter-spacing: 5px; font-size: 10px; opacity: 0.6; margin-bottom: 10px;">HIBISCUS COAST • MT MAUNGANUI</p>
       <h1 style="font-family: var(--font-curly); font-size: clamp(3rem, 10vw, 6rem); font-style: italic;">Learn to Skimboard</h1>
     </header>

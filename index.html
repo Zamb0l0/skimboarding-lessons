@@ -31,20 +31,33 @@
       background-color: var(--bg-cream);
       color: var(--text-dark);
       line-height: 1.6;
+      /* Prevents horizontal scroll during animations */
+      overflow-x: hidden;
     }
 
-    /* --- UPDATED CURSOR CSS --- */
+    /* --- CURSOR --- */
     #cursor {
-      width: 12px; height: 12px; /* Reduced size */
-      background-color: #DE8A64; /* Solid color, no border */
+      width: 12px; height: 12px;
+      background-color: #DE8A64;
       border-radius: 50%;
       position: fixed; 
       pointer-events: none; 
       z-index: 10000;
       transform: translate(-50%, -50%);
       mix-blend-mode: difference; 
-      /* We only transition the scale (transform), not left/top because JS handles movement */
       transition: transform 0.2s ease, background-color 0.3s;
+    }
+
+    /* --- REVEAL ANIMATION BASE --- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .hero-slideshow {
@@ -114,7 +127,6 @@
 
     .navbar img { height: 160px; width: auto; margin-top: 15px; z-index: 3001; }
 
-    /* Desktop Links */
     .nav-links { display: flex; gap: 3rem; list-style: none; }
     .nav-links li a {
       text-decoration: none; color: var(--accent-orange);
@@ -122,7 +134,6 @@
       font-weight: 900; transition: 0.3s;
     }
 
-    /* --- MOBILE MENU BUTTON --- */
     .menu-btn {
       display: none;
       background: white;
@@ -159,7 +170,6 @@
     .menu-btn.active .hamburger::before { transform: rotate(45deg); top: 0; }
     .menu-btn.active .hamburger::after { transform: rotate(-45deg); top: 0; }
 
-    /* --- MOBILE FULL SCREEN OVERLAY --- */
     .nav-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: var(--bg-cream); 
@@ -186,39 +196,15 @@
     }
     .nav-overlay ul li a:hover { color: var(--text-dark); } 
 
-    /* RESPONSIVENESS */
     @media (max-width: 1024px) {
       * { cursor: auto !important; }
       #cursor { display: none; }
-
-      .navbar { 
-        width: 95%; 
-        height: 80px; 
-        padding: 0 1.5rem; 
-      }
-      
-      .navbar img { 
-        height: 100px; 
-        margin-top: 10px;
-      }
-
-      .nav-links { 
-        display: none; 
-      }
-
-      .menu-btn { 
-        display: block; 
-      }
-
-      .nzsass-box { 
-        padding: 30px; 
-        text-align: center; 
-        flex-direction: column;
-      }
-      
-      .nzsass-btn { 
-        width: 100%; 
-      }
+      .navbar { width: 95%; height: 80px; padding: 0 1.5rem; }
+      .navbar img { height: 100px; margin-top: 10px; }
+      .nav-links { display: none; }
+      .menu-btn { display: block; }
+      .nzsass-box { padding: 30px; text-align: center; flex-direction: column; }
+      .nzsass-btn { width: 100%; }
     }
 
     header { padding: 120px 5% 80px; text-align: center; }
@@ -268,7 +254,6 @@
       100% { transform: translateX(-50%); }
     }
 
-    /* COMMUNITY HUB STYLES */
     .journal-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -291,9 +276,7 @@
       background-size: cover;
       background-position: center;
     }
-    .journal-meta {
-      padding: 30px;
-    }
+    .journal-meta { padding: 30px; }
     .journal-meta span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-orange); font-weight: bold; }
     .journal-meta h4 { font-family: var(--font-curly); font-style: italic; font-size: 24px; margin: 10px 0; }
     
@@ -343,7 +326,6 @@
     .oxs-btn.wave { background: var(--accent-brown); color: #fff; }
     .oxs-btn.flat { background: transparent; color: var(--accent-brown); }
 
-    /* CORE SECTIONS */
     .mission-container {
       max-width: 1100px; margin: -60px auto 60px;
       display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -480,15 +462,15 @@
     </header>
 
     <section class="mission-container">
-      <div class="mission-card">
+      <div class="mission-card reveal">
         <h4>Together We Can Grow</h4>
         <p>Simply share the fun and grow the level of skimboarding in New Zealand.</p>
       </div>
-      <div class="mission-card">
+      <div class="mission-card reveal">
         <h4>All Ages Welcome</h4>
         <p>Whether you're wanting to give it a go or a seasoned skimmer looking for the next step forward.</p>
       </div>
-      <div class="mission-card">
+      <div class="mission-card reveal">
         <h4>Flat & Wave</h4>
         <p>We have the ability to teach both flatland and wave skimboarding.</p>
       </div>
@@ -577,10 +559,10 @@
     <section id="gallery" style="padding: 80px 0;">
       <h2 class="section-title">Life on the Shore</h2>
       <div class="gallery">
-        <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 1">
-        <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 2">
-        <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 3">
-        <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 4">
+        <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 1" class="reveal">
+        <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 2" class="reveal">
+        <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 3" class="reveal">
+        <img src="https://i.imgur.com/ZLfFKnB.jpeg" alt="Skim 4" class="reveal">
       </div>
     </section>
 
@@ -611,58 +593,43 @@
   let mouseX = 0, mouseY = 0;
   let cursorX = 0, cursorY = 0;
 
-  // Track the actual mouse position
   document.addEventListener('mousemove', e => {
     mouseX = e.clientX;
     mouseY = e.clientY;
   });
 
-  // Animation Loop for the "Lag" Effect
   function animateCursor() {
-    // Determine the speed of the lag (0.1 = slow/heavy lag, 0.2 = faster)
-    // This creates the "elastic" feeling where it stretches when moving fast
     const speed = 0.15; 
-    
     cursorX += (mouseX - cursorX) * speed;
     cursorY += (mouseY - cursorY) * speed;
-
     if (cursor) {
       cursor.style.left = cursorX + 'px';
       cursor.style.top = cursorY + 'px';
     }
-
     requestAnimationFrame(animateCursor);
   }
-  // Start the loop
   animateCursor();
 
   // 2. MOBILE MENU TOGGLE
   function toggleMenu() {
     const overlay = document.getElementById('navOverlay');
     const menuBtn = document.querySelector('.menu-btn');
-    
     overlay.classList.toggle('active');
     menuBtn.classList.toggle('active'); 
-    
-    if (overlay.classList.contains('active')) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
+    document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : 'auto';
   }
 
   // 3. HERO SLIDESHOW
   let currentSlide = 0;
   const slides = document.querySelectorAll('.slide');
-  function nextSlide() {
+  setInterval(() => {
     if(slides.length === 0) return;
     slides[currentSlide].classList.remove('active');
     currentSlide = (currentSlide + 1) % slides.length;
     slides[currentSlide].classList.add('active');
-  }
-  setInterval(nextSlide, 2000);
+  }, 2000);
 
-  // 4. SCROLL EFFECTS
+  // 4. SCROLL EFFECTS (Hero Fade)
   window.addEventListener('scroll', () => {
     const heroText = document.querySelector('.hero-text-overlay');
     if (heroText) {
@@ -676,17 +643,28 @@
     const target = e.target;
     const isHoverable = target.closest('a') || target.closest('button') || target.closest('.location-card') || target.closest('.mission-card') || target.closest('.journal-post') || target.closest('.nzsass-box') || target.closest('summary') || target.closest('img') || target.closest('h1') || target.closest('h2');
     if (isHoverable && cursor) {
-      cursor.style.transform = 'translate(-50%, -50%) scale(3.5)'; // Scale up significantly
-      // cursor.style.backgroundColor = '#DE8A64'; // Optional: Change color on hover
+      cursor.style.transform = 'translate(-50%, -50%) scale(3.5)';
     }
   });
 
   document.addEventListener('mouseout', () => {
-    if (cursor) {
-      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-      // cursor.style.backgroundColor = '#DE8A64'; // Return to original
-    }
+    if (cursor) { cursor.style.transform = 'translate(-50%, -50%) scale(1)'; }
   });
+
+  // 6. NEW: REVEAL OBSERVER (Unstacking Effect)
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        // Staggered delay logic
+        setTimeout(() => {
+          entry.target.classList.add('active');
+        }, index % 3 * 150); // Stagger by 150ms based on row position
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   </script>
 </body>
 </html>

@@ -99,20 +99,19 @@
       box-shadow: 0 -20px 50px rgba(0,0,0,0.2);
     }
 
-    /* UPDATED: SLEEKER NAVBAR */
     .navbar {
       position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-      background-color: rgba(52, 41, 35, 0.75); /* More transparent */
+      background-color: rgba(52, 41, 35, 0.75);
       padding: 0 2.5rem; 
-      height: 80px; /* Reduced height */
+      height: 80px; 
       border-radius: 100px;
       display: flex; align-items: center; justify-content: space-between;
-      z-index: 1000; width: 90%; max-width: 900px; /* Slimmer width */
+      z-index: 1000; width: 95%; max-width: 1000px;
       backdrop-filter: blur(8px);
       transition: 0.3s ease;
     }
-    .navbar img { height: 140px; width: auto; margin-top: 10px; } /* Adjusted logo fit */
-    .navbar ul { display: flex; gap: 2rem; list-style: none; }
+    .navbar img { height: 140px; width: auto; margin-top: 10px; }
+    .navbar ul { display: flex; gap: 1.5rem; list-style: none; }
     .navbar ul li a {
       text-decoration: none; color: var(--accent-orange);
       font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold;
@@ -125,7 +124,6 @@
       font-style: italic; line-height: 1.1; margin-bottom: 20px;
     }
 
-    /* MARQUEE STYLES */
     .marquee-bar {
       background-color: var(--bg-dark-cream);
       border-bottom: 1px solid rgba(0,0,0,0.05);
@@ -166,52 +164,81 @@
       100% { transform: translateX(-50%); }
     }
 
-    /* COMMUNITY SECTION STYLES */
-    .community-section {
-      padding: 100px 5%;
+    /* BLOG & COMMUNITY STYLES */
+    .journal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
       max-width: 1100px;
-      margin: 0 auto;
-      text-align: center;
+      margin: 0 auto 60px;
+      padding: 0 5%;
     }
+    .journal-post {
+      background: var(--white);
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.03);
+      transition: 0.3s;
+    }
+    .journal-post:hover { transform: translateY(-5px); }
+    .journal-image {
+      width: 100%;
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
+    .journal-meta {
+      padding: 30px;
+    }
+    .journal-meta span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-orange); font-weight: bold; }
+    .journal-meta h4 { font-family: var(--font-curly); font-style: italic; font-size: 24px; margin: 10px 0; }
+    
+    .nzsass-box {
+      grid-column: 1 / -1;
+      background: var(--text-dark);
+      color: #fff;
+      padding: 50px;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    .nzsass-content { flex: 1; min-width: 300px; }
+    .nzsass-content h3 { font-family: var(--font-curly); font-style: italic; font-size: 32px; margin-bottom: 10px; color: var(--accent-orange); }
+    .nzsass-btn {
+      background: var(--accent-orange);
+      color: #fff;
+      padding: 20px 40px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-size: 12px;
+      text-transform: uppercase;
+      transition: 0.3s;
+    }
+    .nzsass-btn:hover { background: #fff; color: var(--text-dark); }
+
+    /* GEAR SECTION STYLES */
+    .community-section { padding: 100px 5%; max-width: 1100px; margin: 0 auto; text-align: center; }
     .community-card {
       background: var(--white);
       padding: 60px 40px;
       border-radius: 40px;
       border: 1px solid rgba(0,0,0,0.03);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.02);
     }
-    .community-card h3 {
-      font-family: var(--font-curly);
-      font-style: italic;
-      font-size: 38px;
-      margin-bottom: 20px;
-    }
-    .community-card p {
-      max-width: 650px;
-      margin: 0 auto 40px;
-      font-size: 16px;
-      opacity: 0.8;
-    }
-    .oxs-buttons {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    .community-card h3 { font-family: var(--font-curly); font-style: italic; font-size: 38px; margin-bottom: 20px; }
+    .community-card p { max-width: 650px; margin: 0 auto 40px; font-size: 16px; opacity: 0.8; }
+    .oxs-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
     .oxs-btn {
-      padding: 18px 40px;
-      border-radius: 100px;
-      text-decoration: none;
-      font-weight: bold;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-size: 12px;
-      transition: 0.3s;
+      padding: 18px 40px; border-radius: 100px; text-decoration: none; font-weight: bold;
+      letter-spacing: 2px; text-transform: uppercase; font-size: 12px; transition: 0.3s;
       border: 2px solid var(--accent-brown);
     }
     .oxs-btn.wave { background: var(--accent-brown); color: #fff; }
     .oxs-btn.flat { background: transparent; color: var(--accent-brown); }
-    .oxs-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
     .mission-container {
       max-width: 1100px; margin: -60px auto 60px;
@@ -284,6 +311,8 @@
       #cursor { display: none; }
       .navbar { height: 70px; padding: 0 1.5rem; }
       .navbar img { height: 80px; }
+      .nzsass-box { padding: 30px; text-align: center; }
+      .nzsass-btn { width: 100%; }
     }
   </style>
 </head>
@@ -307,7 +336,8 @@
     <ul>
       <li><a href="#locations">Locations</a></li>
       <li><a href="#lessons">Book</a></li>
-      <li><a href="#community">Community</a></li>
+      <li><a href="#journal">Journal</a></li>
+      <li><a href="#gear">Gear</a></li>
       <li><a href="#gallery">Gallery</a></li>
     </ul>
   </nav>
@@ -348,11 +378,41 @@
       </div>
     </section>
 
-    <section id="community" class="community-section">
+    <section id="journal" style="padding: 80px 0;">
+      <h2 class="section-title">Shore Journal</h2>
+      
+      <div class="journal-grid">
+        <div class="journal-post">
+          <div class="journal-image" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
+          <div class="journal-meta">
+            <span>Session Report • Jan 2026</span>
+            <h4>Morning Glass at Orewa</h4>
+          </div>
+        </div>
+
+        <div class="journal-post">
+          <div class="journal-image" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
+          <div class="journal-meta">
+            <span>Technique • Tips</span>
+            <h4>Mastering the One-Step Drop</h4>
+          </div>
+        </div>
+
+        <div class="nzsass-box">
+          <div class="nzsass-content">
+            <h3>Connect with NZSASS</h3>
+            <p>Join the New Zealand Skimboarding Association to find local meetups, events, and stoke from across the country.</p>
+          </div>
+          <a href="https://www.facebook.com/groups/NZSASS/" target="_blank" class="nzsass-btn">Join the Community</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="gear" class="community-section">
       <div class="community-card">
         <p style="text-transform: uppercase; letter-spacing: 3px; font-size: 10px; margin-bottom: 10px; color: var(--accent-orange); font-weight: bold;">Support Local</p>
-        <h3>Community & Gear</h3>
-        <p>We're proud to support Sam Price at OXS Skimboards. Hand-crafted right here in NZ, Sam builds world-class boards for every condition—whether you're hitting the shorebreak or the flats.</p>
+        <h3>Hand-Crafted in NZ</h3>
+        <p>We're proud to support Sam Price at OXS Skimboards. World-class boards built for NZ conditions.</p>
         <div class="oxs-buttons">
           <a href="https://oxsskimboards.co.nz/shop/Waves-c98771002" target="_blank" class="oxs-btn wave">Shop Wave Boards</a>
           <a href="https://oxsskimboards.co.nz/shop/Flat-c103977036" target="_blank" class="oxs-btn flat">Shop Flat Boards</a>
@@ -462,7 +522,7 @@
 
   document.addEventListener('mouseover', (e) => {
     const target = e.target;
-    const isHoverable = target.closest('a') || target.closest('button') || target.closest('.location-card') || target.closest('.mission-card') || target.closest('.community-card') || target.closest('summary') || target.closest('img') || target.closest('h1') || target.closest('h2');
+    const isHoverable = target.closest('a') || target.closest('button') || target.closest('.location-card') || target.closest('.mission-card') || target.closest('.journal-post') || target.closest('.nzsass-box') || target.closest('summary') || target.closest('img') || target.closest('h1') || target.closest('h2');
 
     if (isHoverable) {
       cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';

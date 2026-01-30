@@ -381,10 +381,20 @@ header {
   let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
 
   // Follow Mouse Logic
-  document.addEventListener('mousemove', e => { 
-    mouseX = e.clientX; 
-    mouseY = e.clientY; 
-  });
+ document.addEventListener('mouseover', (e) => {
+  // This now checks for links, buttons, images, headings, and paragraphs
+  const target = e.target.closest('a, button, summary, img, h1, h2, h3, h4, h5, p, span, li');
+  
+  if (target) { 
+    cursor.style.transform = 'translate(-50%, -50%) scale(5)'; 
+    cursor.style.opacity = "0.6"; 
+  }
+});
+
+document.addEventListener('mouseout', () => { 
+  cursor.style.transform = 'translate(-50%, -50%) scale(1)'; 
+  cursor.style.opacity = "1";
+});
 
   function animateCursor() {
     cursorX += (mouseX - cursorX) * 0.15;

@@ -234,10 +234,55 @@
     .gear-link-card:hover { border-color: var(--accent-orange); transform: translateY(-5px); }
     .gear-link-card h5 { color: var(--accent-orange); font-size: 16px; text-transform: uppercase; letter-spacing: 1px; }
 
-    #locations { padding: 80px 0; }
-    .locations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto 80px; padding: 0 5%; }
-    .location-card { background: #fff; border-radius: 30px; overflow: hidden; border: 1px solid rgba(0,0,0,0.03); }
-    .location-card summary { padding: 40px; list-style: none; cursor: pointer; text-align: center; font-weight: bold; }
+   /* --- ENHANCED LOCATION CARDS --- */
+#locations { padding: 100px 0; }
+.locations-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+  gap: 40px; 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 5%; 
+}
+
+.location-card { 
+  background: #fff; 
+  border-radius: 40px; 
+  overflow: hidden; 
+  box-shadow: 0 15px 50px rgba(0,0,0,0.05);
+  transition: transform 0.4s ease;
+}
+
+.location-card:hover { transform: translateY(-10px); }
+
+.location-map-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.location-card summary { 
+  padding: 30px; 
+  list-style: none; 
+  cursor: pointer; 
+  text-align: center; 
+  font-family: var(--font-curly);
+  font-size: 24px;
+  font-style: italic;
+  color: var(--accent-brown);
+}
+
+.location-card summary small {
+  display: block;
+  font-family: var(--font-main);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 5px;
+  color: var(--accent-orange);
+}}
 
     .journal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto; padding: 0 5%; }
     .journal-post { background: var(--white); border-radius: 30px; overflow: hidden; }
@@ -369,23 +414,31 @@
       </div>
     </section>
 
-    <section id="locations">
-      <h2 class="reveal" style="text-align: center; font-family: var(--font-curly); font-style: italic; font-size: 42px; margin-bottom: 50px;">Where We Slide</h2>
-      <div class="locations-grid">
-        <details class="location-card reveal">
-          <summary>Hibiscus Coast <br><small>Orewa & Red Beach</small></summary>
-          <div style="padding: 20px;">
-            <iframe src="https://marea.ooo/en/widget/-36.6202812/174.72140538254604?padding=m&components=text%2Cchart&theme=dark" width="100%" height="450px" style="border:none; border-radius:20px; background:#1a1a1a;"></iframe>
-          </div>
-        </details>
-        <details class="location-card reveal">
-          <summary>Mt Maunganui <br><small>Main Beach & Tay St</small></summary>
-          <div style="padding: 20px;">
-            <iframe src="https://marea.ooo/en/widget/-37.6406/176.1856?padding=m&components=text%2Cchart&theme=dark" width="100%" height="450px" style="border:none; border-radius:20px; background:#1a1a1a;"></iframe>
-          </div>
-        </details>
-      </div>
-    </section>
+   <section id="locations">
+  <h2 class="reveal" style="text-align: center; font-family: var(--font-curly); font-style: italic; font-size: 42px; margin-bottom: 50px;">Where We Slide</h2>
+  
+  <div class="locations-grid">
+    <div class="location-card reveal">
+      <img src="https://res.cloudinary.com/dyphplbk4/image/upload/v1769777057/HBC_mhpazf.png" alt="Hibiscus Coast Map" class="location-map-img">
+      <details>
+        <summary>Hibiscus Coast <small>Orewa & Red Beach</small></summary>
+        <div style="padding: 0 20px 20px;">
+          <iframe src="https://marea.ooo/en/widget/-36.6202812/174.72140538254604?padding=m&components=text%2Cchart&theme=dark" width="100%" height="350px" style="border:none; border-radius:20px; background:#1a1a1a;"></iframe>
+        </div>
+      </details>
+    </div>
+
+    <div class="location-card reveal">
+      <img src="https://res.cloudinary.com/dyphplbk4/image/upload/v1769777056/Mt_dyi2zv.png" alt="Mt Maunganui Map" class="location-map-img">
+      <details>
+        <summary>Mt Maunganui <small>Main Beach & Tay St</small></summary>
+        <div style="padding: 0 20px 20px;">
+          <iframe src="https://marea.ooo/en/widget/-37.6406/176.1856?padding=m&components=text%2Cchart&theme=dark" width="100%" height="350px" style="border:none; border-radius:20px; background:#1a1a1a;"></iframe>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
 
     <section id="community" style="padding: 80px 0;">
       <h2 class="reveal" style="text-align: center; font-family: var(--font-curly); font-style: italic; font-size: 42px; margin-bottom: 50px;">Skimunity</h2>

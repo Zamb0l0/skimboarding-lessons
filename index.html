@@ -99,29 +99,33 @@
       box-shadow: 0 -20px 50px rgba(0,0,0,0.2);
     }
 
+    /* UPDATED: SLEEKER NAVBAR */
     .navbar {
-      position: fixed; top: 25px; left: 50%; transform: translateX(-50%);
-      background-color: rgba(52, 41, 35, 0.9);
-      padding: 0 3rem; height: 120px; border-radius: 60px;
+      position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+      background-color: rgba(52, 41, 35, 0.75); /* More transparent */
+      padding: 0 2.5rem; 
+      height: 80px; /* Reduced height */
+      border-radius: 100px;
       display: flex; align-items: center; justify-content: space-between;
-      z-index: 1000; width: 90%; max-width: 1100px;
-      backdrop-filter: blur(10px);
+      z-index: 1000; width: 90%; max-width: 900px; /* Slimmer width */
+      backdrop-filter: blur(8px);
+      transition: 0.3s ease;
     }
-    .navbar img { height: 200px; width: auto; }
-    .navbar ul { display: flex; gap: 2.5rem; list-style: none; }
+    .navbar img { height: 140px; width: auto; margin-top: 10px; } /* Adjusted logo fit */
+    .navbar ul { display: flex; gap: 2rem; list-style: none; }
     .navbar ul li a {
       text-decoration: none; color: var(--accent-orange);
-      font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold;
+      font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold;
     }
 
-    header { padding: 150px 5% 120px; text-align: center; }
+    header { padding: 120px 5% 80px; text-align: center; }
     header h1 {
       font-family: var(--font-curly);
       font-size: clamp(3rem, 10vw, 6rem);
       font-style: italic; line-height: 1.1; margin-bottom: 20px;
     }
 
-    /* TALL, THIN, FAST & SEAMLESS MARQUEE */
+    /* MARQUEE STYLES */
     .marquee-bar {
       background-color: var(--bg-dark-cream);
       border-bottom: 1px solid rgba(0,0,0,0.05);
@@ -134,7 +138,6 @@
 
     .marquee-content {
       display: flex;
-      /* Adjusted speed to 15s for a smooth but fast flow */
       animation: scroll-left 15s linear infinite;
     }
 
@@ -145,10 +148,9 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--accent-brown);
-      padding: 0 15px; /* Closer word spacing */
+      padding: 0 15px;
       display: flex;
       align-items: center;
-      /* Stretching the font vertically */
       transform: scaleY(1.4);
     }
 
@@ -163,6 +165,53 @@
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
+
+    /* COMMUNITY SECTION STYLES */
+    .community-section {
+      padding: 100px 5%;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .community-card {
+      background: var(--white);
+      padding: 60px 40px;
+      border-radius: 40px;
+      border: 1px solid rgba(0,0,0,0.03);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.02);
+    }
+    .community-card h3 {
+      font-family: var(--font-curly);
+      font-style: italic;
+      font-size: 38px;
+      margin-bottom: 20px;
+    }
+    .community-card p {
+      max-width: 650px;
+      margin: 0 auto 40px;
+      font-size: 16px;
+      opacity: 0.8;
+    }
+    .oxs-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .oxs-btn {
+      padding: 18px 40px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 12px;
+      transition: 0.3s;
+      border: 2px solid var(--accent-brown);
+    }
+    .oxs-btn.wave { background: var(--accent-brown); color: #fff; }
+    .oxs-btn.flat { background: transparent; color: var(--accent-brown); }
+    .oxs-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
     .mission-container {
       max-width: 1100px; margin: -60px auto 60px;
@@ -233,8 +282,8 @@
       .navbar ul { display: none; }
       * { cursor: auto !important; }
       #cursor { display: none; }
-      .navbar { height: 90px; }
-      .navbar img { height: 60px; }
+      .navbar { height: 70px; padding: 0 1.5rem; }
+      .navbar img { height: 80px; }
     }
   </style>
 </head>
@@ -249,7 +298,7 @@
     <div class="slide" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
     
     <div class="hero-text-overlay">
-      <h2>Skim From Scratch</h2>
+      <h2>Sliding into Summer</h2>
     </div>
   </div>
 
@@ -257,8 +306,8 @@
     <img src="Logo.png" alt="Logo">
     <ul>
       <li><a href="#locations">Locations</a></li>
-      <li><a href="#services">Services</a></li>
       <li><a href="#lessons">Book</a></li>
+      <li><a href="#community">Community</a></li>
       <li><a href="#gallery">Gallery</a></li>
     </ul>
   </nav>
@@ -296,6 +345,18 @@
       <div class="mission-card">
         <h4>Flat & Wave</h4>
         <p>We have the ability to teach both flatland and wave skimboarding.</p>
+      </div>
+    </section>
+
+    <section id="community" class="community-section">
+      <div class="community-card">
+        <p style="text-transform: uppercase; letter-spacing: 3px; font-size: 10px; margin-bottom: 10px; color: var(--accent-orange); font-weight: bold;">Support Local</p>
+        <h3>Community & Gear</h3>
+        <p>We're proud to support Sam Price at OXS Skimboards. Hand-crafted right here in NZ, Sam builds world-class boards for every condition—whether you're hitting the shorebreak or the flats.</p>
+        <div class="oxs-buttons">
+          <a href="https://oxsskimboards.co.nz/shop/Waves-c98771002" target="_blank" class="oxs-btn wave">Shop Wave Boards</a>
+          <a href="https://oxsskimboards.co.nz/shop/Flat-c103977036" target="_blank" class="oxs-btn flat">Shop Flat Boards</a>
+        </div>
       </div>
     </section>
 
@@ -401,7 +462,7 @@
 
   document.addEventListener('mouseover', (e) => {
     const target = e.target;
-    const isHoverable = target.closest('a') || target.closest('button') || target.closest('.location-card') || target.closest('.mission-card') || target.closest('summary') || target.closest('img') || target.closest('h1') || target.closest('h2');
+    const isHoverable = target.closest('a') || target.closest('button') || target.closest('.location-card') || target.closest('.mission-card') || target.closest('.community-card') || target.closest('summary') || target.closest('img') || target.closest('h1') || target.closest('h2');
 
     if (isHoverable) {
       cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';

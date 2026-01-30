@@ -229,10 +229,54 @@
     .mission-card:nth-child(2) { top: 180px; }
     .mission-card:nth-child(3) { top: 240px; }
 
-    .gear-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
-    .gear-link-card { background: var(--bg-cream); padding: 25px; border-radius: 20px; text-decoration: none; color: var(--text-dark); border: 1px solid rgba(0,0,0,0.05); transition: 0.3s; text-align: center; }
-    .gear-link-card:hover { border-color: var(--accent-orange); transform: translateY(-5px); }
-    .gear-link-card h5 { color: var(--accent-orange); font-size: 16px; text-transform: uppercase; letter-spacing: 1px; }
+    /* --- ENHANCED GEAR SECTION --- */
+.gear-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  gap: 30px; 
+  margin-top: 40px; 
+}
+
+.gear-link-card { 
+  background: var(--bg-cream); 
+  padding: 40px 25px; 
+  border-radius: 30px; 
+  text-decoration: none; 
+  color: var(--text-dark); 
+  border: 1px solid rgba(0,0,0,0.05); 
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+  text-align: center; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gear-board-img {
+  width: auto;
+  height: 200px; /* Consistent height for both boards */
+  margin-bottom: 25px;
+  transition: transform 0.5s ease;
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+.gear-link-card:hover { 
+  border-color: var(--accent-orange); 
+  transform: translateY(-10px); 
+  background: #fff;
+}
+
+.gear-link-card:hover .gear-board-img {
+  transform: scale(1.1) rotate(2deg); /* Subtle "pop" on hover */
+}
+
+.gear-link-card h5 { 
+  color: var(--accent-orange); 
+  font-size: 14px; 
+  text-transform: uppercase; 
+  letter-spacing: 2px; 
+  font-weight: 900;
+}
 
    /* --- ENHANCED LOCATION CARDS --- */
 #locations { padding: 100px 0; }
@@ -457,14 +501,16 @@
           <h3 style="font-family: var(--font-curly); font-style: italic; font-size: 38px; margin-bottom: 20px;">NZ Handmade - OXS Skimboards</h3>
           <p style="max-width: 650px; margin: 0 auto 40px; font-size: 16px; opacity: 0.8;">Proudly supporting Sam Price at OXS Skimboards. World-class boards built for New Zealand beaches.</p>
           <div class="gear-grid">
-            <a href="https://oxsskimboards.co.nz/shop/Waves-c98771002" target="_blank" class="gear-link-card">
-                <h5>Shop OXS Wave</h5>
-            </a>
-            <a href="https://oxsskimboards.co.nz/shop/Flat-c103977036" target="_blank" class="gear-link-card">
-                <h5>Shop OXS Flat</h5>
-            </a>
-          </div>
-        </div>
+  <a href="https://oxsskimboards.co.nz/shop/Waves-c98771002" target="_blank" class="gear-link-card">
+    <img src="https://res.cloudinary.com/dyphplbk4/image/upload/v1769779349/Untitled-4_b99hjq.png" alt="OXS Wave Skimboard" class="gear-board-img">
+    <h5>Shop OXS Wave</h5>
+  </a>
+
+  <a href="https://oxsskimboards.co.nz/shop/Flat-c103977036" target="_blank" class="gear-link-card">
+    <img src="https://res.cloudinary.com/dyphplbk4/image/upload/v1769779349/Untitled-3_rohuks.png" alt="OXS Flatland Skimboard" class="gear-board-img">
+    <h5>Shop OXS Flat</h5>
+  </a>
+</div>
 
         <div class="nzsass-box reveal">
           <div>

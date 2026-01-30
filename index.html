@@ -4,7 +4,7 @@
   <link rel="icon" type="image/png" href="favicon/Logo.png">
   <link rel="apple-touch-icon" href="favicon/Logo.png">
   
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://assets.calendly.com https://marea.ooo; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://calendly.com https://marea.ooo; img-src 'self' https://i.imgur.com data:; connect-src https://marea.ooo;">
+ <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://assets.calendly.com https://marea.ooo; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://calendly.com https://marea.ooo; img-src 'self' https://i.imgur.com https://res.cloudinary.com data:; connect-src https://marea.ooo;">
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,17 +74,20 @@
     }
 
     .slide {
-      position: absolute; width: 100%; height: 100%;
-      background-size: cover; background-position: center;
-      opacity: 0; transition: opacity 1.5s ease-in-out;
-    }
+  position: absolute; 
+  width: 100%; 
+  height: 100%;
+  background-size: cover; 
+  background-position: center;
+  opacity: 0; 
+  z-index: 1; /* All slides start at 1 */
+  transition: opacity 1.5s ease-in-out;
+}
 
-    .slide.active { opacity: 1; }
-
-    .hero-text-overlay {
-      position: fixed; top: 45%; left: 50%; transform: translate(-50%, -50%);
-      z-index: 3; text-align: center; width: 90%; color: #fff; pointer-events: none; 
-    }
+.slide.active { 
+  opacity: 1; 
+  z-index: 2; /* Active slide sits on top */
+}
 
     .hero-text-overlay h2 {
       font-family: var(--font-curly); font-size: clamp(2.5rem, 8vw, 5rem);
@@ -204,15 +207,10 @@
 <body>
 
   <div id="cursor"></div>
-
-  <div class="hero-slideshow">
+<div class="hero-slideshow">
   <div class="slide active" style="background-image: url('https://res.cloudinary.com/dyphplbk4/image/upload/f_auto,q_auto/v1769754485/DSC03683_wv6gyo.jpg');"></div>
-  
   <div class="slide" style="background-image: url('https://res.cloudinary.com/dyphplbk4/image/upload/f_auto,q_auto/v1769754479/Adam_pdvjlr.jpg');"></div>
-  
   <div class="slide" style="background-image: url('https://res.cloudinary.com/dyphplbk4/image/upload/f_auto,q_auto/v1769754498/MCP00257_wzpd0q.jpg');"></div>
-  
-  <div class="slide" style="background-image: url('https://i.imgur.com/ZLfFKnB.jpeg');"></div>
 </div>
   <div class="hero-text-overlay">
     <h2>Sliding into Summer</h2>
@@ -407,13 +405,24 @@
       document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : 'auto';
     }
 
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    setInterval(() => {
-      slides[currentSlide].classList.remove('active');
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].classList.add('active');
-    }, 3000);
+   let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+
+function nextSlide() {
+  // 1. Remove active class from the current slide
+  slides[currentSlide].classList.remove('active');
+  
+  // 2. Move to the next index
+  currentSlide = (currentSlide + 1) % slides.length;
+  
+  // 3. Add active class to the new slide
+  slides[currentSlide].classList.add('active');
+}
+
+// Check if slides exist before starting the timer
+if (slides.length > 0) {
+  setInterval(nextSlide, 4000); // 4 seconds per slide
+}
 
     // Visibility Fix: Trigger reveal earlier
     const revealObserver = new IntersectionObserver((entries) => {

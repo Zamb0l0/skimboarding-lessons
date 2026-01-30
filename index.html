@@ -242,8 +242,30 @@
     .donate-btn { display: inline-block; background: var(--text-dark); color: white; padding: 20px 45px; border-radius: 100px; text-decoration: none; font-weight: bold; letter-spacing: 2px; font-size: 12px; margin-top: 30px; transition: 0.3s; }
     .donate-btn:hover { background: var(--accent-orange); }
 
-    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; padding: 0 5%; max-width: 1200px; margin: 0 auto; }
-    .gallery img { width: 100%; height: 250px; object-fit: cover; border-radius: 20px; transition: 0.4s; }
+   /* --- GALLERY FIX --- */
+.gallery { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* auto-fit centers the items better */
+  gap: 20px; 
+  padding: 0 5%; 
+  max-width: 1100px; /* Limits the total width to match your content */
+  margin: 0 auto; /* This centers the whole gallery on the page */
+  justify-items: center; 
+}
+
+.gallery img { 
+  width: 100%; 
+  aspect-ratio: 1 / 1; /* Forces them to be perfect squares */
+  object-fit: cover; 
+  border-radius: 30px; /* Matching your mission-cards and location-cards */
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.gallery img:hover {
+  transform: scale(1.03); /* Subtle lift when hovering with your custom cursor */
+  box-shadow: 0 15px 45px rgba(0,0,0,0.1);
+}
 
     footer { padding: 100px 50px; background: var(--text-dark); color: #fff; text-align: center; border-radius: 50px 50px 0 0; }
     .footer-contact a { color: #fff; text-decoration: none; display: block; margin: 5px; }
